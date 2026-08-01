@@ -38,7 +38,7 @@ export function SiteHeader() {
         <a href="/foundations" onClick={() => setMenuOpen(false)}>Foundations</a>
         <a href="/components" onClick={() => setMenuOpen(false)}>Components</a>
         <a href="/blocks" onClick={() => setMenuOpen(false)}>Blocks</a>
-        <a href="/design" onClick={() => setMenuOpen(false)}>Agent guide</a>
+        <a href="/agents" onClick={() => setMenuOpen(false)}>Agents</a>
       </div>
       <div className="nav-actions">
         <a href="/design" className="github-link">DESIGN.md <span>↗</span></a>
