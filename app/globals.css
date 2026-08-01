@@ -714,6 +714,56 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--focus); outline
 .showcase-note p { margin: 0; color: var(--ink-secondary); font-size: .58rem; line-height: 1.55; }
 .showcase-note strong { color: var(--ink); font-family: var(--serif); font-size: .8rem; }
 
+/* Agent-readable guide */
+.agents-hero { padding-bottom: clamp(3.5rem, 7vw, 6rem); }
+.agents-hero-actions { display: flex; align-items: center; gap: 1.35rem; margin-top: 2rem; flex-wrap: wrap; }
+.agents-hero-actions .primary-button { gap: .55rem; }
+.agents-hero-actions .primary-button svg { width: 15px; height: 15px; }
+.agent-surface-map { display: grid; grid-template-columns: .7fr 1.3fr; gap: clamp(2.5rem, 8vw, 8rem); padding: clamp(4rem, 8vw, 8rem) clamp(1.25rem, 8vw, 9rem); border-bottom: 1px solid var(--border); background: var(--surface); }
+.agent-surface-intro h2, .agent-install-section h2 { margin: 1rem 0 1.5rem; font: 420 clamp(2.7rem, 5vw, 5.4rem)/.92 var(--serif); letter-spacing: -.045em; }
+.agent-surface-intro h2 i, .agent-install-section h2 i, .agent-prompt-section h2 i { color: var(--accent); font-weight: 400; }
+.agent-surface-intro > p:last-child, .agent-install-section > div > p:last-child { max-width: 360px; margin: 0; color: var(--ink-secondary); font-size: .78rem; line-height: 1.7; }
+.agent-resource-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+.agent-resource-grid a { min-height: 150px; position: relative; display: flex; flex-direction: column; padding: 1.15rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--canvas); transition: background 160ms ease, transform 160ms ease; }
+.agent-resource-grid a:hover { z-index: 1; background: var(--accent-soft); transform: translateY(-2px); }
+.agent-resource-grid a > span { color: var(--accent); font: .48rem var(--mono); letter-spacing: .1em; }
+.agent-resource-grid strong { margin-top: .7rem; font: 500 1.2rem var(--serif); }
+.agent-resource-grid small { max-width: 230px; margin-top: .4rem; color: var(--ink-secondary); font-size: .6rem; line-height: 1.5; }
+.agent-resource-grid b { position: absolute; right: 1rem; bottom: 1rem; color: var(--accent); font: .7rem var(--mono); }
+.agent-prompt-section { padding: clamp(5rem, 9vw, 9rem) clamp(1.25rem, 8vw, 9rem); }
+.agent-prompt-section .route-section-heading { margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+.agent-prompt-list { display: grid; gap: 1.5rem; }
+.agent-prompt-card { min-width: 0; overflow: hidden; border: 1px solid var(--border); background: var(--surface); }
+.agent-prompt-card > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; padding: 1.35rem 1.5rem; border-bottom: 1px solid var(--border); }
+.agent-prompt-card > header > div > span { color: var(--accent); font: .48rem var(--mono); letter-spacing: .1em; }
+.agent-prompt-card h2 { margin: .55rem 0 .3rem; font: 500 1.4rem var(--serif); letter-spacing: -.02em; }
+.agent-prompt-card > header p { max-width: 560px; margin: 0; color: var(--ink-secondary); font-size: .68rem; line-height: 1.55; }
+.agent-prompt-card > header button { flex: 0 0 auto; display: inline-flex; align-items: center; gap: .45rem; min-height: 34px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--canvas); color: var(--ink-secondary); padding: 0 .7rem; font-size: .56rem; cursor: pointer; transition: background 140ms ease, color 140ms ease, transform 140ms ease; }
+.agent-prompt-card > header button:hover { background: var(--accent-soft); color: var(--accent); transform: translateY(-1px); }
+.agent-prompt-card > header button svg { width: 13px; height: 13px; }
+.agent-prompt-card > .code-block { border: 0; border-radius: 0; }
+.agent-prompt-card .code-block-scroll { max-height: 360px; }
+.agent-install-section { display: grid; grid-template-columns: .7fr 1.3fr; gap: clamp(2.5rem, 8vw, 8rem); align-items: center; padding: clamp(5rem, 9vw, 9rem) clamp(1.25rem, 8vw, 9rem); border-top: 1px solid var(--border); background: var(--ink); color: var(--canvas); }
+.agent-install-section .section-index { color: var(--accent); }
+.agent-install-section > div > p:last-child { color: color-mix(in oklab, var(--canvas) 70%, transparent); }
+.agent-install-section .code-block { border-color: color-mix(in oklab, var(--canvas) 23%, transparent); background: color-mix(in oklab, var(--canvas) 5%, var(--ink)); }
+.agent-install-section .code-block-toolbar { background: color-mix(in oklab, var(--canvas) 8%, var(--ink)); border-color: color-mix(in oklab, var(--canvas) 15%, transparent); }
+.agent-install-section .code-block-number { background: color-mix(in oklab, var(--canvas) 5%, var(--ink)); border-color: color-mix(in oklab, var(--canvas) 14%, transparent); }
+
+@media (max-width: 900px) {
+  .agent-surface-map, .agent-install-section { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+@media (max-width: 700px) {
+  .agents-hero-actions { align-items: stretch; flex-direction: column; }
+  .agents-hero-actions .primary-button { width: 100%; }
+  .agent-surface-map, .agent-prompt-section, .agent-install-section { padding-left: 1rem; padding-right: 1rem; }
+  .agent-resource-grid { grid-template-columns: 1fr; }
+  .agent-prompt-card > header { display: grid; gap: 1rem; }
+  .agent-prompt-card > header button { justify-self: start; }
+  .agent-prompt-card .code-block-scroll { max-height: 440px; }
+}
+
 @media (max-width: 1080px) {
   .showcase-mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .showcase-controls, .showcase-activity, .showcase-goal, .showcase-nav-card, .showcase-balance, .showcase-payout, .showcase-login, .showcase-leaderboard, .showcase-editorial { grid-column: span 1; }
