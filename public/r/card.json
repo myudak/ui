@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card",
+  "title": "Card",
+  "description": "A restrained bounded surface for meaningful grouping.",
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/card.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/cn\";\n\nexport const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => <section ref={ref} className={cn(\"manner-card\", className)} {...props}/>); Card.displayName = \"Card\";\nexport const CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => <header ref={ref} className={cn(\"manner-card-header\", className)} {...props}/>); CardHeader.displayName = \"CardHeader\";\nexport const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => <div ref={ref} className={cn(\"manner-card-content\", className)} {...props}/>); CardContent.displayName = \"CardContent\";\nexport const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => <footer ref={ref} className={cn(\"manner-card-footer\", className)} {...props}/>); CardFooter.displayName = \"CardFooter\";\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
