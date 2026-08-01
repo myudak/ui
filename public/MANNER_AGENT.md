@@ -1,5 +1,12 @@
 # Manner agent setup
 
+For machine-readable discovery, start with:
+
+- `https://ui.myudak.com/llms.txt` — compact guide
+- `https://ui.myudak.com/llms-full.txt` — complete guide
+- `https://ui.myudak.com/ai.json` — manifest and catalog metadata
+- `https://ui.myudak.com/r/index.json` — every installable item
+
 Read `DESIGN.md` before changing interface code.
 
 ## Component workflow
