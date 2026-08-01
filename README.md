@@ -2,7 +2,7 @@
 
 A source-owned editorial component system for thoughtful software and coding agents.
 
-[Documentation](https://ui.myudak.com) · [Components](https://ui.myudak.com/components) · [Blocks](https://ui.myudak.com/blocks) · [Design rules](https://ui.myudak.com/design)
+[Documentation](https://ui.myudak.com) · [Components](https://ui.myudak.com/components) · [Blocks](https://ui.myudak.com/blocks) · [Design rules](https://ui.myudak.com/design) · [Agent guide](https://ui.myudak.com/agents)
 
 Manner combines a shadcn-compatible registry with Base UI primitives, warm editorial design tokens, application blocks, and agent-readable interface rules. You install the source into your project, then own and adapt every line.
 
@@ -34,6 +34,7 @@ pnpm dlx shadcn@latest add @manner/agent-rules
 - AI interfaces: Message, Composer, Reasoning, Tool Call, Sources, Artifact
 - Blocks: Login, Sidebar, Settings, Reader, AI Workspace, Leaderboard
 - `DESIGN.md` and `MANNER_AGENT.md` for coding-agent guidance
+- `AGENTS.md`, `ai.json`, `llms.txt`, and `llms-full.txt` for machine-readable discovery
 - A generated shadcn registry under `public/r`
 
 ## Architecture
@@ -49,7 +50,7 @@ registry/manner/ai
 registry/manner/blocks
 ```
 
-`registry.json` declares the catalog. `npm run registry:build` validates it and generates the public registry artifacts.
+`registry.json` declares the catalog. `npm run prepare:system` generates the agent manifests and validates the catalog before producing the public registry artifacts.
 
 ## Development
 
