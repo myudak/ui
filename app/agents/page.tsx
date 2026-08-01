@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check, Copy, ExternalLink } from "lucide-react";
 import { CodeBlock } from "@/components/code-block";
+import { InstallStrip, SiteFooter } from "@/components/system-chrome";
 
 const prompts = [
   {
@@ -171,6 +172,8 @@ Read: https://ui.myudak.com/llms.txt
 Inspect the registry and existing source first. Reuse Manner components and
 blocks, follow DESIGN.md, preserve accessibility, and report exceptions.`} />
       </section>
+      <InstallStrip target="@manner/agent-rules" />
+      <SiteFooter />
     </main>
   );
 }
