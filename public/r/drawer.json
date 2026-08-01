@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drawer",
+  "title": "Drawer",
+  "description": "A spatially grounded side panel for secondary tasks.",
+  "dependencies": [
+    "@base-ui/react@^1.6.0",
+    "lucide-react@^1.28.0"
+  ],
+  "registryDependencies": [
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/drawer.tsx",
+      "content": "import * as React from \"react\";\nimport { Dialog as BaseDialog } from \"@base-ui/react/dialog\";\nimport { X } from \"lucide-react\";\n\nexport function Drawer({ trigger = \"Open drawer\", title = \"Details\", children }: { trigger?: React.ReactNode; title?: string; children: React.ReactNode }) {\n  return <BaseDialog.Root><BaseDialog.Trigger className=\"manner-drawer-trigger\">{trigger}</BaseDialog.Trigger><BaseDialog.Portal><BaseDialog.Backdrop className=\"manner-drawer-backdrop\"/><BaseDialog.Viewport className=\"manner-drawer-layer\"><BaseDialog.Popup className=\"manner-drawer-popup\"><header><BaseDialog.Title id=\"drawer-title\">{title}</BaseDialog.Title><BaseDialog.Close aria-label=\"Close drawer\"><X/></BaseDialog.Close></header><div>{children}</div></BaseDialog.Popup></BaseDialog.Viewport></BaseDialog.Portal></BaseDialog.Root>;\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
