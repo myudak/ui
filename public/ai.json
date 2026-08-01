@@ -77,10 +77,10 @@
     ]
   },
   "counts": {
-    "components": 20,
+    "components": 35,
     "blocks": 6,
     "files": 1,
-    "total": 29
+    "total": 44
   },
   "items": [
     {
@@ -533,6 +533,313 @@
       "install": "pnpm dlx shadcn@latest add @manner/artifact",
       "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/artifact.tsx",
       "registry": "https://ui.myudak.com/r/artifact.json"
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "An accessible independent selection control.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/checkbox",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/checkbox.tsx",
+      "registry": "https://ui.myudak.com/r/checkbox.json"
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "A mutually exclusive choice set with native keyboard behavior.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/radio-group",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/radio-group.tsx",
+      "registry": "https://ui.myudak.com/r/radio-group.json"
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "An accessible date input with a clear label.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/date-picker",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/date-picker.tsx",
+      "registry": "https://ui.myudak.com/r/date-picker.json"
+    },
+    {
+      "name": "file-upload",
+      "type": "registry:ui",
+      "title": "File Upload",
+      "description": "A labeled upload target with selected-file feedback.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/file-upload.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/file-upload",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/file-upload.tsx",
+      "registry": "https://ui.myudak.com/r/file-upload.json"
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "A restrained bounded surface for meaningful grouping.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/card",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/card.tsx",
+      "registry": "https://ui.myudak.com/r/card.json"
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A spatially grounded side panel for secondary tasks.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/drawer",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/drawer.tsx",
+      "registry": "https://ui.myudak.com/r/drawer.json"
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A short accessible label for compact controls.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/tooltip",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/tooltip.tsx",
+      "registry": "https://ui.myudak.com/r/tooltip.json"
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Keyboard-friendly related view switching.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/tabs",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/tabs.tsx",
+      "registry": "https://ui.myudak.com/r/tabs.json"
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "A semantic location trail for shallow hierarchies.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/breadcrumb",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/breadcrumb.tsx",
+      "registry": "https://ui.myudak.com/r/breadcrumb.json"
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Navigation through ordered result pages.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/pagination",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/pagination.tsx",
+      "registry": "https://ui.myudak.com/r/pagination.json"
+    },
+    {
+      "name": "stepper",
+      "type": "registry:ui",
+      "title": "Stepper",
+      "description": "Progress through a finite multi-step flow.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/stepper.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/stepper",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/stepper.tsx",
+      "registry": "https://ui.myudak.com/r/stepper.json"
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "A semantic status message with calm hierarchy.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/alert",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/alert.tsx",
+      "registry": "https://ui.myudak.com/r/alert.json"
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "A labeled semantic completion meter.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/progress",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/progress.tsx",
+      "registry": "https://ui.myudak.com/r/progress.json"
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "A reduced-motion loading placeholder.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/skeleton",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/skeleton.tsx",
+      "registry": "https://ui.myudak.com/r/skeleton.json"
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "title": "Empty State",
+      "description": "An empty result explanation with a useful next action.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/empty-state.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/empty-state",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/empty-state.tsx",
+      "registry": "https://ui.myudak.com/r/empty-state.json"
     },
     {
       "name": "login-01",
