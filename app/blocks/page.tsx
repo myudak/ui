@@ -51,9 +51,9 @@ function BlockCard({ block }: { block: typeof blocks[number] }) {
 
   return (
     <article className="block-card reveal-in" id={block.id}>
-      <header><div><span>{block.category} · {block.id}</span><h2>{block.title}</h2><p>{block.description}</p></div><div><button onClick={() => setView("preview")} className={view === "preview" ? "active" : ""}>Preview</button><button onClick={() => setView("code")} className={view === "code" ? "active" : ""}>Code</button></div></header>
+      <header><div><span>{block.category} · {block.id}</span><h2>{block.title}</h2><p>{block.description}</p></div><div><button onClick={() => setView("preview")} className={view === "preview" ? "active" : ""}>Preview</button><button onClick={() => setView("code")} className={view === "code" ? "active" : ""}>Source</button><button onClick={copyCode}>{copied ? "Copied ✓" : "Copy"}</button></div></header>
       <div className={`block-frame ${view === "code" ? "show-code" : ""}`}>{view === "preview" ? <BlockPreview type={block.type}/> : <CodeBlock code={blockSource[block.id]} filename={`${block.id}.tsx`} />}</div>
-      <footer><code>{installCommand}</code><div className="flex gap-3"><button onClick={copyInstall}>{installCopied ? "Install copied ✓" : "Copy install"}</button><button onClick={copyCode}>{copied ? "Source copied ✓" : "Copy source"}</button></div></footer>
+      <footer><code>{installCommand}</code><button onClick={copyInstall}>{installCopied ? "Copied ✓" : "Copy install"}</button></footer>
     </article>
   );
 }
