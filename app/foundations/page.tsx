@@ -36,7 +36,7 @@ export default function FoundationsPage() {
         <div className="foundation-label"><span>03</span><h2>Shape & space</h2><p>Small radii and thin borders preserve character without turning every object into a pill or card.</p></div>
         <div className="shape-showcase">
           {["xs · 4", "sm · 6", "md · 10", "lg · 14", "xl · 20"].map((item, index) => <article key={item} style={{borderRadius:`${[4,6,10,14,20][index]}px`}}><span>{item}</span></article>)}
-          <div className="space-ruler"><i style={{width:"8px"}}/><i style={{width:"16px"}}/><i style={{width:"24px"}}/><i style={{width:"40px"}}/><i style={{width:"64px"}}/></div>
+          <div className="space-ruler">{[4,8,12,16,20,24,32,40,48,64,96,128].map((size) => <i key={size} style={{width:`${Math.max(3, size / 2)}px`}}><span>{size}</span></i>)}</div>
         </div>
       </section>
 
