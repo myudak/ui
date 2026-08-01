@@ -32,6 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="ai-manifest" href="/ai.json" type="application/json" />
+        <link rel="llms" href="/llms.txt" type="text/plain" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
