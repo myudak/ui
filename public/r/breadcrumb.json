@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "title": "Breadcrumb",
+  "description": "A semantic location trail for shallow hierarchies.",
+  "dependencies": [
+    "lucide-react@^1.28.0"
+  ],
+  "registryDependencies": [
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/breadcrumb.tsx",
+      "content": "import { ChevronRight } from \"lucide-react\";\nexport function Breadcrumb({ items }: { items: Array<string | { label: string; href: string }> }) {\n  return <nav className=\"manner-breadcrumb\" aria-label=\"Breadcrumb\"><ol>{items.map((item, index) => { const label = typeof item === \"string\" ? item : item.label; return <li key={label}>{index > 0 && <ChevronRight aria-hidden=\"true\"/>}{typeof item === \"string\" || index === items.length - 1 ? <span aria-current={index === items.length - 1 ? \"page\" : undefined}>{label}</span> : <a href={item.href}>{label}</a>}</li>; })}</ol></nav>;\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
