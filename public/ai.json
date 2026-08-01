@@ -1,0 +1,681 @@
+{
+  "schemaVersion": "1.0",
+  "name": "manner",
+  "title": "Manner UI",
+  "version": "0.1.0",
+  "description": "A source-owned editorial React design system following shadcn registry conventions.",
+  "website": "https://ui.myudak.com",
+  "repository": "https://github.com/myudak/ui",
+  "license": "MIT",
+  "architecture": {
+    "distribution": "copy-source",
+    "registryFormat": "shadcn",
+    "primitiveLayer": "Base UI",
+    "styling": "Tailwind CSS 4 with semantic CSS variables"
+  },
+  "docs": {
+    "design": "https://ui.myudak.com/design",
+    "foundations": "https://ui.myudak.com/foundations",
+    "components": "https://ui.myudak.com/components",
+    "blocks": "https://ui.myudak.com/blocks",
+    "agents": "https://ui.myudak.com/agents",
+    "compactGuide": "https://ui.myudak.com/llms.txt",
+    "fullGuide": "https://ui.myudak.com/llms-full.txt"
+  },
+  "agentFiles": {
+    "repositoryInstructions": "https://github.com/myudak/ui/blob/main/AGENTS.md",
+    "hostedInstructions": "https://ui.myudak.com/AGENTS.md",
+    "designRules": "https://ui.myudak.com/DESIGN.md",
+    "workflowRules": "https://ui.myudak.com/MANNER_AGENT.md"
+  },
+  "registry": {
+    "namespace": "@manner",
+    "itemTemplate": "https://ui.myudak.com/r/{name}.json",
+    "index": "https://ui.myudak.com/r/index.json",
+    "catalog": "https://ui.myudak.com/r/registry.json",
+    "setup": "pnpm dlx shadcn@latest registry add @manner=https://ui.myudak.com/r/{name}.json",
+    "rules": "pnpm dlx shadcn@latest add @manner/agent-rules"
+  },
+  "conventions": {
+    "displayFont": "Fraunces Variable, approximately weight 420",
+    "interfaceFont": "Geist or Inter Variable",
+    "codeFont": "IBM Plex Mono or an equivalent monospace",
+    "tokens": [
+      "canvas",
+      "surface",
+      "surface-raised",
+      "surface-inset",
+      "ink",
+      "ink-secondary",
+      "ink-muted",
+      "accent",
+      "accent-soft",
+      "border-subtle",
+      "border",
+      "border-strong",
+      "focus",
+      "success",
+      "warning",
+      "danger",
+      "info"
+    ],
+    "motion": [
+      "enter-soft",
+      "exit-soft",
+      "reveal-line",
+      "shift-active",
+      "expand-panel",
+      "swap-content",
+      "press-control"
+    ],
+    "accessibility": [
+      "keyboard operation",
+      "visible focus",
+      "accessible names",
+      "reduced motion",
+      "WCAG 2.2 AA target"
+    ]
+  },
+  "counts": {
+    "components": 20,
+    "blocks": 6,
+    "files": 1,
+    "total": 29
+  },
+  "items": [
+    {
+      "name": "manner-theme",
+      "type": "registry:theme",
+      "title": "Manner Theme",
+      "description": "Warm editorial semantic tokens for Manner interfaces.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "install": "pnpm dlx shadcn@latest add @manner/manner-theme",
+      "source": "https://github.com/myudak/ui/tree/main/",
+      "registry": "https://ui.myudak.com/r/manner-theme.json"
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Class Name Utility",
+      "description": "Merges conditional Tailwind class names safely.",
+      "dependencies": [
+        "clsx@^2.1.1",
+        "tailwind-merge@^3.6.0"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "lib/cn.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/utils",
+      "source": "https://github.com/myudak/ui/tree/main/lib/cn.ts",
+      "registry": "https://ui.myudak.com/r/utils.json"
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A Base UI-backed action with restrained Manner variants.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/button",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/button.tsx",
+      "registry": "https://ui.myudak.com/r/button.json"
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "A semantic text input with visible focus and invalid states.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/input",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/input.tsx",
+      "registry": "https://ui.myudak.com/r/input.json"
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "A readable multiline field with controlled resizing.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/textarea",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/textarea.tsx",
+      "registry": "https://ui.myudak.com/r/textarea.json"
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Label, description, and error primitives for form relationships.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/field",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/field.tsx",
+      "registry": "https://ui.myudak.com/r/field.json"
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A Base UI-backed binary control with keyboard behavior.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/switch",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/switch.tsx",
+      "registry": "https://ui.myudak.com/r/switch.json"
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A Base UI-backed choice control with portal positioning and keyboard navigation.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/select",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/select.tsx",
+      "registry": "https://ui.myudak.com/r/select.json"
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A Base UI-backed modal with focus trapping and restoration.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/dialog",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/dialog.tsx",
+      "registry": "https://ui.myudak.com/r/dialog.json"
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "A keyboard-first filtered command list.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/command",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/command.tsx",
+      "registry": "https://ui.myudak.com/r/command.json"
+    },
+    {
+      "name": "surface",
+      "type": "registry:ui",
+      "title": "Surface",
+      "description": "Semantic content grouping with default, inset, and raised tones.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/surface.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/surface",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/surface.tsx",
+      "registry": "https://ui.myudak.com/r/surface.json"
+    },
+    {
+      "name": "section-heading",
+      "type": "registry:ui",
+      "title": "Section Heading",
+      "description": "Editorial hierarchy for meaningful sections.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/section-heading.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/section-heading",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/section-heading.tsx",
+      "registry": "https://ui.myudak.com/r/section-heading.json"
+    },
+    {
+      "name": "note",
+      "type": "registry:ui",
+      "title": "Note",
+      "description": "A restrained aside for contextual information.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/note.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/note",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/note.tsx",
+      "registry": "https://ui.myudak.com/r/note.json"
+    },
+    {
+      "name": "quote",
+      "type": "registry:ui",
+      "title": "Quote",
+      "description": "A quotation with strong reading rhythm and attribution.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/quote.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/quote",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/quote.tsx",
+      "registry": "https://ui.myudak.com/r/quote.json"
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Timeline",
+      "description": "A compact semantic history for decisions and releases.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/timeline.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/timeline",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/timeline.tsx",
+      "registry": "https://ui.myudak.com/r/timeline.json"
+    },
+    {
+      "name": "metadata",
+      "type": "registry:ui",
+      "title": "Metadata",
+      "description": "Dense supporting facts that remain calm and scannable.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/metadata.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/metadata",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/metadata.tsx",
+      "registry": "https://ui.myudak.com/r/metadata.json"
+    },
+    {
+      "name": "message",
+      "type": "registry:ui",
+      "title": "Message",
+      "description": "Conversation content with authorship and optional actions.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/message.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/message",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/message.tsx",
+      "registry": "https://ui.myudak.com/r/message.json"
+    },
+    {
+      "name": "composer",
+      "type": "registry:ui",
+      "title": "Composer",
+      "description": "A flexible prompt input with keyboard submission.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme",
+        "@manner/button",
+        "@manner/textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/composer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/composer",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/composer.tsx",
+      "registry": "https://ui.myudak.com/r/composer.json"
+    },
+    {
+      "name": "reasoning",
+      "type": "registry:ui",
+      "title": "Reasoning",
+      "description": "Progressive disclosure for intermediate work.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/reasoning.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/reasoning",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/reasoning.tsx",
+      "registry": "https://ui.myudak.com/r/reasoning.json"
+    },
+    {
+      "name": "tool-call",
+      "type": "registry:ui",
+      "title": "Tool Call",
+      "description": "Operational state for tool name, status, duration, and output.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/tool-call.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/tool-call",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/tool-call.tsx",
+      "registry": "https://ui.myudak.com/r/tool-call.json"
+    },
+    {
+      "name": "sources",
+      "type": "registry:ui",
+      "title": "Sources",
+      "description": "Evidence links with origin context.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/sources.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/sources",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/sources.tsx",
+      "registry": "https://ui.myudak.com/r/sources.json"
+    },
+    {
+      "name": "artifact",
+      "type": "registry:ui",
+      "title": "Artifact",
+      "description": "A focused output surface connected to a conversation.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/utils",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/artifact.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/artifact",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/artifact.tsx",
+      "registry": "https://ui.myudak.com/r/artifact.json"
+    },
+    {
+      "name": "login-01",
+      "type": "registry:block",
+      "title": "Editorial Sign In",
+      "description": "A focused sign-in composition with product context.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/field",
+        "@manner/input"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/blocks/login-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/login-01",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/blocks/login-01.tsx",
+      "registry": "https://ui.myudak.com/r/login-01.json"
+    },
+    {
+      "name": "sidebar-01",
+      "type": "registry:block",
+      "title": "Collapsible Workspace",
+      "description": "A content-first shell with compact navigation.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/button"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/blocks/sidebar-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/sidebar-01",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/blocks/sidebar-01.tsx",
+      "registry": "https://ui.myudak.com/r/sidebar-01.json"
+    },
+    {
+      "name": "settings-01",
+      "type": "registry:block",
+      "title": "Preference Workspace",
+      "description": "Section navigation, accessible controls, and explicit save state.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/select",
+        "@manner/switch"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/blocks/settings-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/settings-01",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/blocks/settings-01.tsx",
+      "registry": "https://ui.myudak.com/r/settings-01.json"
+    },
+    {
+      "name": "reader-01",
+      "type": "registry:block",
+      "title": "Knowledge Reader",
+      "description": "Outline navigation, long-form reading, and margin notes.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/note"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/blocks/reader-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/reader-01",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/blocks/reader-01.tsx",
+      "registry": "https://ui.myudak.com/r/reader-01.json"
+    },
+    {
+      "name": "ai-workspace-01",
+      "type": "registry:block",
+      "title": "Conversation Workspace",
+      "description": "Messages, composer, and a responsive artifact panel.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/artifact",
+        "@manner/composer",
+        "@manner/message"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/blocks/ai-workspace-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/ai-workspace-01",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/blocks/ai-workspace-01.tsx",
+      "registry": "https://ui.myudak.com/r/ai-workspace-01.json"
+    },
+    {
+      "name": "leaderboard-01",
+      "type": "registry:block",
+      "title": "Comparison Leaderboard",
+      "description": "Ranked data with methodology context and responsive overflow.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/metadata"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/blocks/leaderboard-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/leaderboard-01",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/blocks/leaderboard-01.tsx",
+      "registry": "https://ui.myudak.com/r/leaderboard-01.json"
+    },
+    {
+      "name": "agent-rules",
+      "type": "registry:file",
+      "title": "Manner Agent Rules",
+      "description": "Installs Manner design constraints and agent workflow at the consumer project root.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "public/DESIGN.md",
+          "type": "registry:file",
+          "target": "~/DESIGN.md"
+        },
+        {
+          "path": "public/MANNER_AGENT.md",
+          "type": "registry:file",
+          "target": "~/MANNER_AGENT.md"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/agent-rules",
+      "source": "https://github.com/myudak/ui/tree/main/public/DESIGN.md",
+      "registry": "https://ui.myudak.com/r/agent-rules.json"
+    }
+  ]
+}
