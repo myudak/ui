@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field",
+  "title": "Field",
+  "description": "Label, description, and error primitives for form relationships.",
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/field.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\nfunction Field({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div data-slot=\"field\" className={cn(\"grid gap-2\", className)} {...props} />\n}\n\nfunction FieldLabel({ className, ...props }: React.ComponentProps<\"label\">) {\n  return <label data-slot=\"field-label\" className={cn(\"text-sm font-medium text-[var(--ink)]\", className)} {...props} />\n}\n\nfunction FieldDescription({ className, ...props }: React.ComponentProps<\"p\">) {\n  return <p data-slot=\"field-description\" className={cn(\"m-0 text-xs leading-relaxed text-[var(--muted)]\", className)} {...props} />\n}\n\nfunction FieldError({ className, ...props }: React.ComponentProps<\"p\">) {\n  return <p data-slot=\"field-error\" role=\"alert\" className={cn(\"m-0 text-xs leading-relaxed text-[var(--danger)]\", className)} {...props} />\n}\n\nexport { Field, FieldDescription, FieldError, FieldLabel }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

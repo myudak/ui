@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command",
+  "title": "Command",
+  "description": "A keyboard-first filtered command list.",
+  "dependencies": [
+    "lucide-react@^1.28.0"
+  ],
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/command.tsx",
+      "content": "\"use client\"\n\nimport { Search } from \"lucide-react\"\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype CommandItem = { id: string; label: string; description?: string; keywords?: string[] }\n\ntype CommandProps = {\n  items: CommandItem[]\n  onSelect?: (item: CommandItem) => void\n  placeholder?: string\n  emptyText?: string\n  className?: string\n}\n\nfunction Command({ items, onSelect, placeholder = \"Type a command…\", emptyText = \"No commands found.\", className }: CommandProps) {\n  const [query, setQuery] = React.useState(\"\")\n  const [activeIndex, setActiveIndex] = React.useState(0)\n  const filtered = React.useMemo(() => {\n    const value = query.trim().toLowerCase()\n    if (!value) return items\n    return items.filter((item) => [item.label, item.description, ...(item.keywords ?? [])].filter(Boolean).join(\" \").toLowerCase().includes(value))\n  }, [items, query])\n\n  function select(item: CommandItem | undefined) {\n    if (item) onSelect?.(item)\n  }\n\n  return (\n    <div data-slot=\"command\" className={cn(\"overflow-hidden rounded-[var(--radius-md,10px)] border border-[var(--border)] bg-[var(--surface)]\", className)}>\n      <label className=\"flex h-11 items-center gap-3 border-b border-[var(--border-subtle)] px-3\">\n        <Search aria-hidden=\"true\" className=\"size-4 text-[var(--muted)]\" />\n        <span className=\"sr-only\">Command search</span>\n        <input\n          aria-controls=\"manner-command-list\"\n          aria-expanded=\"true\"\n          aria-activedescendant={filtered[activeIndex] ? `command-${filtered[activeIndex].id}` : undefined}\n          role=\"combobox\"\n          value={query}\n          onChange={(event) => { setQuery(event.target.value); setActiveIndex(0) }}\n          onKeyDown={(event) => {\n            if (event.key === \"ArrowDown\") { event.preventDefault(); setActiveIndex((index) => Math.min(index + 1, filtered.length - 1)) }\n            if (event.key === \"ArrowUp\") { event.preventDefault(); setActiveIndex((index) => Math.max(index - 1, 0)) }\n            if (event.key === \"Enter\") { event.preventDefault(); select(filtered[activeIndex]) }\n          }}\n          placeholder={placeholder}\n          className=\"h-full min-w-0 flex-1 bg-transparent text-sm text-[var(--ink)] outline-none placeholder:text-[var(--muted)]\"\n        />\n      </label>\n      <div id=\"manner-command-list\" role=\"listbox\" className=\"max-h-72 overflow-y-auto p-1\">\n        {filtered.length ? filtered.map((item, index) => (\n          <button\n            id={`command-${item.id}`}\n            key={item.id}\n            role=\"option\"\n            aria-selected={index === activeIndex}\n            className=\"grid w-full grid-cols-[1fr_auto] gap-4 rounded-[var(--radius-xs,4px)] px-3 py-2.5 text-left hover:bg-[var(--surface-inset)] aria-selected:bg-[var(--accent-soft)]\"\n            onMouseEnter={() => setActiveIndex(index)}\n            onClick={() => select(item)}\n          >\n            <span><strong className=\"block text-sm font-medium\">{item.label}</strong>{item.description && <small className=\"mt-0.5 block text-xs text-[var(--muted)]\">{item.description}</small>}</span>\n            <span aria-hidden=\"true\" className=\"text-[var(--accent)]\">↗</span>\n          </button>\n        )) : <p className=\"m-0 px-3 py-8 text-center text-sm text-[var(--muted)]\">{emptyText}</p>}\n      </div>\n    </div>\n  )\n}\n\nexport { Command, type CommandItem, type CommandProps }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

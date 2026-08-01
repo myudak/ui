@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "title": "Switch",
+  "description": "A Base UI-backed binary control with keyboard behavior.",
+  "dependencies": [
+    "@base-ui/react@^1.6.0"
+  ],
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/switch.tsx",
+      "content": "\"use client\"\n\nimport { Switch as BaseSwitch } from \"@base-ui/react/switch\"\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype SwitchProps = Omit<React.ComponentProps<typeof BaseSwitch.Root>, \"className\"> & { className?: string }\n\nfunction Switch({ className, ...props }: SwitchProps) {\n  return (\n    <BaseSwitch.Root\n      data-slot=\"switch\"\n      className={cn(\n        \"inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border border-[var(--border)] bg-[var(--surface-inset)] p-0.5 outline-none transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus)] data-[checked]:border-[var(--accent)] data-[checked]:bg-[var(--accent-soft)] data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50\",\n        className,\n      )}\n      {...props}\n    >\n      <BaseSwitch.Thumb className=\"block size-[18px] rounded-full bg-[var(--ink-secondary)] transition-transform duration-150 data-[checked]:translate-x-5 data-[checked]:bg-[var(--accent)]\" />\n    </BaseSwitch.Root>\n  )\n}\n\nexport { Switch, type SwitchProps }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

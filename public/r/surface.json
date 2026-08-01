@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "surface",
+  "title": "Surface",
+  "description": "Semantic content grouping with default, inset, and raised tones.",
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/editorial/surface.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype SurfaceProps = React.ComponentProps<\"section\"> & { tone?: \"default\" | \"inset\" | \"raised\" }\n\nfunction Surface({ className, tone = \"default\", ...props }: SurfaceProps) {\n  return (\n    <section\n      data-slot=\"surface\"\n      data-tone={tone}\n      className={cn(\n        \"rounded-[var(--radius-md,10px)] border p-5\",\n        tone === \"default\" && \"border-[var(--border)] bg-[var(--surface)]\",\n        tone === \"inset\" && \"border-[var(--border-subtle)] bg-[var(--surface-inset)]\",\n        tone === \"raised\" && \"border-[var(--border)] bg-[var(--surface)] shadow-[0_16px_45px_color-mix(in_oklab,var(--ink)_9%,transparent)]\",\n        className,\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Surface, type SurfaceProps }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

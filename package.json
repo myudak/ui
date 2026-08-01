@@ -1,0 +1,61 @@
+{
+  "name": "manner-editorial",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "homepage": "https://ui.myudak.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myudak/ui.git"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "install:ci": "bash scripts/install-ci.sh",
+    "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vite",
+    "catalog:generate": "node scripts/generate-component-source.mjs",
+    "registry:build": "shadcn build",
+    "prepare:system": "npm run catalog:generate && npm run registry:build",
+    "build": "npm run prepare:system && bash scripts/build-verified.sh",
+    "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
+    "typecheck": "tsc -p tsconfig.app.json --noEmit",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "validate:artifact": "bash scripts/validate-artifact.sh",
+    "lint": "bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern .next",
+    "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.6.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "drizzle-orm": "0.45.2",
+    "lucide-react": "^1.28.0",
+    "next": "16.2.6",
+    "prism-react-renderer": "^2.4.1",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.37.1",
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "@vitejs/plugin-rsc": "0.5.26",
+    "drizzle-kit": "0.31.10",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.2.6",
+    "react-server-dom-webpack": "19.2.6",
+    "shadcn": "^4.16.1",
+    "tailwindcss": "4.2.1",
+    "typescript": "5.9.3",
+    "vinext": "0.0.50",
+    "vite": "8.0.13",
+    "wrangler": "4.92.0"
+  },
+  "type": "module",
+  "displayName": "Manner Editorial Design System"
+}

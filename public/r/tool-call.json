@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tool-call",
+  "title": "Tool Call",
+  "description": "Operational state for tool name, status, duration, and output.",
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ai/tool-call.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype ToolCallProps = React.ComponentProps<\"section\"> & { name: string; status: \"running\" | \"complete\" | \"error\"; duration?: string }\n\nfunction ToolCall({ name, status, duration, children, className, ...props }: ToolCallProps) {\n  return (\n    <section data-slot=\"tool-call\" data-status={status} className={cn(\"overflow-hidden rounded-[var(--radius-sm,6px)] border border-[var(--border)] bg-[var(--surface)]\", className)} {...props}>\n      <header className=\"flex items-center justify-between gap-4 p-4\"><div><code className=\"font-mono text-sm text-[var(--ink)]\">{name}</code>{duration && <small className=\"ml-2 text-[var(--muted)]\">{duration}</small>}</div><span className=\"font-mono text-[.66rem] uppercase tracking-wider text-[var(--accent)] data-[status=error]:text-[var(--danger)]\" data-status={status}>{status}</span></header>\n      <div className=\"border-t border-[var(--border-subtle)] bg-[var(--surface-inset)] p-4 text-sm leading-relaxed text-[var(--ink-secondary)]\">{children}</div>\n    </section>\n  )\n}\n\nexport { ToolCall, type ToolCallProps }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

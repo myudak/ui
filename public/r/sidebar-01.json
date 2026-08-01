@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-01",
+  "title": "Collapsible Workspace",
+  "description": "A content-first shell with compact navigation.",
+  "registryDependencies": [
+    "@manner/button"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/blocks/sidebar-01.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Button } from \"@/registry/manner/ui/button\"\n\nconst navigation = [\"Overview\", \"Work\", \"Library\", \"Review\"]\n\nfunction SidebarBlock() {\n  const [collapsed, setCollapsed] = React.useState(false)\n  const [active, setActive] = React.useState(\"Overview\")\n  return (\n    <div className={collapsed ? \"grid min-h-[560px] grid-cols-[72px_1fr] overflow-hidden rounded-[var(--radius-lg,14px)] border border-[var(--border)] bg-[var(--surface)]\" : \"grid min-h-[560px] grid-cols-[220px_1fr] overflow-hidden rounded-[var(--radius-lg,14px)] border border-[var(--border)] bg-[var(--surface)]\"}>\n      <aside className=\"flex min-w-0 flex-col border-r border-[var(--border)] bg-[var(--surface-inset)] p-3\"><header className=\"flex h-10 items-center gap-3\"><span className=\"grid size-8 shrink-0 place-items-center rounded-[var(--radius-sm,6px)] bg-[var(--ink)] font-[family-name:var(--serif)] text-[var(--canvas)]\">M</span>{!collapsed && <strong className=\"truncate font-[family-name:var(--serif)]\">Manner Studio</strong>}<button className=\"ml-auto text-[var(--muted)]\" aria-label=\"Toggle sidebar\" onClick={() => setCollapsed(!collapsed)}>↔</button></header><nav aria-label=\"Workspace\" className=\"mt-8 grid gap-1\">{navigation.map((item, index) => <button key={item} className=\"grid h-10 grid-cols-[28px_1fr] items-center rounded-[var(--radius-sm,6px)] px-2 text-left text-sm text-[var(--ink-secondary)] hover:bg-[var(--surface)] aria-[current=page]:bg-[var(--accent-soft)] aria-[current=page]:text-[var(--ink)]\" aria-current={active === item ? \"page\" : undefined} onClick={() => setActive(item)}><span className=\"text-[var(--accent)]\">{[\"○\", \"⌁\", \"◇\", \"↗\"][index]}</span>{!collapsed && <span>{item}</span>}</button>)}</nav><footer className=\"mt-auto border-t border-[var(--border-subtle)] pt-3 text-xs text-[var(--muted)]\">{collapsed ? \"MY\" : \"Muchamad Yuda\"}</footer></aside>\n      <section className=\"min-w-0 p-6 sm:p-8\"><header className=\"flex items-center justify-between gap-4 text-sm text-[var(--muted)]\"><span>Workspace / {active}</span><Button size=\"sm\">New note ＋</Button></header><h2 className=\"mt-10 font-[family-name:var(--serif)] text-4xl font-medium tracking-tight\">Good afternoon.</h2><div className=\"mt-8 grid border-l border-t border-[var(--border)] sm:grid-cols-3\">{[[\"Open threads\", \"12\", \"+3 this week\"], [\"Reading time\", \"4.2h\", \"Across 8 notes\"], [\"Decisions\", \"07\", \"2 need review\"]].map(([label, value, detail]) => <article key={label} className=\"flex min-h-32 flex-col border-b border-r border-[var(--border)] p-4\"><span className=\"font-mono text-[.65rem] uppercase tracking-wider text-[var(--muted)]\">{label}</span><strong className=\"mt-auto font-[family-name:var(--serif)] text-3xl font-medium\">{value}</strong><small className=\"text-[var(--accent)]\">{detail}</small></article>)}</div></section>\n    </div>\n  )\n}\n\nexport { SidebarBlock }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

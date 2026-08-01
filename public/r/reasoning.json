@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reasoning",
+  "title": "Reasoning",
+  "description": "Progressive disclosure for intermediate work.",
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ai/reasoning.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype ReasoningProps = React.ComponentProps<\"details\"> & { title?: React.ReactNode; summary?: React.ReactNode }\n\nfunction Reasoning({ title = \"How this was decided\", summary, children, className, ...props }: ReasoningProps) {\n  return (\n    <details data-slot=\"reasoning\" className={cn(\"group rounded-[var(--radius-sm,6px)] border border-[var(--border)] bg-[var(--surface)]\", className)} {...props}>\n      <summary className=\"flex cursor-pointer list-none items-center gap-3 p-4 text-sm font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus)]\"><span className=\"size-2 rounded-full bg-[var(--accent)] shadow-[0_0_0_4px_var(--accent-soft)]\" />{title}{summary && <small className=\"ml-auto text-xs font-normal text-[var(--muted)]\">{summary}</small>}</summary>\n      <div className=\"border-t border-[var(--border-subtle)] px-5 py-4 text-sm leading-relaxed text-[var(--ink-secondary)]\">{children}</div>\n    </details>\n  )\n}\n\nexport { Reasoning, type ReasoningProps }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

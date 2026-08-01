@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "artifact",
+  "title": "Artifact",
+  "description": "A focused output surface connected to a conversation.",
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ai/artifact.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype ArtifactProps = React.ComponentProps<\"section\"> & { title: React.ReactNode; type: React.ReactNode; actions?: React.ReactNode }\n\nfunction Artifact({ title, type, actions, children, className, ...props }: ArtifactProps) {\n  return (\n    <section data-slot=\"artifact\" className={cn(\"overflow-hidden rounded-[var(--radius-md,10px)] border border-[var(--border)] bg-[var(--surface)] shadow-[0_16px_45px_color-mix(in_oklab,var(--ink)_8%,transparent)]\", className)} {...props}>\n      <header className=\"flex min-h-12 items-center justify-between gap-4 border-b border-[var(--border)] px-4\"><div><strong className=\"text-sm font-medium\">{title}</strong><span className=\"ml-2 font-mono text-[.65rem] uppercase tracking-wider text-[var(--accent)]\">{type}</span></div>{actions}</header>\n      <div className=\"min-h-48 bg-[var(--surface-inset)] p-5 font-mono text-sm leading-relaxed text-[var(--ink-secondary)]\">{children}</div>\n    </section>\n  )\n}\n\nexport { Artifact, type ArtifactProps }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select",
+  "title": "Select",
+  "description": "A Base UI-backed choice control with portal positioning and keyboard navigation.",
+  "dependencies": [
+    "@base-ui/react@^1.6.0",
+    "lucide-react@^1.28.0"
+  ],
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/select.tsx",
+      "content": "\"use client\"\n\nimport { Select as BaseSelect } from \"@base-ui/react/select\"\nimport { Check, ChevronDown } from \"lucide-react\"\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\nconst Select = BaseSelect.Root\n\nfunction SelectTrigger({ className, children, ...props }: React.ComponentProps<typeof BaseSelect.Trigger>) {\n  return (\n    <BaseSelect.Trigger\n      data-slot=\"select-trigger\"\n      className={cn(\n        \"flex h-10 w-full items-center justify-between gap-3 rounded-[var(--radius-sm,6px)] border border-[var(--border)] bg-[var(--surface)] px-3 text-sm text-[var(--ink)] outline-none transition-[border-color,box-shadow] focus-visible:border-[var(--focus)] focus-visible:shadow-[0_0_0_3px_color-mix(in_oklab,var(--focus)_14%,transparent)] data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50\",\n        className,\n      )}\n      {...props}\n    >\n      {children}\n      <BaseSelect.Icon><ChevronDown aria-hidden=\"true\" className=\"size-4 text-[var(--muted)]\" /></BaseSelect.Icon>\n    </BaseSelect.Trigger>\n  )\n}\n\nconst SelectValue = BaseSelect.Value\n\nfunction SelectContent({ className, children, ...props }: React.ComponentProps<typeof BaseSelect.Popup>) {\n  return (\n    <BaseSelect.Portal>\n      <BaseSelect.Positioner sideOffset={6} className=\"z-[100] outline-none\">\n        <BaseSelect.Popup\n          data-slot=\"select-content\"\n          className={cn(\n            \"min-w-[var(--anchor-width)] origin-[var(--transform-origin)] rounded-[var(--radius-md,10px)] border border-[var(--border)] bg-[var(--surface)] p-1 text-[var(--ink)] shadow-[0_16px_45px_color-mix(in_oklab,var(--ink)_12%,transparent)] outline-none transition-[transform,opacity] duration-150 data-[ending-style]:scale-[.98] data-[ending-style]:opacity-0 data-[starting-style]:scale-[.98] data-[starting-style]:opacity-0\",\n            className,\n          )}\n          {...props}\n        >\n          {children}\n        </BaseSelect.Popup>\n      </BaseSelect.Positioner>\n    </BaseSelect.Portal>\n  )\n}\n\nfunction SelectItem({ className, children, ...props }: React.ComponentProps<typeof BaseSelect.Item>) {\n  return (\n    <BaseSelect.Item\n      data-slot=\"select-item\"\n      className={cn(\n        \"grid min-h-9 cursor-default grid-cols-[1fr_18px] items-center gap-3 rounded-[var(--radius-xs,4px)] px-3 text-sm outline-none data-[highlighted]:bg-[var(--accent-soft)] data-[selected]:text-[var(--accent)] data-[disabled]:opacity-45\",\n        className,\n      )}\n      {...props}\n    >\n      <BaseSelect.ItemText>{children}</BaseSelect.ItemText>\n      <BaseSelect.ItemIndicator><Check aria-hidden=\"true\" className=\"size-4\" /></BaseSelect.ItemIndicator>\n    </BaseSelect.Item>\n  )\n}\n\nexport { Select, SelectContent, SelectItem, SelectTrigger, SelectValue }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

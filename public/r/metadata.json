@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metadata",
+  "title": "Metadata",
+  "description": "Dense supporting facts that remain calm and scannable.",
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/editorial/metadata.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype MetadataItem = { label: React.ReactNode; value: React.ReactNode }\ntype MetadataProps = React.ComponentProps<\"dl\"> & { items: MetadataItem[] }\n\nfunction Metadata({ items, className, ...props }: MetadataProps) {\n  return (\n    <dl data-slot=\"metadata\" className={cn(\"m-0 divide-y divide-[var(--border-subtle)] rounded-[var(--radius-sm,6px)] border border-[var(--border)] bg-[var(--surface)]\", className)} {...props}>\n      {items.map((item, index) => <div key={index} className=\"grid grid-cols-[1fr_1.4fr] gap-4 px-4 py-3\"><dt className=\"font-mono text-xs text-[var(--muted)]\">{item.label}</dt><dd className=\"m-0 text-sm text-[var(--ink)]\">{item.value}</dd></div>)}\n    </dl>\n  )\n}\n\nexport { Metadata, type MetadataItem, type MetadataProps }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

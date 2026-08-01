@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "message",
+  "title": "Message",
+  "description": "Conversation content with authorship and optional actions.",
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ai/message.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype MessageProps = React.ComponentProps<\"article\"> & {\n  from: \"user\" | \"assistant\"\n  label?: string\n  actions?: React.ReactNode\n}\n\nfunction Message({ from, label, actions, children, className, ...props }: MessageProps) {\n  return (\n    <article data-slot=\"message\" data-from={from} className={cn(\"group grid max-w-[68ch] gap-2 data-[from=user]:ml-auto data-[from=user]:max-w-[78%] data-[from=user]:rounded-[var(--radius-md,10px)] data-[from=user]:bg-[var(--accent-soft)] data-[from=user]:p-4\", className)} {...props}>\n      <span className=\"font-mono text-[.66rem] uppercase tracking-wider text-[var(--muted)]\">{label ?? (from === \"user\" ? \"You\" : \"Manner\")}</span>\n      <div className=\"text-sm leading-relaxed text-[var(--ink)]\">{children}</div>\n      {actions && <footer className=\"flex gap-3 text-xs text-[var(--muted)] opacity-75 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100\">{actions}</footer>}\n    </article>\n  )\n}\n\nexport { Message, type MessageProps }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

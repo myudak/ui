@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "note",
+  "title": "Note",
+  "description": "A restrained aside for contextual information.",
+  "dependencies": [
+    "lucide-react@^1.28.0"
+  ],
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/editorial/note.tsx",
+      "content": "import { Sparkles } from \"lucide-react\"\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype NoteProps = React.ComponentProps<\"aside\"> & { title?: React.ReactNode }\n\nfunction Note({ title, children, className, ...props }: NoteProps) {\n  return (\n    <aside data-slot=\"note\" className={cn(\"grid grid-cols-[24px_1fr] gap-4 rounded-[var(--radius-sm,6px)] border border-[var(--border)] border-l-[3px] border-l-[var(--accent)] bg-[var(--surface)] p-5\", className)} {...props}>\n      <Sparkles aria-hidden=\"true\" className=\"mt-0.5 size-4 text-[var(--accent)]\" />\n      <div>{title && <strong className=\"font-[family-name:var(--serif)] text-lg font-medium\">{title}</strong>}<div className=\"mt-1.5 text-sm leading-relaxed text-[var(--ink-secondary)]\">{children}</div></div>\n    </aside>\n  )\n}\n\nexport { Note, type NoteProps }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
