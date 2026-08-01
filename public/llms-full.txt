@@ -54,6 +54,21 @@ pnpm dlx shadcn@latest add @manner/agent-rules
 - **tool-call** — Operational state for tool name, status, duration, and output. · `pnpm dlx shadcn@latest add @manner/tool-call`
 - **sources** — Evidence links with origin context. · `pnpm dlx shadcn@latest add @manner/sources`
 - **artifact** — A focused output surface connected to a conversation. · `pnpm dlx shadcn@latest add @manner/artifact`
+- **checkbox** — An accessible independent selection control. · `pnpm dlx shadcn@latest add @manner/checkbox`
+- **radio-group** — A mutually exclusive choice set with native keyboard behavior. · `pnpm dlx shadcn@latest add @manner/radio-group`
+- **date-picker** — An accessible date input with a clear label. · `pnpm dlx shadcn@latest add @manner/date-picker`
+- **file-upload** — A labeled upload target with selected-file feedback. · `pnpm dlx shadcn@latest add @manner/file-upload`
+- **card** — A restrained bounded surface for meaningful grouping. · `pnpm dlx shadcn@latest add @manner/card`
+- **drawer** — A spatially grounded side panel for secondary tasks. · `pnpm dlx shadcn@latest add @manner/drawer`
+- **tooltip** — A short accessible label for compact controls. · `pnpm dlx shadcn@latest add @manner/tooltip`
+- **tabs** — Keyboard-friendly related view switching. · `pnpm dlx shadcn@latest add @manner/tabs`
+- **breadcrumb** — A semantic location trail for shallow hierarchies. · `pnpm dlx shadcn@latest add @manner/breadcrumb`
+- **pagination** — Navigation through ordered result pages. · `pnpm dlx shadcn@latest add @manner/pagination`
+- **stepper** — Progress through a finite multi-step flow. · `pnpm dlx shadcn@latest add @manner/stepper`
+- **alert** — A semantic status message with calm hierarchy. · `pnpm dlx shadcn@latest add @manner/alert`
+- **progress** — A labeled semantic completion meter. · `pnpm dlx shadcn@latest add @manner/progress`
+- **skeleton** — A reduced-motion loading placeholder. · `pnpm dlx shadcn@latest add @manner/skeleton`
+- **empty-state** — An empty result explanation with a useful next action. · `pnpm dlx shadcn@latest add @manner/empty-state`
 ### Blocks
 - **login-01** — A focused sign-in composition with product context. · `pnpm dlx shadcn@latest add @manner/login-01`
 - **sidebar-01** — A content-first shell with compact navigation. · `pnpm dlx shadcn@latest add @manner/sidebar-01`
