@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs",
+  "title": "Tabs",
+  "description": "Keyboard-friendly related view switching.",
+  "registryDependencies": [
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/tabs.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\ntype Item = { value: string; label: string; content: React.ReactNode };\nexport function Tabs({ items, defaultValue }: { items: Item[]; defaultValue?: string }) {\n  const [value, setValue] = React.useState(defaultValue ?? items[0]?.value);\n  const index = items.findIndex((item) => item.value === value);\n  return <div className=\"manner-tabs\"><div role=\"tablist\" aria-label=\"Views\" onKeyDown={(event) => { if (![\"ArrowLeft\",\"ArrowRight\"].includes(event.key)) return; event.preventDefault(); const delta = event.key === \"ArrowRight\" ? 1 : -1; setValue(items[(index + delta + items.length) % items.length].value); }}>{items.map((item) => <button key={item.value} role=\"tab\" aria-selected={value === item.value} onClick={() => setValue(item.value)}>{item.label}</button>)}</div><div role=\"tabpanel\">{items.find((item) => item.value === value)?.content}</div></div>;\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
