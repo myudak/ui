@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CodeBlock } from "@/components/code-block";
 import { designSource } from "../component-source.generated";
+import { BlueprintMark, InstallStrip, SiteFooter } from "@/components/system-chrome";
 
 const designRulesFallback = `# Manner Interface Rules
 
@@ -150,11 +151,13 @@ const designSections = [
   "Non-negotiable rules",
   "Semantic tokens",
   "Typography",
+  "Shape and elevation",
   "Motion vocabulary",
   "Responsive behavior",
   "Accessibility",
   "Avoid",
   "Agent workflow",
+  "Definition of done",
 ];
 
 function sectionId(title: string) {
@@ -173,34 +176,34 @@ export default function DesignPage() {
 
   return (
     <main className="docs-route design-route">
-      <header className="route-hero reveal-in">
-        <p className="section-index">AGENT GUIDE / DESIGN.MD</p>
-        <h1>Give your agent<br/><i>the taste constraints.</i></h1>
-        <p>Install these rules before asking an agent to build the interface. The registry provides the visual grammar, agent workflow, real component source, and application blocks as one inspectable system.</p>
-        <div className="design-actions">
+      <header className="route-hero route-hero-blueprint reveal-in">
+        <div><p className="section-index">AGENT GUIDE / DESIGN.MD</p><h1>Give your agent<br/><i>the taste constraints.</i></h1><p>Install these rules before asking an agent to build the interface. The registry provides the visual grammar, agent workflow, real component source, and application blocks as one inspectable system.</p><div className="design-actions">
           <button className="primary-button" onClick={copyRules}>{copied ? "Copied DESIGN.md ✓" : "Copy DESIGN.md"}</button>
           <a className="text-link" href="/DESIGN.md" download>Download raw file <span>↓</span></a>
-        </div>
+        </div></div><BlueprintMark compact />
       </header>
       <section className="design-reader reveal-in delay-1">
         <aside>
-          <p>ON THIS FILE</p>
+          <p>ON THIS FILE <small>{designSections.length} sections</small></p>
           {designSections.map((item, index) => <a key={item} href={`#${sectionId(item)}`}>{String(index + 1).padStart(2, "0")} · {item.replace(" vocabulary", "")}</a>)}
-          <div><span>READY</span><small>Agent-readable<br/>Plain Markdown</small></div>
+          <div className="design-quick-actions"><span>QUICK ACTIONS</span><button onClick={copyRules}>□ Copy prompt</button><a href="#agent-workflow">↗ Agent workflow</a></div>
         </aside>
         <article>
           <header>
             <div><span>●</span><strong>DESIGN.md</strong><small>4.8 KB · v0.1</small></div>
             <div><button className={mode === "read" ? "active" : ""} onClick={() => setMode("read")}>Read</button><button className={mode === "raw" ? "active" : ""} onClick={() => setMode("raw")}>Raw</button><button className="design-inline-copy" onClick={copyRules}>{copied ? "Copied ✓" : "Copy file"}</button></div>
           </header>
-          {mode === "raw" ? <CodeBlock code={designRules} language="markdown" label="markdown" filename="DESIGN.md" /> : <div className="rendered-design">{designRules.split("\n\n").map((paragraph, index) => paragraph.startsWith("# ") ? <h1 key={index}>{paragraph.slice(2)}</h1> : paragraph.startsWith("## ") ? <h2 id={sectionId(paragraph.slice(3))} key={index}>{paragraph.slice(3)}</h2> : paragraph.startsWith("-") ? <ul key={index}>{paragraph.split("\n").map((line) => <li key={line}>{line.slice(2)}</li>)}</ul> : paragraph.match(/^\d\./) ? <ol key={index}>{paragraph.split("\n").map((line) => <li key={line}>{line.replace(/^\d+\. /, "")}</li>)}</ol> : <p key={index}>{paragraph}</p>)}</div>}
+          {mode === "raw" ? <CodeBlock code={designRules} language="markdown" label="markdown" filename="DESIGN.md" /> : <div className="rendered-design">{designRules.split("\n\n").map((paragraph, index) => paragraph.startsWith("# ") ? <h1 key={index}>{paragraph.slice(2)}</h1> : paragraph.startsWith("## ") ? <h2 id={sectionId(paragraph.slice(3))} key={index}><small>{String(designSections.indexOf(paragraph.slice(3)) + 1).padStart(2,"0")}</small>{paragraph.slice(3)}</h2> : paragraph.startsWith("-") ? <ul key={index}>{paragraph.split("\n").map((line) => <li key={line}>{line.slice(2)}</li>)}</ul> : paragraph.match(/^\d\./) ? <ol key={index}>{paragraph.split("\n").map((line) => <li key={line}>{line.replace(/^\d+\. /, "")}</li>)}</ol> : <p key={index}>{paragraph}</p>)}</div>}
         </article>
+        <nav className="design-progress-rail" aria-label="Document progress"><a href="#product-feeling">↑</a><span>01 / {designSections.length}</span>{designSections.map((item, index)=><a key={item} href={`#${sectionId(item)}`} aria-label={item}>{index===0?"●":"○"}</a>)}<a href="#definition-of-done">↓</a></nav>
       </section>
       <section className="agent-install-flow">
         <p className="section-index">HOW AGENTS USE IT</p>
         <div><article><span>01</span><h3>Connect</h3><p>Add the @manner registry namespace to components.json.</p></article><article><span>02</span><h3>Install rules</h3><p>Add agent-rules so DESIGN.md and the workflow live beside the code.</p></article><article><span>03</span><h3>Add source</h3><p>The agent installs components or blocks, then adapts the owned files.</p></article><article><span>04</span><h3>Verify</h3><p>Test focus, states, motion, and responsive transformation.</p></article></div>
         <CodeBlock language="bash" label="terminal" filename="Agent setup" showLineNumbers={false} code={`pnpm dlx shadcn@latest registry add @manner=https://ui.myudak.com/r/{name}.json\npnpm dlx shadcn@latest add @manner/agent-rules\npnpm dlx shadcn@latest add @manner/button\n\n# Agent prompt\nRead DESIGN.md and MANNER_AGENT.md before changing UI. Reuse installed Manner source and report intentional exceptions.`} />
       </section>
+      <InstallStrip target="@manner/agent-rules" />
+      <SiteFooter />
     </main>
   );
 }
