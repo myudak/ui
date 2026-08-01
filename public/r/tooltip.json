@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip",
+  "title": "Tooltip",
+  "description": "A short accessible label for compact controls.",
+  "registryDependencies": [
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/tooltip.tsx",
+      "content": "import * as React from \"react\";\nexport function Tooltip({ content, children }: { content: string; children: React.ReactElement }) {\n  return <span className=\"manner-tooltip\">{children}<span role=\"tooltip\">{content}</span></span>;\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
