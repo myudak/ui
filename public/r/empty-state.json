@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-state",
+  "title": "Empty State",
+  "description": "An empty result explanation with a useful next action.",
+  "dependencies": [
+    "lucide-react@^1.28.0"
+  ],
+  "registryDependencies": [
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/empty-state.tsx",
+      "content": "import * as React from \"react\";\nimport { Plus } from \"lucide-react\";\nexport function EmptyState({ title, description, action }: { title: string; description?: string; action?: React.ReactNode }) { return <div className=\"manner-empty-state\"><span><Plus aria-hidden=\"true\"/></span><h3>{title}</h3>{description && <p>{description}</p>}{action}</div>; }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
