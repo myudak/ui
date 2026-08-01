@@ -9,6 +9,7 @@ import { LoginBlock } from "@/registry/manner/blocks/login-01";
 import { ReaderBlock } from "@/registry/manner/blocks/reader-01";
 import { SettingsBlock } from "@/registry/manner/blocks/settings-01";
 import { SidebarBlock } from "@/registry/manner/blocks/sidebar-01";
+import { BlueprintMark, InstallStrip, SiteFooter } from "@/components/system-chrome";
 
 type BlockName = "login" | "sidebar" | "settings" | "reader" | "ai" | "leaderboard";
 
@@ -61,5 +62,5 @@ export default function BlocksPage() {
   const [category, setCategory] = useState("All");
   const categories = ["All", "Authentication", "Application", "Knowledge", "AI", "Data"];
   const visible = blocks.filter((block) => category === "All" || block.category.toLowerCase().includes(category.toLowerCase()));
-  return <main className="docs-route blocks-route"><header className="route-hero reveal-in"><p className="section-index">BLOCKS / APPLICATION COMPOSITIONS</p><h1>Whole interfaces,<br/><i>not card collections.</i></h1><p>Runnable compositions built from the same registry source you install. Preview the real interaction, inspect the complete file, or add a block through shadcn.</p><div className="block-filter">{categories.map((item)=><button key={item} className={category===item?"active":""} onClick={()=>setCategory(item)}>{item}</button>)}</div></header><section className="blocks-list">{visible.map((block)=><BlockCard key={block.id} block={block}/>)}</section></main>;
+  return <main className="docs-route blocks-route"><header className="route-hero route-hero-blueprint reveal-in"><div><p className="section-index">BLOCKS / APPLICATION COMPOSITIONS</p><h1>Whole interfaces,<br/><i>not card collections.</i></h1><p>Runnable compositions built from the same registry source you install. Preview the real interaction, inspect the complete file, or add a block through shadcn.</p><div className="block-filter">{categories.map((item)=><button key={item} className={category===item?"active":""} onClick={()=>setCategory(item)}>{item}</button>)}</div></div><BlueprintMark compact /></header><section className="blocks-list">{visible.map((block)=><BlockCard key={block.id} block={block}/>)}</section><InstallStrip target="@manner/login-01"/><SiteFooter/></main>;
 }
