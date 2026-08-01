@@ -12,10 +12,15 @@ export function BlueprintMark({ compact = false }: { compact?: boolean }) {
       <div className="blueprint-grid" />
       <div className="blueprint-measure measure-a">24</div>
       <div className="blueprint-measure measure-b">24</div>
-      <svg viewBox="0 0 480 310" role="img">
-        <path className="blueprint-shadow" d="M86 231 86 94l106 80 77-61 125 33v127l-35 22V191l-83-22-84 68-71-54v70z" />
-        <path className="blueprint-edge" d="M86 216 86 79l106 80 77-61 125 33v127l-35 22V176l-83-22-84 68-71-54v70z" />
-        <path className="blueprint-face" d="M86 79h34l72 54 77-61 125 33v26l-125-33-77 61z" />
+      <svg viewBox="0 0 520 340" role="img">
+        <g className="blueprint-construction">
+          <path d="M72 267 170 86l87 118 154-67v140" />
+          <path d="M56 279h376M170 65v232M410 116v181" />
+          <path d="M65 291v-24M423 291v-24M158 75h24M158 286h24" />
+        </g>
+        <path className="blueprint-shadow" d="M72 267 170 86l87 118 154-67v140" />
+        <path className="blueprint-edge" d="M72 255 170 74l87 118 154-67v140" />
+        <path className="blueprint-face" d="M72 245 170 64l87 118 154-67v140" />
       </svg>
     </div>
   );
