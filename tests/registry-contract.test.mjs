@@ -5,6 +5,8 @@ import test from "node:test";
 
 const root = resolve(import.meta.dirname, "..");
 const registry = JSON.parse(await readFile(resolve(root, "public/r/registry.json"), "utf8"));
+const agentManifest = JSON.parse(await readFile(resolve(root, "public/ai.json"), "utf8"));
+const registryIndex = JSON.parse(await readFile(resolve(root, "public/r/index.json"), "utf8"));
 
 test("publishes the complete Manner registry", async () => {
   const names = new Set(registry.items.map((item) => item.name));
@@ -33,4 +35,14 @@ test("interactive primitives keep their Base UI implementation", async () => {
 test("agent rules install both design constraints and operating instructions", async () => {
   const item = JSON.parse(await readFile(resolve(root, "public/r/agent-rules.json"), "utf8"));
   assert.deepEqual(item.files.map((file) => file.target).sort(), ["~/DESIGN.md", "~/MANNER_AGENT.md"]);
+});
+
+test("publishes agent discovery surfaces from the same catalog", async () => {
+  assert.equal(agentManifest.name, "manner");
+  assert.equal(agentManifest.registry.itemTemplate, "https://ui.myudak.com/r/{name}.json");
+  assert.equal(agentManifest.counts.total, registry.items.length);
+  assert.equal(registryIndex.items.length, registry.items.length);
+  assert.match(await readFile(resolve(root, "public/llms.txt"), "utf8"), /https:\/\/ui\.myudak\.com\/ai\.json/);
+  assert.match(await readFile(resolve(root, "public/llms-full.txt"), "utf8"), /## Visual language/);
+  assert.equal(await readFile(resolve(root, "AGENTS.md"), "utf8"), await readFile(resolve(root, "public/AGENTS.md"), "utf8"));
 });
