@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "title": "Progress",
+  "description": "A labeled semantic completion meter.",
+  "registryDependencies": [
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/progress.tsx",
+      "content": "export function Progress({ value, label = \"Progress\" }: { value: number; label?: string }) {\n  const safe = Math.max(0, Math.min(100, value));\n  return <div className=\"manner-progress\"><div><span>{label}</span><strong>{safe}%</strong></div><progress value={safe} max=\"100\">{safe}%</progress></div>;\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
