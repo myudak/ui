@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert",
+  "title": "Alert",
+  "description": "A semantic status message with calm hierarchy.",
+  "dependencies": [
+    "lucide-react@^1.28.0"
+  ],
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/alert.tsx",
+      "content": "import * as React from \"react\";\nimport { CircleAlert, CircleCheck, Info } from \"lucide-react\";\nimport { cn } from \"@/lib/cn\";\nexport function Alert({ title, tone = \"info\", children, className }: { title: string; tone?: \"info\" | \"success\" | \"warning\" | \"danger\"; children?: React.ReactNode; className?: string }) {\n  const Icon = tone === \"success\" ? CircleCheck : tone === \"warning\" || tone === \"danger\" ? CircleAlert : Info;\n  return <div className={cn(\"manner-alert\", `tone-${tone}`, className)} role={tone === \"danger\" ? \"alert\" : \"status\"}><Icon aria-hidden=\"true\"/><div><strong>{title}</strong>{children && <p>{children}</p>}</div></div>;\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
