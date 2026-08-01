@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-picker",
+  "title": "Date Picker",
+  "description": "An accessible date input with a clear label.",
+  "dependencies": [
+    "lucide-react@^1.28.0"
+  ],
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/date-picker.tsx",
+      "content": "import * as React from \"react\";\nimport { CalendarDays } from \"lucide-react\";\nimport { cn } from \"@/lib/cn\";\n\nexport function DatePicker({ label = \"Date\", className, ...props }: React.InputHTMLAttributes<HTMLInputElement> & { label?: string }) {\n  const id = React.useId();\n  return <label className={cn(\"manner-date-picker\", className)} htmlFor={props.id ?? id}><span>{label}</span><div><input id={props.id ?? id} type=\"date\" {...props}/><CalendarDays aria-hidden=\"true\" /></div></label>;\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
