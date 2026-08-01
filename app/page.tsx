@@ -1,7 +1,8 @@
 "use client";
 
+/* eslint-disable @next/next/no-html-link-for-pages */
+
 import { useState } from "react";
-import { Mark } from "./site-header";
 import { componentSource } from "./component-source.generated";
 import { CodeBlock } from "@/components/code-block";
 import { Artifact } from "@/registry/manner/ai/artifact";
@@ -24,6 +25,23 @@ import { Input } from "@/registry/manner/ui/input";
 import { Textarea } from "@/registry/manner/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/registry/manner/ui/select";
 import { Switch } from "@/registry/manner/ui/switch";
+import { Checkbox } from "@/registry/manner/ui/checkbox";
+import { RadioGroup } from "@/registry/manner/ui/radio-group";
+import { DatePicker } from "@/registry/manner/ui/date-picker";
+import { FileUpload } from "@/registry/manner/ui/file-upload";
+import { Card, CardContent, CardFooter, CardHeader } from "@/registry/manner/ui/card";
+import { Drawer } from "@/registry/manner/ui/drawer";
+import { Tooltip } from "@/registry/manner/ui/tooltip";
+import { Tabs } from "@/registry/manner/ui/tabs";
+import { Breadcrumb } from "@/registry/manner/ui/breadcrumb";
+import { Pagination } from "@/registry/manner/ui/pagination";
+import { Stepper } from "@/registry/manner/ui/stepper";
+import { Alert } from "@/registry/manner/ui/alert";
+import { Progress } from "@/registry/manner/ui/progress";
+import { Skeleton } from "@/registry/manner/ui/skeleton";
+import { EmptyState } from "@/registry/manner/ui/empty-state";
+import { BlueprintMark, InstallStrip, SiteFooter } from "@/components/system-chrome";
+import { catalogGroups, componentCatalog } from "@/lib/catalog";
 
 function Icon({ name }: { name: "copy" | "sun" | "moon" | "menu" | "arrow" | "check" }) {
   const paths = {
@@ -37,17 +55,9 @@ function Icon({ name }: { name: "copy" | "sun" | "moon" | "menu" | "arrow" | "ch
   return <svg viewBox="0 0 22 22" aria-hidden="true" className="icon">{paths[name]}</svg>;
 }
 
-const componentSets = {
-  Foundations: ["Button", "Field", "Select", "Switch", "Dialog", "Command"],
-  Editorial: ["Surface", "Section heading", "Note", "Quote", "Timeline", "Metadata"],
-  "AI interfaces": ["Message", "Composer", "Reasoning", "Tool call", "Sources", "Artifact"],
-};
+const componentSets = Object.fromEntries(catalogGroups.map((group) => [group, componentCatalog.filter((item) => item.group === group).map((item) => item.name)])) as Record<(typeof catalogGroups)[number], string[]>;
 
-const componentRegistryNames: Record<string, string> = {
-  Button: "button", Field: "field", Select: "select", Switch: "switch", Dialog: "dialog", Command: "command",
-  Surface: "surface", "Section heading": "section-heading", Note: "note", Quote: "quote", Timeline: "timeline", Metadata: "metadata",
-  Message: "message", Composer: "composer", Reasoning: "reasoning", "Tool call": "tool-call", Sources: "sources", Artifact: "artifact",
-};
+const componentRegistryNames: Record<string, string> = Object.fromEntries(componentCatalog.map((item) => [item.name, item.slug]));
 
 const componentMeta: Record<string, { description: string; code: string }> = {
   Button: { description: "A semantic action with restrained, purposeful variants.", code: `<Button variant="primary">Save changes</Button>\n<Button variant="outline">Preview</Button>\n<Button variant="ghost">Cancel</Button>` },
@@ -68,12 +78,14 @@ const componentMeta: Record<string, { description: string; code: string }> = {
   "Tool call": { description: "A legible operational state for tools, arguments, and results.", code: `<ToolCall name="registry.search" status="complete">\n  Found 6 compatible components\n</ToolCall>` },
   Sources: { description: "Evidence and references shown with useful origin context.", code: `<Sources items={[\n  { title: "Registry specification", domain: "ui.shadcn.com", href: docsUrl },\n  { title: "Accessibility guidance", domain: "w3.org", href: wcagUrl },\n]} />` },
   Artifact: { description: "A focused output surface that remains connected to its conversation.", code: `<Artifact title="DESIGN.md" type="Markdown">\n  <pre>{content}</pre>\n</Artifact>` },
+  ...Object.fromEntries(componentCatalog.map((item) => [item.name, { description: item.description, code: item.usage }])),
 };
 
 function ComponentPreview({ name, disabled, compact }: { name: string; disabled: boolean; compact: boolean }) {
   const [on, setOn] = useState(true);
   const [composerValue, setComposerValue] = useState("Build a responsive settings workspace");
   const [sent, setSent] = useState(false);
+  const [page, setPage] = useState(2);
   const densityClass = compact ? "is-compact" : "";
 
   return (
@@ -96,6 +108,23 @@ function ComponentPreview({ name, disabled, compact }: { name: string; disabled:
       {name === "Tool call" && <ToolCall name="registry.search" status="complete" duration="420ms"><code>{`{ query: "editorial reader", limit: 6 }`}</code><p className="mb-0">✓ Found 6 compatible components</p></ToolCall>}
       {name === "Sources" && <Sources items={[{title:"Registry specification",domain:"ui.shadcn.com",href:"https://ui.shadcn.com/docs/registry"},{title:"WCAG 2.2 quick reference",domain:"w3.org",href:"https://www.w3.org/WAI/WCAG22/quickref/"},{title:"Base UI primitives",domain:"base-ui.com",href:"https://base-ui.com/react/overview/about"}]}/>}
       {name === "Artifact" && <Artifact title="DESIGN.md" type="Markdown"><pre className="m-0 whitespace-pre-wrap">{`# Interface direction\n\nBuild for reading first.\nUse semantic tokens only.\n\n## Required states\n- keyboard focus\n- reduced motion`}</pre></Artifact>}
+      {name === "Input" && <Input disabled={disabled} aria-label="Project name" placeholder="Margin notes" />}
+      {name === "Textarea" && <Textarea disabled={disabled} aria-label="Message" defaultValue="Write with clarity, then remove what the interface does not need." />}
+      {name === "Checkbox" && <div className="preview-list"><Checkbox disabled={disabled} defaultChecked>Include references</Checkbox><Checkbox disabled={disabled}>Notify collaborators</Checkbox></div>}
+      {name === "Radio Group" && <RadioGroup options={[{value:"warm",label:"Editorial warm",description:"Serif-led with terracotta intent."},{value:"quiet",label:"Quiet neutral",description:"Lower contrast for dense work."}]} defaultValue="warm" />}
+      {name === "Date Picker" && <DatePicker disabled={disabled} label="Target date" defaultValue="2026-08-28" />}
+      {name === "File Upload" && <FileUpload disabled={disabled} accept="image/*,.pdf" />}
+      {name === "Card" && <Card><CardHeader><span className="micro-label">RELEASE READINESS</span><h3>Ready for review</h3></CardHeader><CardContent><strong className="preview-metric">82%</strong><p>Three checks remain before stable.</p></CardContent><CardFooter><Button size="sm">Review checks</Button></CardFooter></Card>}
+      {name === "Drawer" && <Drawer title="Component details" trigger="Open details"><p>Drawers preserve spatial origin for secondary tasks and collapse into a full-width surface on small screens.</p><Button>Confirm changes</Button></Drawer>}
+      {name === "Tooltip" && <Tooltip content="Copy component source"><Button size="icon" aria-label="Copy source"><Icon name="copy"/></Button></Tooltip>}
+      {name === "Tabs" && <Tabs defaultValue="preview" items={[{value:"preview",label:"Preview",content:<p>Interactive component output.</p>},{value:"usage",label:"Usage",content:<p>Copyable composition examples.</p>},{value:"source",label:"Source",content:<p>The complete source-owned file.</p>}]} />}
+      {name === "Breadcrumb" && <Breadcrumb items={[{label:"Components",href:"/components"},{label:"Form",href:"/components"},"Field"]} />}
+      {name === "Pagination" && <Pagination page={page} total={5} onPageChange={setPage} />}
+      {name === "Stepper" && <Stepper current={2} steps={["Connect", "Install rules", "Verify"]} />}
+      {name === "Alert" && <div className="preview-list"><Alert title="Registry ready" tone="success">All component manifests passed validation.</Alert><Alert title="Review required" tone="warning">Three accessibility checks remain.</Alert></div>}
+      {name === "Progress" && <Progress value={82} label="Release readiness" />}
+      {name === "Skeleton" && <div className="preview-list"><Skeleton style={{height:16,width:"36%"}}/><Skeleton style={{height:44}}/><Skeleton style={{height:72}}/></div>}
+      {name === "Empty State" && <EmptyState title="No notes yet" description="Create the first note for this workspace." action={<Button>Create note</Button>} />}
     </div>
   );
 }
@@ -195,8 +224,9 @@ export function ComponentLab({ initialSelected = "Note", variant = "embedded" }:
   const [compact, setCompact] = useState(false);
   const [copied, setCopied] = useState(false);
   const [installCopied, setInstallCopied] = useState(false);
+  const [query, setQuery] = useState("");
   const docsMode = variant === "docs";
-  const [showcase, setShowcase] = useState(docsMode);
+  const [showcase, setShowcase] = useState(false);
   const componentList = Object.values(componentSets).flat();
   const selectedIndex = componentList.indexOf(selected);
   const registryName = componentRegistryNames[selected];
@@ -214,6 +244,7 @@ export function ComponentLab({ initialSelected = "Note", variant = "embedded" }:
     setSelected(item);
     setView("preview");
     setDisabled(false);
+    if (docsMode) window.history.replaceState(null, "", `/components/${componentRegistryNames[item]}`);
   }
 
   async function copyComponentInstall() {
@@ -233,8 +264,9 @@ export function ComponentLab({ initialSelected = "Note", variant = "embedded" }:
       <aside className="component-index">
         {docsMode && <nav className="docs-section-links" aria-label="Documentation sections"><p>SECTIONS</p><a href="/foundations">Foundations</a><a className="active" href="/components">Components</a><a href="/blocks">Blocks</a><a href="/design">Agent guide</a></nav>}
         <p>COMPONENTS</p>
+        {docsMode && <label className="component-search"><span>⌕</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search components" aria-label="Search components"/><kbd>⌘K</kbd></label>}
         {docsMode && <button className={`docs-showcase-link ${showcase ? "active" : ""}`} onClick={() => setShowcase(true)}>Showcase<span>LIVE</span></button>}
-        {docsMode ? (Object.keys(componentSets) as Array<keyof typeof componentSets>).map((group) => <div className="docs-component-group" key={group}><span>{group}</span>{componentSets[group].map((item) => <button key={item} className={selected === item ? "active" : ""} onClick={() => chooseComponent(item)}>{item}</button>)}</div>) : <>
+        {docsMode ? (Object.keys(componentSets) as Array<keyof typeof componentSets>).map((group) => { const items = componentSets[group].filter((item) => item.toLowerCase().includes(query.toLowerCase())); return items.length ? <div className="docs-component-group" key={group}><span>{group}</span>{items.map((item) => <button key={item} className={selected === item ? "active" : ""} onClick={() => chooseComponent(item)}>{item}</button>)}</div> : null; }) : <>
           {Object.keys(componentSets).map((item) => (
             <button key={item} onClick={() => chooseCategory(item as keyof typeof componentSets)} className={category === item ? "active" : ""}>{item}<span>{componentSets[item as keyof typeof componentSets].length}</span></button>
           ))}
@@ -253,8 +285,9 @@ export function ComponentLab({ initialSelected = "Note", variant = "embedded" }:
         <div className={`component-canvas ${view !== "preview" ? "code-view" : ""}`} key={`${selected}-${view}`}>
           {view === "preview" ? <ComponentPreview name={selected} disabled={disabled} compact={compact}/> : <CodeBlock code={view === "usage" ? componentMeta[selected].code : componentSource[selected]} filename={view === "usage" ? `${registryName}.example.tsx` : `${registryName}.tsx`} />}
         </div>
+        {docsMode && <section className="component-spec-grid"><article><span>ANATOMY</span><div className="anatomy-demo"><b>1</b><strong>{selected}</strong><b>2</b><p>{componentMeta[selected].description}</p><b>3</b><button>Interactive target</button></div><ol><li><b>1</b><span><strong>Label</strong>Names the control or region.</span></li><li><b>2</b><span><strong>Context</strong>Explains expected use.</span></li><li><b>3</b><span><strong>Interactive area</strong>Preserves touch and focus.</span></li></ol></article><article><span>INTERACTIVE STATES</span><div className="state-specimens"><label>Default <Input placeholder="Placeholder"/></label><label>Focus <Input autoFocus placeholder="Placeholder"/></label><label>Disabled <Input disabled placeholder="Placeholder"/></label><label>Error <Input aria-invalid="true" placeholder="Placeholder"/></label></div></article></section>}
         <div className="component-guidance"><div><span>USE WHEN</span><p>You need a familiar interface pattern with an opinionated editorial treatment.</p></div><div><span>AVOID WHEN</span><p>A native element already communicates the action clearly without extra structure.</p></div><div><span>ACCESSIBILITY</span><p>Keyboard-visible focus, semantic state, and reduced-motion behavior included.</p></div></div>
-        {docsMode && <section className="component-installation"><div><span className="section-index">INSTALLATION</span><h4>Own the component source.</h4><p>Manner is a shadcn-compatible source registry. The CLI resolves dependencies, writes the files into your app, and leaves every line under your control.</p></div><div className="install-command"><code><span>INSTALL</span> {installCommand} <em>· Base UI where behavior needs a primitive</em></code><button onClick={copyInstallCommand} aria-label="Copy install command"><Icon name={installCopied ? "check" : "copy"}/>{installCopied ? "Copied" : "Copy install"}</button></div><CodeBlock language="bash" label="terminal" filename="Install with shadcn" showLineNumbers={false} code={`pnpm dlx shadcn@latest registry add @manner=https://ui.myudak.com/r/{name}.json\n${installCommand}`} /></section>}
+        {docsMode && <section className="component-installation"><div><span className="section-index">INSTALLATION</span><h4>Own the component source.</h4><p>Manner is a shadcn-compatible source registry. The CLI resolves dependencies, writes the files into your app, and leaves every line under your control.</p></div><div className="install-command"><code><span>INSTALL</span> {installCommand} <em>· Base UI where behavior needs a primitive</em></code><button onClick={copyInstallCommand} aria-label="Copy install command"><Icon name={installCopied ? "check" : "copy"}/>{installCopied ? "Copied" : "Copy install"}</button></div><CodeBlock language="bash" label="terminal" filename="Install with shadcn" showLineNumbers={false} code={`pnpm dlx shadcn@latest registry add @manner=https://ui.myudak.com/r/{name}.json\n${installCommand}`} /><div className="props-table"><header><strong>Props</strong><span>Available on the {selected} component.</span></header><div><code>className</code><code>string</code><span>—</span><p>Additional styles for the root element.</p></div><div><code>disabled</code><code>boolean</code><span>false</span><p>Prevents interaction and exposes disabled state.</p></div></div></section>}
       </div>}
     </div>
   );
@@ -276,14 +309,13 @@ export default function Home() {
         <div>
           <p className="eyebrow"><span /> Manner / agent-native editorial UI</p>
           <h1>A design system<br/><i>you can see working.</i></h1>
-        </div>
-        <div className="showcase-home-intro">
-          <p>18 interactive components, six application blocks, and one copyable design grammar for coding agents.</p>
+          <p>{componentCatalog.length} production components, six application blocks, and one copyable design grammar for coding agents.</p>
           <div className="showcase-home-actions">
             <a href="/components" className="primary-button">Browse components <Icon name="arrow" /></a>
             <button className="text-link copy-design-button" onClick={copyInstall}><Icon name={copied ? "check" : "copy"}/>{copied ? "DESIGN.md copied" : "Copy DESIGN.md"}</button>
           </div>
         </div>
+        <BlueprintMark />
       </section>
 
       <section className="root-showcase" aria-label="Manner component and block showcase">
@@ -296,12 +328,8 @@ export default function Home() {
         <a href="/blocks"><span>03</span><div><strong>Blocks</strong><small>Complete product compositions</small></div><b>↗</b></a>
         <a href="/agents"><span>04</span><div><strong>Agents</strong><small>Prompts, manifest, and rules</small></div><b>↗</b></a>
       </section>
-
-      <footer className="showcase-home-footer">
-        <a className="brand" href="#top"><Mark/><span>Manner</span></a>
-        <p>Source-owned editorial interfaces for humans and coding agents.</p>
-        <span>Independent project · v0.1</span>
-      </footer>
+      <InstallStrip />
+      <SiteFooter />
     </main>
   );
 }
