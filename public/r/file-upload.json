@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-upload",
+  "title": "File Upload",
+  "description": "A labeled upload target with selected-file feedback.",
+  "dependencies": [
+    "lucide-react@^1.28.0"
+  ],
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/file-upload.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { FileUp } from \"lucide-react\";\nimport { cn } from \"@/lib/cn\";\n\nexport function FileUpload({ className, ...props }: React.InputHTMLAttributes<HTMLInputElement>) {\n  const [name, setName] = React.useState(\"\");\n  const id = React.useId();\n  return <label className={cn(\"manner-file-upload\", className)} htmlFor={props.id ?? id}><FileUp aria-hidden=\"true\"/><strong>{name || \"Choose a file\"}</strong><span>{name ? \"Ready to upload\" : \"PDF, PNG, or JPG · 10 MB max\"}</span><input id={props.id ?? id} type=\"file\" {...props} onChange={(event) => { setName(event.target.files?.[0]?.name ?? \"\"); props.onChange?.(event); }}/></label>;\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
