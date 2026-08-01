@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper",
+  "title": "Stepper",
+  "description": "Progress through a finite multi-step flow.",
+  "registryDependencies": [
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/stepper.tsx",
+      "content": "export function Stepper({ current, steps }: { current: number; steps: string[] }) {\n  return <ol className=\"manner-stepper\">{steps.map((step, index) => <li key={step} data-state={index + 1 < current ? \"complete\" : index + 1 === current ? \"current\" : \"upcoming\"}><span>{index + 1 < current ? \"✓\" : index + 1}</span><strong>{step}</strong></li>)}</ol>;\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
