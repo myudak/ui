@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group",
+  "title": "Radio Group",
+  "description": "A mutually exclusive choice set with native keyboard behavior.",
+  "registryDependencies": [
+    "@manner/utils",
+    "@manner/manner-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/manner/ui/radio-group.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/cn\";\n\ntype Option = { value: string; label: string; description?: string };\nexport function RadioGroup({ name, options, value, defaultValue, onValueChange, className }: { name?: string; options: Option[]; value?: string; defaultValue?: string; onValueChange?: (value: string) => void; className?: string }) {\n  const generated = React.useId();\n  return <fieldset className={cn(\"manner-radio-group\", className)}>{options.map((option) => <label key={option.value}><input type=\"radio\" name={name ?? generated} value={option.value} checked={value === undefined ? undefined : value === option.value} defaultChecked={value === undefined ? defaultValue === option.value : undefined} onChange={() => onValueChange?.(option.value)}/><i/><span><strong>{option.label}</strong>{option.description && <small>{option.description}</small>}</span></label>)}</fieldset>;\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
