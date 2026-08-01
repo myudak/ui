@@ -43,7 +43,7 @@ export default function RootLayout({
         <link rel="llms" href="/llms.txt" type="text/plain" />
       </head>
       <body
-        className={`${geistSans.variable} ${fraunces.variable} ${plexMono.variable} antialiased`}
+        className={`${geistSans.variable} ${fraunces.variable} ${plexMono.variable}`}
       >
         <SiteHeader />
         {children}
