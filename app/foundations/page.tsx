@@ -10,10 +10,9 @@ const colors = [
 export default function FoundationsPage() {
   return (
     <main className="docs-route foundations-route">
-      <header className="route-hero reveal-in">
-        <p className="section-index">FOUNDATIONS / THE VISUAL GRAMMAR</p>
-        <h1>Warmth with<br/><i>working rules.</i></h1>
-        <p>A complete semantic foundation for color, typography, shape, spacing, elevation, and motion—designed to stay expressive under real product pressure.</p>
+      <header className="route-hero route-hero-blueprint reveal-in">
+        <div><p className="section-index">FOUNDATIONS / THE VISUAL GRAMMAR</p><h1>Warmth with<br/><i>working rules.</i></h1><p>A complete semantic foundation for color, typography, shape, spacing, elevation, and motion—designed to stay expressive under real product pressure.</p></div>
+        <BlueprintMark compact />
       </header>
 
       <section className="foundation-section reveal-in delay-1">
@@ -49,6 +48,9 @@ export default function FoundationsPage() {
       </section>
 
       <section className="token-marquee" aria-label="Design token examples"><div>--canvas · --surface · --ink · --accent · --border · --radius-md · --duration-base · --ease-enter · --measure-prose · --focus</div></section>
+      <InstallStrip target="@manner/manner-theme" />
+      <SiteFooter />
     </main>
   );
 }
+import { BlueprintMark, InstallStrip, SiteFooter } from "@/components/system-chrome";
