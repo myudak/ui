@@ -3,6 +3,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export function Mark() {
   return (
@@ -26,19 +27,29 @@ function HeaderIcon({ name }: { name: "sun" | "moon" | "menu" }) {
 export function SiteHeader() {
   const [dark, setDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      const saved = window.localStorage.getItem("manner-theme");
+      setDark(saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches);
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   useEffect(() => {
     document.documentElement.dataset.theme = dark ? "dark" : "light";
+    window.localStorage.setItem("manner-theme", dark ? "dark" : "light");
   }, [dark]);
 
   return (
     <nav className="site-nav">
       <a className="brand" href="/" aria-label="Manner home"><Mark /><span>Manner</span><em>0.1</em></a>
       <div className={`nav-links ${menuOpen ? "open" : ""}`}>
-        <a href="/foundations" onClick={() => setMenuOpen(false)}>Foundations</a>
-        <a href="/components" onClick={() => setMenuOpen(false)}>Components</a>
-        <a href="/blocks" onClick={() => setMenuOpen(false)}>Blocks</a>
-        <a href="/agents" onClick={() => setMenuOpen(false)}>Agents</a>
+        <a className={pathname === "/foundations" ? "active" : ""} href="/foundations" onClick={() => setMenuOpen(false)}>Foundations</a>
+        <a className={pathname.startsWith("/components") ? "active" : ""} href="/components" onClick={() => setMenuOpen(false)}>Components</a>
+        <a className={pathname === "/blocks" ? "active" : ""} href="/blocks" onClick={() => setMenuOpen(false)}>Blocks</a>
+        <a className={pathname === "/design" || pathname === "/agents" ? "active" : ""} href="/design" onClick={() => setMenuOpen(false)}>Agent guide</a>
       </div>
       <div className="nav-actions">
         <a href="/design" className="github-link">DESIGN.md <span>↗</span></a>
