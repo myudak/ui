@@ -2,39 +2,22 @@ import { readFile, writeFile } from "node:fs/promises"
 import { resolve } from "node:path"
 
 const root = resolve(import.meta.dirname, "..")
-const entries = {
-  Button: "registry/manner/ui/button.tsx",
-  Field: "registry/manner/ui/field.tsx",
-  Select: "registry/manner/ui/select.tsx",
-  Switch: "registry/manner/ui/switch.tsx",
-  Dialog: "registry/manner/ui/dialog.tsx",
-  Command: "registry/manner/ui/command.tsx",
-  Surface: "registry/manner/editorial/surface.tsx",
-  "Section heading": "registry/manner/editorial/section-heading.tsx",
-  Note: "registry/manner/editorial/note.tsx",
-  Quote: "registry/manner/editorial/quote.tsx",
-  Timeline: "registry/manner/editorial/timeline.tsx",
-  Metadata: "registry/manner/editorial/metadata.tsx",
-  Message: "registry/manner/ai/message.tsx",
-  Composer: "registry/manner/ai/composer.tsx",
-  Reasoning: "registry/manner/ai/reasoning.tsx",
-  "Tool call": "registry/manner/ai/tool-call.tsx",
-  Sources: "registry/manner/ai/sources.tsx",
-  Artifact: "registry/manner/ai/artifact.tsx"
-}
+const registry = JSON.parse(await readFile(resolve(root, "registry.json"), "utf8"))
+const entries = Object.fromEntries(
+  registry.items
+    .filter((item) => item.type === "registry:ui" && item.files?.[0]?.path)
+    .map((item) => [item.title, item.files[0].path])
+)
 
 const componentSource = Object.fromEntries(
   await Promise.all(Object.entries(entries).map(async ([name, path]) => [name, await readFile(resolve(root, path), "utf8")]))
 )
 
-const blockEntries = {
-  "login-01": "registry/manner/blocks/login-01.tsx",
-  "sidebar-01": "registry/manner/blocks/sidebar-01.tsx",
-  "settings-01": "registry/manner/blocks/settings-01.tsx",
-  "reader-01": "registry/manner/blocks/reader-01.tsx",
-  "ai-workspace-01": "registry/manner/blocks/ai-workspace-01.tsx",
-  "leaderboard-01": "registry/manner/blocks/leaderboard-01.tsx"
-}
+const blockEntries = Object.fromEntries(
+  registry.items
+    .filter((item) => item.type === "registry:block" && item.files?.[0]?.path)
+    .map((item) => [item.name, item.files[0].path])
+)
 
 const blockSource = Object.fromEntries(
   await Promise.all(Object.entries(blockEntries).map(async ([name, path]) => [name, await readFile(resolve(root, path), "utf8")]))
