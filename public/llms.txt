@@ -1,0 +1,28 @@
+# Manner UI
+
+> A source-owned editorial React design system following shadcn registry conventions.
+
+## Start here
+
+- Manifest: https://ui.myudak.com/ai.json
+- Full guide: https://ui.myudak.com/llms-full.txt
+- Design rules: https://ui.myudak.com/DESIGN.md
+- Agent workflow: https://ui.myudak.com/MANNER_AGENT.md
+- Repository: https://github.com/myudak/ui
+
+## Discover
+
+- Components: https://ui.myudak.com/components
+- Blocks: https://ui.myudak.com/blocks
+- Registry index: https://ui.myudak.com/r/index.json
+- Registry item: https://ui.myudak.com/r/{name}.json
+
+## Install
+
+```bash
+pnpm dlx shadcn@latest registry add @manner=https://ui.myudak.com/r/{name}.json
+pnpm dlx shadcn@latest add @manner/button
+pnpm dlx shadcn@latest add @manner/agent-rules
+```
+
+Manner copies source into the consumer project. Reuse existing items, preserve Base UI semantics, use semantic tokens, and verify keyboard, responsive, and reduced-motion behavior.
