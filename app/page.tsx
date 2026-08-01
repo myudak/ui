@@ -294,7 +294,7 @@ export default function Home() {
         <a href="/foundations"><span>01</span><div><strong>Foundations</strong><small>Color, type, space, motion</small></div><b>↗</b></a>
         <a href="/components"><span>02</span><div><strong>Components</strong><small>Live previews and source</small></div><b>↗</b></a>
         <a href="/blocks"><span>03</span><div><strong>Blocks</strong><small>Complete product compositions</small></div><b>↗</b></a>
-        <a href="/design"><span>04</span><div><strong>Agent guide</strong><small>Copyable DESIGN.md</small></div><b>↗</b></a>
+        <a href="/agents"><span>04</span><div><strong>Agents</strong><small>Prompts, manifest, and rules</small></div><b>↗</b></a>
       </section>
 
       <footer className="showcase-home-footer">
