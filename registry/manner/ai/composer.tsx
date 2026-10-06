@@ -1,11 +1,10 @@
 "use client"
 
-import { ArrowUp, Plus } from "lucide-react"
 import * as React from "react"
+import { ArrowUpIcon, PlusIcon } from "lucide-react"
 
 import { cn } from "@/lib/cn"
 import { Button } from "@/registry/manner/ui/button"
-import { Textarea } from "@/registry/manner/ui/textarea"
 
 type ComposerProps = Omit<React.ComponentProps<"form">, "onSubmit"> & {
   value: string
@@ -16,26 +15,54 @@ type ComposerProps = Omit<React.ComponentProps<"form">, "onSubmit"> & {
   contextAction?: React.ReactNode
 }
 
-function Composer({ value, onValueChange, onSubmit, placeholder = "Ask Manner…", disabled, contextAction, className, ...props }: ComposerProps) {
+function Composer({
+  value,
+  onValueChange,
+  onSubmit,
+  placeholder = "Ask Manner…",
+  disabled,
+  contextAction,
+  className,
+  ...props
+}: ComposerProps) {
   return (
     <form
       data-slot="composer"
-      className={cn("rounded-[var(--radius-lg,14px)] border border-[var(--border)] bg-[var(--surface)] p-3 shadow-[0_16px_45px_color-mix(in_oklab,var(--ink)_8%,transparent)]", className)}
-      onSubmit={(event) => { event.preventDefault(); if (value.trim()) onSubmit(value.trim()) }}
+      data-disabled={disabled || undefined}
+      className={cn(
+        "rounded-xl border bg-card p-2 text-card-foreground transition-[border-color,box-shadow] focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/30 data-disabled:opacity-60",
+        className
+      )}
+      onSubmit={(event) => {
+        event.preventDefault()
+        if (value.trim()) onSubmit(value.trim())
+      }}
       {...props}
     >
-      <Textarea
+      <textarea
         aria-label="Message"
         value={value}
         onChange={(event) => onValueChange(event.target.value)}
-        onKeyDown={(event) => { if ((event.metaKey || event.ctrlKey) && event.key === "Enter") event.currentTarget.form?.requestSubmit() }}
+        onKeyDown={(event) => {
+          if ((event.metaKey || event.ctrlKey) && event.key === "Enter") event.currentTarget.form?.requestSubmit()
+        }}
         placeholder={placeholder}
         disabled={disabled}
-        className="min-h-24 resize-none border-0 bg-transparent px-1 shadow-none focus-visible:shadow-none"
+        rows={3}
+        className="field-sizing-content max-h-48 min-h-16 w-full resize-none bg-transparent px-2 py-1.5 text-sm leading-relaxed outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed"
       />
-      <footer className="mt-2 flex items-center justify-between gap-3">
-        {contextAction ?? <button type="button" className="inline-flex items-center gap-1.5 text-xs text-[var(--muted)] hover:text-[var(--ink)]"><Plus aria-hidden="true" className="size-3.5" /> Add context</button>}
-        <div className="flex items-center gap-2"><kbd className="hidden font-mono text-[.65rem] text-[var(--muted)] sm:inline">⌘ ↵</kbd><Button type="submit" size="icon" disabled={disabled || !value.trim()} aria-label="Send message"><ArrowUp aria-hidden="true" className="size-4" /></Button></div>
+      <footer className="flex items-center justify-between gap-3 pt-1">
+        {contextAction ?? (
+          <Button type="button" variant="ghost" size="sm" className="text-muted-foreground" disabled={disabled}>
+            <PlusIcon aria-hidden="true" /> Add context
+          </Button>
+        )}
+        <div className="flex items-center gap-2">
+          <kbd className="hidden font-mono text-xs text-muted-foreground sm:inline">⌘ ↵</kbd>
+          <Button type="submit" size="icon-sm" disabled={disabled || !value.trim()} aria-label="Send message">
+            <ArrowUpIcon aria-hidden="true" />
+          </Button>
+        </div>
       </footer>
     </form>
   )

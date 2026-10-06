@@ -34,50 +34,65 @@ pnpm dlx shadcn@latest add @manner/agent-rules
 ## Catalog
 
 ### UI components
-- **button** — A Base UI-backed action with restrained Manner variants. · `pnpm dlx shadcn@latest add @manner/button`
-- **input** — A semantic text input with visible focus and invalid states. · `pnpm dlx shadcn@latest add @manner/input`
-- **textarea** — A readable multiline field with controlled resizing. · `pnpm dlx shadcn@latest add @manner/textarea`
-- **field** — Label, description, and error primitives for form relationships. · `pnpm dlx shadcn@latest add @manner/field`
-- **switch** — A Base UI-backed binary control with keyboard behavior. · `pnpm dlx shadcn@latest add @manner/switch`
-- **select** — A Base UI-backed choice control with portal positioning and keyboard navigation. · `pnpm dlx shadcn@latest add @manner/select`
-- **dialog** — A Base UI-backed modal with focus trapping and restoration. · `pnpm dlx shadcn@latest add @manner/dialog`
-- **command** — A keyboard-first filtered command list. · `pnpm dlx shadcn@latest add @manner/command`
-- **surface** — Semantic content grouping with default, inset, and raised tones. · `pnpm dlx shadcn@latest add @manner/surface`
-- **section-heading** — Editorial hierarchy for meaningful sections. · `pnpm dlx shadcn@latest add @manner/section-heading`
-- **note** — A restrained aside for contextual information. · `pnpm dlx shadcn@latest add @manner/note`
-- **quote** — A quotation with strong reading rhythm and attribution. · `pnpm dlx shadcn@latest add @manner/quote`
-- **timeline** — A compact semantic history for decisions and releases. · `pnpm dlx shadcn@latest add @manner/timeline`
-- **metadata** — Dense supporting facts that remain calm and scannable. · `pnpm dlx shadcn@latest add @manner/metadata`
-- **message** — Conversation content with authorship and optional actions. · `pnpm dlx shadcn@latest add @manner/message`
-- **composer** — A flexible prompt input with keyboard submission. · `pnpm dlx shadcn@latest add @manner/composer`
-- **reasoning** — Progressive disclosure for intermediate work. · `pnpm dlx shadcn@latest add @manner/reasoning`
-- **tool-call** — Operational state for tool name, status, duration, and output. · `pnpm dlx shadcn@latest add @manner/tool-call`
-- **sources** — Evidence links with origin context. · `pnpm dlx shadcn@latest add @manner/sources`
-- **artifact** — A focused output surface connected to a conversation. · `pnpm dlx shadcn@latest add @manner/artifact`
-- **checkbox** — An accessible independent selection control. · `pnpm dlx shadcn@latest add @manner/checkbox`
-- **radio-group** — A mutually exclusive choice set with native keyboard behavior. · `pnpm dlx shadcn@latest add @manner/radio-group`
-- **date-picker** — An accessible date input with a clear label. · `pnpm dlx shadcn@latest add @manner/date-picker`
-- **file-upload** — A labeled upload target with selected-file feedback. · `pnpm dlx shadcn@latest add @manner/file-upload`
-- **card** — A restrained bounded surface for meaningful grouping. · `pnpm dlx shadcn@latest add @manner/card`
-- **drawer** — A spatially grounded side panel for secondary tasks. · `pnpm dlx shadcn@latest add @manner/drawer`
-- **tooltip** — A short accessible label for compact controls. · `pnpm dlx shadcn@latest add @manner/tooltip`
-- **tabs** — Keyboard-friendly related view switching. · `pnpm dlx shadcn@latest add @manner/tabs`
-- **breadcrumb** — A semantic location trail for shallow hierarchies. · `pnpm dlx shadcn@latest add @manner/breadcrumb`
-- **pagination** — Navigation through ordered result pages. · `pnpm dlx shadcn@latest add @manner/pagination`
-- **stepper** — Progress through a finite multi-step flow. · `pnpm dlx shadcn@latest add @manner/stepper`
-- **alert** — A semantic status message with calm hierarchy. · `pnpm dlx shadcn@latest add @manner/alert`
-- **progress** — A labeled semantic completion meter. · `pnpm dlx shadcn@latest add @manner/progress`
-- **skeleton** — A reduced-motion loading placeholder. · `pnpm dlx shadcn@latest add @manner/skeleton`
-- **empty-state** — An empty result explanation with a useful next action. · `pnpm dlx shadcn@latest add @manner/empty-state`
+- **button** — A semantic action with restrained, purposeful variants — including a terracotta brand variant for the one decision that matters. · `pnpm dlx shadcn@latest add @manner/button`
+- **input** — A single-line text input with visible focus, invalid, and disabled states. · `pnpm dlx shadcn@latest add @manner/input`
+- **textarea** — A multiline field that grows with its content. · `pnpm dlx shadcn@latest add @manner/textarea`
+- **field** — Labels, descriptions, and errors that stay correctly associated with their control. · `pnpm dlx shadcn@latest add @manner/field`
+- **input-group** — Inputs with leading or trailing addons — icons, text, buttons, or shortcuts. · `pnpm dlx shadcn@latest add @manner/input-group`
+- **select** — A compact single choice with a keyboard-navigable popup. · `pnpm dlx shadcn@latest add @manner/select`
+- **checkbox** — An independent on/off choice with an optional description. · `pnpm dlx shadcn@latest add @manner/checkbox`
+- **radio-group** — A mutually exclusive choice set with roving keyboard focus. · `pnpm dlx shadcn@latest add @manner/radio-group`
+- **switch** — A binary setting that applies immediately. · `pnpm dlx shadcn@latest add @manner/switch`
+- **toggle-group** — A set of pressable options for formatting, view modes, or filters. · `pnpm dlx shadcn@latest add @manner/toggle-group`
+- **date-picker** — A button-triggered calendar popover for picking a single date. · `pnpm dlx shadcn@latest add @manner/date-picker`
+- **calendar** — A month grid for selecting dates and ranges, built on react-day-picker. · `pnpm dlx shadcn@latest add @manner/calendar`
+- **file-upload** — A labeled drop target with selected-file feedback. · `pnpm dlx shadcn@latest add @manner/file-upload`
+- **dialog** — A focused modal layer with an explicit decision path. · `pnpm dlx shadcn@latest add @manner/dialog`
+- **sheet** — A side panel for secondary tasks that keeps the page in view. · `pnpm dlx shadcn@latest add @manner/sheet`
+- **drawer** — A swipeable bottom panel suited to short decisions on small screens. · `pnpm dlx shadcn@latest add @manner/drawer`
+- **popover** — Rich, interactive content anchored to a trigger. · `pnpm dlx shadcn@latest add @manner/popover`
+- **tooltip** — A short accessible label for compact or unfamiliar controls. · `pnpm dlx shadcn@latest add @manner/tooltip`
+- **dropdown-menu** — A menu of actions with groups, shortcuts, and destructive items. · `pnpm dlx shadcn@latest add @manner/dropdown-menu`
+- **command** — Fast, keyboard-first search across actions and destinations. · `pnpm dlx shadcn@latest add @manner/command`
+- **tabs** — Switch between related views without losing context. · `pnpm dlx shadcn@latest add @manner/tabs`
+- **accordion** — Progressive disclosure for stacked sections such as FAQs. · `pnpm dlx shadcn@latest add @manner/accordion`
+- **breadcrumb** — Location in a shallow, meaningful hierarchy. · `pnpm dlx shadcn@latest add @manner/breadcrumb`
+- **pagination** — Move through ordered result pages with a clear current state. · `pnpm dlx shadcn@latest add @manner/pagination`
+- **navigation-menu** — Top-level site navigation with rich dropdown panels. · `pnpm dlx shadcn@latest add @manner/navigation-menu`
+- **stepper** — Progress through a finite, ordered multi-step flow. · `pnpm dlx shadcn@latest add @manner/stepper`
+- **card** — A bounded surface for content that genuinely needs grouping. · `pnpm dlx shadcn@latest add @manner/card`
+- **badge** — Compact status, version, and category labels. · `pnpm dlx shadcn@latest add @manner/badge`
+- **alert** — A calm, semantic status message — success, warning, destructive, or neutral. · `pnpm dlx shadcn@latest add @manner/alert`
+- **progress** — Completion communicated with a label, value, and meter. · `pnpm dlx shadcn@latest add @manner/progress`
+- **skeleton** — A loading placeholder that matches the final layout's geometry. · `pnpm dlx shadcn@latest add @manner/skeleton`
+- **empty** — Explains an empty result and offers the next useful action. · `pnpm dlx shadcn@latest add @manner/empty`
+- **kbd** — Keyboard keys and shortcuts rendered inline. · `pnpm dlx shadcn@latest add @manner/kbd`
+- **separator** — A thin rule that divides content horizontally or vertically. · `pnpm dlx shadcn@latest add @manner/separator`
+- **scroll-area** — A styled scroll container that keeps native scrolling behavior. · `pnpm dlx shadcn@latest add @manner/scroll-area`
+- **surface** — Semantic grouping in three tones — default, inset, raised — without card soup. · `pnpm dlx shadcn@latest add @manner/surface`
+- **section-heading** — Eyebrow, serif title, description, and action for the start of a section. · `pnpm dlx shadcn@latest add @manner/section-heading`
+- **note** — A restrained aside for context that should not interrupt the flow. · `pnpm dlx shadcn@latest add @manner/note`
+- **quote** — A pull quote with strong reading rhythm and clear attribution. · `pnpm dlx shadcn@latest add @manner/quote`
+- **timeline** — A compact history of decisions, releases, and progress. · `pnpm dlx shadcn@latest add @manner/timeline`
+- **metadata** — Dense supporting facts that stay scannable. · `pnpm dlx shadcn@latest add @manner/metadata`
+- **message** — Conversation turns with clear authorship, actions, and a readable measure. · `pnpm dlx shadcn@latest add @manner/message`
+- **composer** — A prompt input that grows with the thought, with ⌘↵ to send. · `pnpm dlx shadcn@latest add @manner/composer`
+- **reasoning** — Collapsible disclosure for model reasoning and intermediate steps. · `pnpm dlx shadcn@latest add @manner/reasoning`
+- **tool-call** — Legible running, complete, and error states for tool invocations. · `pnpm dlx shadcn@latest add @manner/tool-call`
+- **sources** — Numbered citations with origin context. · `pnpm dlx shadcn@latest add @manner/sources`
+- **artifact** — A focused output surface that stays connected to its conversation. · `pnpm dlx shadcn@latest add @manner/artifact`
+- **label** — An accessible label for form controls. · `pnpm dlx shadcn@latest add @manner/label`
+- **toggle** — A two-state pressable button. · `pnpm dlx shadcn@latest add @manner/toggle`
+- **sidebar** — A composable, collapsible application sidebar. See the sidebar-01 block. · `pnpm dlx shadcn@latest add @manner/sidebar`
 ### Blocks
-- **login-01** — A focused sign-in composition with product context. · `pnpm dlx shadcn@latest add @manner/login-01`
-- **sidebar-01** — A content-first shell with compact navigation. · `pnpm dlx shadcn@latest add @manner/sidebar-01`
-- **settings-01** — Section navigation, accessible controls, and explicit save state. · `pnpm dlx shadcn@latest add @manner/settings-01`
-- **reader-01** — Outline navigation, long-form reading, and margin notes. · `pnpm dlx shadcn@latest add @manner/reader-01`
-- **ai-workspace-01** — Messages, composer, and a responsive artifact panel. · `pnpm dlx shadcn@latest add @manner/ai-workspace-01`
-- **leaderboard-01** — Ranked data with methodology context and responsive overflow. · `pnpm dlx shadcn@latest add @manner/leaderboard-01`
+- **login-01** — A focused sign-in flow with product context instead of a generic floating card. · `pnpm dlx shadcn@latest add @manner/login-01`
+- **sidebar-01** — An application shell with grouped navigation that collapses to icons. · `pnpm dlx shadcn@latest add @manner/sidebar-01`
+- **settings-01** — Section navigation, calm fields, and explicit saved state. · `pnpm dlx shadcn@latest add @manner/settings-01`
+- **reader-01** — A 68ch reading column with outline, progress, and margin notes. · `pnpm dlx shadcn@latest add @manner/reader-01`
+- **ai-workspace-01** — Conversation, tool calls, composer, and an artifact panel. · `pnpm dlx shadcn@latest add @manner/ai-workspace-01`
+- **leaderboard-01** — Summary metrics and an accessible ranked table with trends. · `pnpm dlx shadcn@latest add @manner/leaderboard-01`
 ### Agent files
-- **agent-rules** — Installs Manner design constraints and agent workflow at the consumer project root. · `pnpm dlx shadcn@latest add @manner/agent-rules`
+- **agent-rules** — Installs DESIGN.md and MANNER_AGENT.md so coding agents follow the Manner visual grammar. · `pnpm dlx shadcn@latest add @manner/agent-rules`
 
 ## Visual language
 

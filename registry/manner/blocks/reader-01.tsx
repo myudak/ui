@@ -1,9 +1,54 @@
 import { Note } from "@/registry/manner/editorial/note"
+import { Progress } from "@/registry/manner/ui/progress"
+
+const outline = ["A system, not a style", "Visual authority", "Semantic tokens", "Agent constraints"]
 
 function ReaderBlock() {
   return (
-    <div className="grid min-h-[560px] overflow-hidden rounded-[var(--radius-lg,14px)] border border-[var(--border)] bg-[var(--surface)] lg:grid-cols-[180px_1fr_230px]">
-      <aside className="hidden border-r border-[var(--border)] bg-[var(--surface-inset)] p-5 lg:flex lg:flex-col"><p className="font-mono text-[.65rem] uppercase tracking-wider text-[var(--muted)]">On this page</p>{["A system, not a style", "Visual authority", "Semantic tokens", "Agent constraints"].map((item, index) => <a key={item} href={`#reader-${index}`} className={index === 0 ? "py-2 text-sm text-[var(--accent)]" : "py-2 text-sm text-[var(--muted)]"}>{item}</a>)}<span className="mt-auto font-mono text-[.65rem] text-[var(--accent)]">42% read</span></aside><article className="mx-auto max-w-[68ch] p-8 sm:p-12"><p className="font-mono text-[.65rem] uppercase tracking-wider text-[var(--accent)]">Design systems / 08 min</p><h1 id="reader-0" className="my-5 font-[family-name:var(--serif)] text-5xl font-medium leading-[.92] tracking-[-.045em]">A system,<br/><i className="font-normal text-[var(--accent)]">not a style.</i></h1><p className="font-[family-name:var(--serif)] text-xl leading-relaxed">A useful interface system does not merely prescribe what things look like. It explains why they exist and how they behave under pressure.</p><p className="text-base leading-7 text-[var(--ink-secondary)]">Color and type are only the visible edge. The deeper system connects intent, component anatomy, application patterns, agent instructions, and tests.</p><blockquote className="my-8 border-l-2 border-[var(--accent)] pl-5 font-[family-name:var(--serif)] text-xl italic">Portable taste requires rules that survive implementation.</blockquote></article><aside className="hidden border-l border-[var(--border)] bg-[var(--surface-inset)] p-5 lg:block"><Note title="Structure precedes decoration.">Every container should explain a relationship.</Note></aside>
+    <div className="grid grid-cols-1 min-h-svh bg-background lg:grid-cols-[220px_minmax(0,1fr)_260px]">
+      <aside className="hidden border-r p-6 lg:flex lg:flex-col">
+        <p className="font-mono text-xs tracking-wide text-muted-foreground uppercase">On this page</p>
+        <nav aria-label="Article outline" className="mt-4 grid gap-1">
+          {outline.map((item, index) => (
+            <a
+              key={item}
+              href={`#reader-${index}`}
+              aria-current={index === 0 ? "location" : undefined}
+              className="border-l-2 border-transparent py-1.5 pl-3 text-sm text-muted-foreground hover:text-foreground aria-[current]:border-brand aria-[current]:text-foreground"
+            >
+              {item}
+            </a>
+          ))}
+        </nav>
+        <div className="mt-auto grid gap-2">
+          <span className="font-mono text-xs text-muted-foreground">42% read</span>
+          <Progress value={42} aria-label="Reading progress" />
+        </div>
+      </aside>
+      <article className="mx-auto w-full max-w-[68ch] px-6 py-12 sm:px-10 sm:py-16">
+        <p className="font-mono text-xs tracking-[0.14em] text-brand uppercase">Design systems · 8 min</p>
+        <h1 id="reader-0" className="mt-5 font-heading text-5xl leading-[0.95] font-medium tracking-tight text-balance">
+          A system, <em className="font-normal text-brand">not a style.</em>
+        </h1>
+        <p className="mt-8 font-heading text-xl leading-relaxed text-pretty">
+          A useful interface system does not merely prescribe what things look like. It explains why they exist and how
+          they behave under pressure.
+        </p>
+        <p className="mt-6 leading-7 text-muted-foreground">
+          Color and type are only the visible edge. The deeper system connects intent, component anatomy, application
+          patterns, agent instructions, and tests.
+        </p>
+        <h2 id="reader-1" className="mt-12 font-heading text-2xl font-medium tracking-tight">Visual authority</h2>
+        <p className="mt-4 leading-7 text-muted-foreground">
+          Hierarchy should be carried by type and spacing first. Surfaces, borders, and color are reserved for meaning.
+        </p>
+        <blockquote className="my-10 border-l-2 border-brand pl-5 font-heading text-xl italic">
+          Portable taste requires rules that survive implementation.
+        </blockquote>
+      </article>
+      <aside className="hidden border-l bg-muted/30 p-6 lg:block">
+        <Note title="Structure precedes decoration.">Every container should explain a relationship.</Note>
+      </aside>
     </div>
   )
 }

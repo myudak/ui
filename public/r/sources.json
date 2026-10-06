@@ -2,17 +2,23 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sources",
   "title": "Sources",
-  "description": "Evidence links with origin context.",
+  "description": "Numbered citations with origin context.",
+  "dependencies": [
+    "lucide-react@^1.28.0"
+  ],
   "registryDependencies": [
-    "@manner/utils",
-    "@manner/manner-theme"
+    "@manner/manner-theme",
+    "@manner/utils"
   ],
   "files": [
     {
       "path": "registry/manner/ai/sources.tsx",
-      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype SourceItem = { title: string; domain: string; href: string }\ntype SourcesProps = React.ComponentProps<\"ol\"> & { items: SourceItem[] }\n\nfunction Sources({ items, className, ...props }: SourcesProps) {\n  return (\n    <ol data-slot=\"sources\" className={cn(\"m-0 list-none divide-y divide-[var(--border-subtle)] p-0\", className)} {...props}>\n      {items.map((item, index) => <li key={item.href}><a href={item.href} target=\"_blank\" rel=\"noreferrer\" className=\"grid grid-cols-[28px_1fr_auto] items-center gap-3 py-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus)]\"><span className=\"font-mono text-xs text-[var(--accent)]\">{String(index + 1).padStart(2, \"0\")}</span><span><strong className=\"block font-[family-name:var(--serif)] text-base font-medium\">{item.title}</strong><small className=\"text-xs text-[var(--muted)]\">{item.domain}</small></span><span aria-hidden=\"true\" className=\"text-[var(--accent)]\">↗</span></a></li>)}\n    </ol>\n  )\n}\n\nexport { Sources, type SourceItem, type SourcesProps }\n",
+      "content": "import * as React from \"react\"\nimport { ArrowUpRightIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype SourceItem = { title: string; domain: string; href: string }\ntype SourcesProps = React.ComponentProps<\"ol\"> & { items: SourceItem[] }\n\nfunction Sources({ items, className, ...props }: SourcesProps) {\n  return (\n    <ol data-slot=\"sources\" className={cn(\"divide-y\", className)} {...props}>\n      {items.map((item, index) => (\n        <li key={item.href}>\n          <a\n            href={item.href}\n            target=\"_blank\"\n            rel=\"noreferrer\"\n            className=\"group/source grid grid-cols-[2rem_1fr_auto] items-center gap-3 rounded-md py-3 outline-none focus-visible:ring-3 focus-visible:ring-ring/50\"\n          >\n            <span className=\"font-mono text-xs text-brand\">{String(index + 1).padStart(2, \"0\")}</span>\n            <span className=\"min-w-0\">\n              <strong className=\"block truncate font-heading text-base font-medium group-hover/source:underline group-hover/source:underline-offset-4\">\n                {item.title}\n              </strong>\n              <span className=\"text-xs text-muted-foreground\">{item.domain}</span>\n            </span>\n            <ArrowUpRightIcon aria-hidden=\"true\" className=\"size-4 text-muted-foreground transition-transform group-hover/source:-translate-y-px group-hover/source:translate-x-px group-hover/source:text-brand\" />\n          </a>\n        </li>\n      ))}\n    </ol>\n  )\n}\n\nexport { Sources, type SourceItem, type SourcesProps }\n",
       "type": "registry:ui"
     }
+  ],
+  "categories": [
+    "ai"
   ],
   "type": "registry:ui"
 }

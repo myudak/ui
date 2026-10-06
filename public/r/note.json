@@ -2,20 +2,23 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "note",
   "title": "Note",
-  "description": "A restrained aside for contextual information.",
+  "description": "A restrained aside for context that should not interrupt the flow.",
   "dependencies": [
     "lucide-react@^1.28.0"
   ],
   "registryDependencies": [
-    "@manner/utils",
-    "@manner/manner-theme"
+    "@manner/manner-theme",
+    "@manner/utils"
   ],
   "files": [
     {
       "path": "registry/manner/editorial/note.tsx",
-      "content": "import { Sparkles } from \"lucide-react\"\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype NoteProps = React.ComponentProps<\"aside\"> & { title?: React.ReactNode }\n\nfunction Note({ title, children, className, ...props }: NoteProps) {\n  return (\n    <aside data-slot=\"note\" className={cn(\"grid grid-cols-[24px_1fr] gap-4 rounded-[var(--radius-sm,6px)] border border-[var(--border)] border-l-[3px] border-l-[var(--accent)] bg-[var(--surface)] p-5\", className)} {...props}>\n      <Sparkles aria-hidden=\"true\" className=\"mt-0.5 size-4 text-[var(--accent)]\" />\n      <div>{title && <strong className=\"font-[family-name:var(--serif)] text-lg font-medium\">{title}</strong>}<div className=\"mt-1.5 text-sm leading-relaxed text-[var(--ink-secondary)]\">{children}</div></div>\n    </aside>\n  )\n}\n\nexport { Note, type NoteProps }\n",
+      "content": "import * as React from \"react\"\nimport { SparklesIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype NoteProps = Omit<React.ComponentProps<\"aside\">, \"title\"> & {\n  title?: React.ReactNode\n  icon?: React.ReactNode\n}\n\nfunction Note({ title, icon, children, className, ...props }: NoteProps) {\n  return (\n    <aside\n      data-slot=\"note\"\n      className={cn(\n        \"grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 rounded-lg border border-l-2 border-l-brand bg-card p-4 text-card-foreground\",\n        className\n      )}\n      {...props}\n    >\n      <span className=\"row-span-2 mt-0.5 text-brand [&_svg]:size-4\" aria-hidden=\"true\">\n        {icon ?? <SparklesIcon />}\n      </span>\n      {title && <p className=\"font-heading text-base font-medium tracking-tight\">{title}</p>}\n      <div className=\"text-sm leading-relaxed text-muted-foreground\">{children}</div>\n    </aside>\n  )\n}\n\nexport { Note, type NoteProps }\n",
       "type": "registry:ui"
     }
+  ],
+  "categories": [
+    "editorial"
   ],
   "type": "registry:ui"
 }

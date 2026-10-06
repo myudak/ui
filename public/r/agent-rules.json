@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "agent-rules",
   "title": "Manner Agent Rules",
-  "description": "Installs Manner design constraints and agent workflow at the consumer project root.",
+  "description": "Installs DESIGN.md and MANNER_AGENT.md so coding agents follow the Manner visual grammar.",
   "files": [
     {
       "path": "public/DESIGN.md",

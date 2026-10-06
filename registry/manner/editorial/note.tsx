@@ -1,15 +1,28 @@
-import { Sparkles } from "lucide-react"
 import * as React from "react"
+import { SparklesIcon } from "lucide-react"
 
 import { cn } from "@/lib/cn"
 
-type NoteProps = React.ComponentProps<"aside"> & { title?: React.ReactNode }
+type NoteProps = Omit<React.ComponentProps<"aside">, "title"> & {
+  title?: React.ReactNode
+  icon?: React.ReactNode
+}
 
-function Note({ title, children, className, ...props }: NoteProps) {
+function Note({ title, icon, children, className, ...props }: NoteProps) {
   return (
-    <aside data-slot="note" className={cn("grid grid-cols-[24px_1fr] gap-4 rounded-[var(--radius-sm,6px)] border border-[var(--border)] border-l-[3px] border-l-[var(--accent)] bg-[var(--surface)] p-5", className)} {...props}>
-      <Sparkles aria-hidden="true" className="mt-0.5 size-4 text-[var(--accent)]" />
-      <div>{title && <strong className="font-[family-name:var(--serif)] text-lg font-medium">{title}</strong>}<div className="mt-1.5 text-sm leading-relaxed text-[var(--ink-secondary)]">{children}</div></div>
+    <aside
+      data-slot="note"
+      className={cn(
+        "grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 rounded-lg border border-l-2 border-l-brand bg-card p-4 text-card-foreground",
+        className
+      )}
+      {...props}
+    >
+      <span className="row-span-2 mt-0.5 text-brand [&_svg]:size-4" aria-hidden="true">
+        {icon ?? <SparklesIcon />}
+      </span>
+      {title && <p className="font-heading text-base font-medium tracking-tight">{title}</p>}
+      <div className="text-sm leading-relaxed text-muted-foreground">{children}</div>
     </aside>
   )
 }

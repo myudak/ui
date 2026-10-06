@@ -1,7 +1,73 @@
-import * as React from "react";
-import { CircleAlert, CircleCheck, Info } from "lucide-react";
-import { cn } from "@/lib/cn";
-export function Alert({ title, tone = "info", children, className }: { title: string; tone?: "info" | "success" | "warning" | "danger"; children?: React.ReactNode; className?: string }) {
-  const Icon = tone === "success" ? CircleCheck : tone === "warning" || tone === "danger" ? CircleAlert : Info;
-  return <div className={cn("manner-alert", `tone-${tone}`, className)} role={tone === "danger" ? "alert" : "status"}><Icon aria-hidden="true"/><div><strong>{title}</strong>{children && <p>{children}</p>}</div></div>;
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/cn"
+
+const alertVariants = cva("grid gap-0.5 rounded-lg border px-3.5 py-3 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4 group/alert relative w-full", {
+  variants: {
+    variant: {
+      default: "bg-card text-card-foreground",
+      destructive: "text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current",
+      success: "border-success/35 bg-success/8 text-foreground *:[svg]:text-success",
+      warning: "border-warning/45 bg-warning/10 text-foreground *:[svg]:text-warning",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+})
+
+function Alert({
+  className,
+  variant,
+  ...props
+}: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
+  return (
+    <div
+      data-slot="alert"
+      role="alert"
+      className={cn(alertVariants({ variant }), className)}
+      {...props}
+    />
+  )
 }
+
+function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="alert-title"
+      className={cn(
+        "font-medium group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function AlertDescription({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="alert-description"
+      className={cn(
+        "text-muted-foreground text-sm text-balance md:text-pretty [&_p:not(:last-child)]:mb-4 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function AlertAction({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="alert-action"
+      className={cn("absolute top-2 right-2", className)}
+      {...props}
+    />
+  )
+}
+
+export { Alert, AlertTitle, AlertDescription, AlertAction }

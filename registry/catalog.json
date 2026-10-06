@@ -1,0 +1,444 @@
+{
+  "components": [
+    {
+      "name": "button",
+      "title": "Button",
+      "group": "Form",
+      "description": "A semantic action with restrained, purposeful variants — including a terracotta brand variant for the one decision that matters.",
+      "file": "registry/manner/ui/button.tsx",
+      "example": "registry/manner/examples/button-demo.tsx"
+    },
+    {
+      "name": "input",
+      "title": "Input",
+      "group": "Form",
+      "description": "A single-line text input with visible focus, invalid, and disabled states.",
+      "file": "registry/manner/ui/input.tsx",
+      "example": "registry/manner/examples/input-demo.tsx"
+    },
+    {
+      "name": "textarea",
+      "title": "Textarea",
+      "group": "Form",
+      "description": "A multiline field that grows with its content.",
+      "file": "registry/manner/ui/textarea.tsx",
+      "example": "registry/manner/examples/textarea-demo.tsx"
+    },
+    {
+      "name": "field",
+      "title": "Field",
+      "group": "Form",
+      "description": "Labels, descriptions, and errors that stay correctly associated with their control.",
+      "file": "registry/manner/ui/field.tsx",
+      "example": "registry/manner/examples/field-demo.tsx"
+    },
+    {
+      "name": "input-group",
+      "title": "Input Group",
+      "group": "Form",
+      "description": "Inputs with leading or trailing addons — icons, text, buttons, or shortcuts.",
+      "file": "registry/manner/ui/input-group.tsx",
+      "example": "registry/manner/examples/input-group-demo.tsx"
+    },
+    {
+      "name": "select",
+      "title": "Select",
+      "group": "Form",
+      "description": "A compact single choice with a keyboard-navigable popup.",
+      "file": "registry/manner/ui/select.tsx",
+      "example": "registry/manner/examples/select-demo.tsx"
+    },
+    {
+      "name": "checkbox",
+      "title": "Checkbox",
+      "group": "Form",
+      "description": "An independent on/off choice with an optional description.",
+      "file": "registry/manner/ui/checkbox.tsx",
+      "example": "registry/manner/examples/checkbox-demo.tsx"
+    },
+    {
+      "name": "radio-group",
+      "title": "Radio Group",
+      "group": "Form",
+      "description": "A mutually exclusive choice set with roving keyboard focus.",
+      "file": "registry/manner/ui/radio-group.tsx",
+      "example": "registry/manner/examples/radio-group-demo.tsx"
+    },
+    {
+      "name": "switch",
+      "title": "Switch",
+      "group": "Form",
+      "description": "A binary setting that applies immediately.",
+      "file": "registry/manner/ui/switch.tsx",
+      "example": "registry/manner/examples/switch-demo.tsx"
+    },
+    {
+      "name": "toggle-group",
+      "title": "Toggle Group",
+      "group": "Form",
+      "description": "A set of pressable options for formatting, view modes, or filters.",
+      "file": "registry/manner/ui/toggle-group.tsx",
+      "example": "registry/manner/examples/toggle-group-demo.tsx"
+    },
+    {
+      "name": "date-picker",
+      "title": "Date Picker",
+      "group": "Form",
+      "description": "A button-triggered calendar popover for picking a single date.",
+      "file": "registry/manner/ui/date-picker.tsx",
+      "example": "registry/manner/examples/date-picker-demo.tsx"
+    },
+    {
+      "name": "calendar",
+      "title": "Calendar",
+      "group": "Form",
+      "description": "A month grid for selecting dates and ranges, built on react-day-picker.",
+      "file": "registry/manner/ui/calendar.tsx",
+      "example": "registry/manner/examples/calendar-demo.tsx"
+    },
+    {
+      "name": "file-upload",
+      "title": "File Upload",
+      "group": "Form",
+      "description": "A labeled drop target with selected-file feedback.",
+      "file": "registry/manner/ui/file-upload.tsx",
+      "example": "registry/manner/examples/file-upload-demo.tsx"
+    },
+    {
+      "name": "dialog",
+      "title": "Dialog",
+      "group": "Overlay",
+      "description": "A focused modal layer with an explicit decision path.",
+      "file": "registry/manner/ui/dialog.tsx",
+      "example": "registry/manner/examples/dialog-demo.tsx"
+    },
+    {
+      "name": "sheet",
+      "title": "Sheet",
+      "group": "Overlay",
+      "description": "A side panel for secondary tasks that keeps the page in view.",
+      "file": "registry/manner/ui/sheet.tsx",
+      "example": "registry/manner/examples/sheet-demo.tsx"
+    },
+    {
+      "name": "drawer",
+      "title": "Drawer",
+      "group": "Overlay",
+      "description": "A swipeable bottom panel suited to short decisions on small screens.",
+      "file": "registry/manner/ui/drawer.tsx",
+      "example": "registry/manner/examples/drawer-demo.tsx"
+    },
+    {
+      "name": "popover",
+      "title": "Popover",
+      "group": "Overlay",
+      "description": "Rich, interactive content anchored to a trigger.",
+      "file": "registry/manner/ui/popover.tsx",
+      "example": "registry/manner/examples/popover-demo.tsx"
+    },
+    {
+      "name": "tooltip",
+      "title": "Tooltip",
+      "group": "Overlay",
+      "description": "A short accessible label for compact or unfamiliar controls.",
+      "file": "registry/manner/ui/tooltip.tsx",
+      "example": "registry/manner/examples/tooltip-demo.tsx"
+    },
+    {
+      "name": "dropdown-menu",
+      "title": "Dropdown Menu",
+      "group": "Overlay",
+      "description": "A menu of actions with groups, shortcuts, and destructive items.",
+      "file": "registry/manner/ui/dropdown-menu.tsx",
+      "example": "registry/manner/examples/dropdown-menu-demo.tsx"
+    },
+    {
+      "name": "command",
+      "title": "Command",
+      "group": "Overlay",
+      "description": "Fast, keyboard-first search across actions and destinations.",
+      "file": "registry/manner/ui/command.tsx",
+      "example": "registry/manner/examples/command-demo.tsx"
+    },
+    {
+      "name": "tabs",
+      "title": "Tabs",
+      "group": "Navigation",
+      "description": "Switch between related views without losing context.",
+      "file": "registry/manner/ui/tabs.tsx",
+      "example": "registry/manner/examples/tabs-demo.tsx"
+    },
+    {
+      "name": "accordion",
+      "title": "Accordion",
+      "group": "Navigation",
+      "description": "Progressive disclosure for stacked sections such as FAQs.",
+      "file": "registry/manner/ui/accordion.tsx",
+      "example": "registry/manner/examples/accordion-demo.tsx"
+    },
+    {
+      "name": "breadcrumb",
+      "title": "Breadcrumb",
+      "group": "Navigation",
+      "description": "Location in a shallow, meaningful hierarchy.",
+      "file": "registry/manner/ui/breadcrumb.tsx",
+      "example": "registry/manner/examples/breadcrumb-demo.tsx"
+    },
+    {
+      "name": "pagination",
+      "title": "Pagination",
+      "group": "Navigation",
+      "description": "Move through ordered result pages with a clear current state.",
+      "file": "registry/manner/ui/pagination.tsx",
+      "example": "registry/manner/examples/pagination-demo.tsx"
+    },
+    {
+      "name": "navigation-menu",
+      "title": "Navigation Menu",
+      "group": "Navigation",
+      "description": "Top-level site navigation with rich dropdown panels.",
+      "file": "registry/manner/ui/navigation-menu.tsx",
+      "example": "registry/manner/examples/navigation-menu-demo.tsx"
+    },
+    {
+      "name": "stepper",
+      "title": "Stepper",
+      "group": "Navigation",
+      "description": "Progress through a finite, ordered multi-step flow.",
+      "file": "registry/manner/ui/stepper.tsx",
+      "example": "registry/manner/examples/stepper-demo.tsx"
+    },
+    {
+      "name": "card",
+      "title": "Card",
+      "group": "Display",
+      "description": "A bounded surface for content that genuinely needs grouping.",
+      "file": "registry/manner/ui/card.tsx",
+      "example": "registry/manner/examples/card-demo.tsx"
+    },
+    {
+      "name": "badge",
+      "title": "Badge",
+      "group": "Display",
+      "description": "Compact status, version, and category labels.",
+      "file": "registry/manner/ui/badge.tsx",
+      "example": "registry/manner/examples/badge-demo.tsx"
+    },
+    {
+      "name": "alert",
+      "title": "Alert",
+      "group": "Display",
+      "description": "A calm, semantic status message — success, warning, destructive, or neutral.",
+      "file": "registry/manner/ui/alert.tsx",
+      "example": "registry/manner/examples/alert-demo.tsx"
+    },
+    {
+      "name": "progress",
+      "title": "Progress",
+      "group": "Display",
+      "description": "Completion communicated with a label, value, and meter.",
+      "file": "registry/manner/ui/progress.tsx",
+      "example": "registry/manner/examples/progress-demo.tsx"
+    },
+    {
+      "name": "skeleton",
+      "title": "Skeleton",
+      "group": "Display",
+      "description": "A loading placeholder that matches the final layout's geometry.",
+      "file": "registry/manner/ui/skeleton.tsx",
+      "example": "registry/manner/examples/skeleton-demo.tsx"
+    },
+    {
+      "name": "empty",
+      "title": "Empty",
+      "group": "Display",
+      "description": "Explains an empty result and offers the next useful action.",
+      "file": "registry/manner/ui/empty.tsx",
+      "example": "registry/manner/examples/empty-demo.tsx"
+    },
+    {
+      "name": "kbd",
+      "title": "Kbd",
+      "group": "Display",
+      "description": "Keyboard keys and shortcuts rendered inline.",
+      "file": "registry/manner/ui/kbd.tsx",
+      "example": "registry/manner/examples/kbd-demo.tsx"
+    },
+    {
+      "name": "separator",
+      "title": "Separator",
+      "group": "Display",
+      "description": "A thin rule that divides content horizontally or vertically.",
+      "file": "registry/manner/ui/separator.tsx",
+      "example": "registry/manner/examples/separator-demo.tsx"
+    },
+    {
+      "name": "scroll-area",
+      "title": "Scroll Area",
+      "group": "Display",
+      "description": "A styled scroll container that keeps native scrolling behavior.",
+      "file": "registry/manner/ui/scroll-area.tsx",
+      "example": "registry/manner/examples/scroll-area-demo.tsx"
+    },
+    {
+      "name": "surface",
+      "title": "Surface",
+      "group": "Editorial",
+      "description": "Semantic grouping in three tones — default, inset, raised — without card soup.",
+      "file": "registry/manner/editorial/surface.tsx",
+      "example": "registry/manner/examples/surface-demo.tsx"
+    },
+    {
+      "name": "section-heading",
+      "title": "Section Heading",
+      "group": "Editorial",
+      "description": "Eyebrow, serif title, description, and action for the start of a section.",
+      "file": "registry/manner/editorial/section-heading.tsx",
+      "example": "registry/manner/examples/section-heading-demo.tsx"
+    },
+    {
+      "name": "note",
+      "title": "Note",
+      "group": "Editorial",
+      "description": "A restrained aside for context that should not interrupt the flow.",
+      "file": "registry/manner/editorial/note.tsx",
+      "example": "registry/manner/examples/note-demo.tsx"
+    },
+    {
+      "name": "quote",
+      "title": "Quote",
+      "group": "Editorial",
+      "description": "A pull quote with strong reading rhythm and clear attribution.",
+      "file": "registry/manner/editorial/quote.tsx",
+      "example": "registry/manner/examples/quote-demo.tsx"
+    },
+    {
+      "name": "timeline",
+      "title": "Timeline",
+      "group": "Editorial",
+      "description": "A compact history of decisions, releases, and progress.",
+      "file": "registry/manner/editorial/timeline.tsx",
+      "example": "registry/manner/examples/timeline-demo.tsx"
+    },
+    {
+      "name": "metadata",
+      "title": "Metadata",
+      "group": "Editorial",
+      "description": "Dense supporting facts that stay scannable.",
+      "file": "registry/manner/editorial/metadata.tsx",
+      "example": "registry/manner/examples/metadata-demo.tsx"
+    },
+    {
+      "name": "message",
+      "title": "Message",
+      "group": "AI",
+      "description": "Conversation turns with clear authorship, actions, and a readable measure.",
+      "file": "registry/manner/ai/message.tsx",
+      "example": "registry/manner/examples/message-demo.tsx"
+    },
+    {
+      "name": "composer",
+      "title": "Composer",
+      "group": "AI",
+      "description": "A prompt input that grows with the thought, with ⌘↵ to send.",
+      "file": "registry/manner/ai/composer.tsx",
+      "example": "registry/manner/examples/composer-demo.tsx"
+    },
+    {
+      "name": "reasoning",
+      "title": "Reasoning",
+      "group": "AI",
+      "description": "Collapsible disclosure for model reasoning and intermediate steps.",
+      "file": "registry/manner/ai/reasoning.tsx",
+      "example": "registry/manner/examples/reasoning-demo.tsx"
+    },
+    {
+      "name": "tool-call",
+      "title": "Tool Call",
+      "group": "AI",
+      "description": "Legible running, complete, and error states for tool invocations.",
+      "file": "registry/manner/ai/tool-call.tsx",
+      "example": "registry/manner/examples/tool-call-demo.tsx"
+    },
+    {
+      "name": "sources",
+      "title": "Sources",
+      "group": "AI",
+      "description": "Numbered citations with origin context.",
+      "file": "registry/manner/ai/sources.tsx",
+      "example": "registry/manner/examples/sources-demo.tsx"
+    },
+    {
+      "name": "artifact",
+      "title": "Artifact",
+      "group": "AI",
+      "description": "A focused output surface that stays connected to its conversation.",
+      "file": "registry/manner/ai/artifact.tsx",
+      "example": "registry/manner/examples/artifact-demo.tsx"
+    }
+  ],
+  "internal": [
+    {
+      "name": "label",
+      "title": "Label",
+      "description": "An accessible label for form controls.",
+      "file": "registry/manner/ui/label.tsx"
+    },
+    {
+      "name": "toggle",
+      "title": "Toggle",
+      "description": "A two-state pressable button.",
+      "file": "registry/manner/ui/toggle.tsx"
+    },
+    {
+      "name": "sidebar",
+      "title": "Sidebar",
+      "description": "A composable, collapsible application sidebar. See the sidebar-01 block.",
+      "file": "registry/manner/ui/sidebar.tsx"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "login-01",
+      "title": "Editorial sign in",
+      "category": "Authentication",
+      "description": "A focused sign-in flow with product context instead of a generic floating card.",
+      "file": "registry/manner/blocks/login-01.tsx"
+    },
+    {
+      "name": "sidebar-01",
+      "title": "Collapsible workspace",
+      "category": "Application shell",
+      "description": "An application shell with grouped navigation that collapses to icons.",
+      "file": "registry/manner/blocks/sidebar-01.tsx"
+    },
+    {
+      "name": "settings-01",
+      "title": "Preference workspace",
+      "category": "Settings",
+      "description": "Section navigation, calm fields, and explicit saved state.",
+      "file": "registry/manner/blocks/settings-01.tsx"
+    },
+    {
+      "name": "reader-01",
+      "title": "Knowledge reader",
+      "category": "Reading",
+      "description": "A 68ch reading column with outline, progress, and margin notes.",
+      "file": "registry/manner/blocks/reader-01.tsx"
+    },
+    {
+      "name": "ai-workspace-01",
+      "title": "AI workspace",
+      "category": "AI",
+      "description": "Conversation, tool calls, composer, and an artifact panel.",
+      "file": "registry/manner/blocks/ai-workspace-01.tsx"
+    },
+    {
+      "name": "leaderboard-01",
+      "title": "Leaderboard",
+      "category": "Data",
+      "description": "Summary metrics and an accessible ranked table with trends.",
+      "file": "registry/manner/blocks/leaderboard-01.tsx"
+    }
+  ]
+}

@@ -2,20 +2,26 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "date-picker",
   "title": "Date Picker",
-  "description": "An accessible date input with a clear label.",
+  "description": "A button-triggered calendar popover for picking a single date.",
   "dependencies": [
     "lucide-react@^1.28.0"
   ],
   "registryDependencies": [
-    "@manner/utils",
-    "@manner/manner-theme"
+    "@manner/button",
+    "@manner/calendar",
+    "@manner/manner-theme",
+    "@manner/popover",
+    "@manner/utils"
   ],
   "files": [
     {
       "path": "registry/manner/ui/date-picker.tsx",
-      "content": "import * as React from \"react\";\nimport { CalendarDays } from \"lucide-react\";\nimport { cn } from \"@/lib/cn\";\n\nexport function DatePicker({ label = \"Date\", className, ...props }: React.InputHTMLAttributes<HTMLInputElement> & { label?: string }) {\n  const id = React.useId();\n  return <label className={cn(\"manner-date-picker\", className)} htmlFor={props.id ?? id}><span>{label}</span><div><input id={props.id ?? id} type=\"date\" {...props}/><CalendarDays aria-hidden=\"true\" /></div></label>;\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { CalendarIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/cn\"\nimport { Button } from \"@/registry/manner/ui/button\"\nimport { Calendar } from \"@/registry/manner/ui/calendar\"\nimport { Popover, PopoverContent, PopoverTrigger } from \"@/registry/manner/ui/popover\"\n\ntype DatePickerProps = {\n  value?: Date\n  defaultValue?: Date\n  onValueChange?: (date: Date | undefined) => void\n  placeholder?: string\n  disabled?: boolean\n  className?: string\n  id?: string\n  \"aria-label\"?: string\n}\n\nconst formatter = new Intl.DateTimeFormat(undefined, { day: \"numeric\", month: \"short\", year: \"numeric\" })\n\nfunction DatePicker({\n  value,\n  defaultValue,\n  onValueChange,\n  placeholder = \"Pick a date\",\n  disabled,\n  className,\n  ...props\n}: DatePickerProps) {\n  const [open, setOpen] = React.useState(false)\n  const [internal, setInternal] = React.useState(defaultValue)\n  const date = value ?? internal\n\n  return (\n    <Popover open={open} onOpenChange={setOpen}>\n      <PopoverTrigger\n        render={\n          <Button\n            variant=\"outline\"\n            disabled={disabled}\n            data-slot=\"date-picker\"\n            data-empty={!date || undefined}\n            className={cn(\"w-full justify-between font-normal data-empty:text-muted-foreground\", className)}\n            {...props}\n          />\n        }\n      >\n        {date ? formatter.format(date) : placeholder}\n        <CalendarIcon className=\"text-muted-foreground\" aria-hidden=\"true\" />\n      </PopoverTrigger>\n      <PopoverContent className=\"w-auto p-0\" align=\"start\">\n        <Calendar\n          mode=\"single\"\n          selected={date}\n          defaultMonth={date}\n          onSelect={(next) => {\n            setInternal(next)\n            onValueChange?.(next)\n            setOpen(false)\n          }}\n        />\n      </PopoverContent>\n    </Popover>\n  )\n}\n\nexport { DatePicker, type DatePickerProps }\n",
       "type": "registry:ui"
     }
+  ],
+  "categories": [
+    "form"
   ],
   "type": "registry:ui"
 }

@@ -77,18 +77,20 @@
     ]
   },
   "counts": {
-    "components": 35,
+    "components": 50,
     "blocks": 6,
     "files": 1,
-    "total": 44
+    "total": 60
   },
   "items": [
     {
       "name": "manner-theme",
       "type": "registry:theme",
       "title": "Manner Theme",
-      "description": "Warm editorial semantic tokens for Manner interfaces.",
-      "dependencies": [],
+      "description": "Warm editorial tokens on shadcn's standard variable names, plus brand, success, and warning. Includes 0.1 aliases (canvas, ink, surface…) for one release.",
+      "dependencies": [
+        "tw-animate-css"
+      ],
       "registryDependencies": [],
       "files": [],
       "install": "pnpm dlx shadcn@latest add @manner/manner-theme",
@@ -116,17 +118,34 @@
       "registry": "https://ui.myudak.com/r/utils.json"
     },
     {
+      "name": "use-mobile",
+      "type": "registry:hook",
+      "title": "useIsMobile",
+      "description": "Tracks whether the viewport is below the mobile breakpoint.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/manner/hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/use-mobile",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/hooks/use-mobile.ts",
+      "registry": "https://ui.myudak.com/r/use-mobile.json"
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "description": "A Base UI-backed action with restrained Manner variants.",
+      "description": "A semantic action with restrained, purposeful variants — including a terracotta brand variant for the one decision that matters.",
       "dependencies": [
         "@base-ui/react@^1.6.0",
         "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -142,11 +161,13 @@
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "description": "A semantic text input with visible focus and invalid states.",
-      "dependencies": [],
+      "description": "A single-line text input with visible focus, invalid, and disabled states.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
       "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -162,11 +183,11 @@
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",
-      "description": "A readable multiline field with controlled resizing.",
+      "description": "A multiline field that grows with its content.",
       "dependencies": [],
       "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -182,11 +203,15 @@
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
-      "description": "Label, description, and error primitives for form relationships.",
-      "dependencies": [],
+      "description": "Labels, descriptions, and errors that stay correctly associated with their control.",
+      "dependencies": [
+        "class-variance-authority@^0.7.1"
+      ],
       "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
+        "@manner/label",
+        "@manner/manner-theme",
+        "@manner/separator",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -199,39 +224,42 @@
       "registry": "https://ui.myudak.com/r/field.json"
     },
     {
-      "name": "switch",
+      "name": "input-group",
       "type": "registry:ui",
-      "title": "Switch",
-      "description": "A Base UI-backed binary control with keyboard behavior.",
+      "title": "Input Group",
+      "description": "Inputs with leading or trailing addons — icons, text, buttons, or shortcuts.",
       "dependencies": [
-        "@base-ui/react@^1.6.0"
+        "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
+        "@manner/button",
+        "@manner/input",
+        "@manner/manner-theme",
+        "@manner/textarea",
+        "@manner/utils"
       ],
       "files": [
         {
-          "path": "registry/manner/ui/switch.tsx",
+          "path": "registry/manner/ui/input-group.tsx",
           "type": "registry:ui"
         }
       ],
-      "install": "pnpm dlx shadcn@latest add @manner/switch",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/switch.tsx",
-      "registry": "https://ui.myudak.com/r/switch.json"
+      "install": "pnpm dlx shadcn@latest add @manner/input-group",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/input-group.tsx",
+      "registry": "https://ui.myudak.com/r/input-group.json"
     },
     {
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
-      "description": "A Base UI-backed choice control with portal positioning and keyboard navigation.",
+      "description": "A compact single choice with a keyboard-navigable popup.",
       "dependencies": [
         "@base-ui/react@^1.6.0",
         "lucide-react@^1.28.0"
       ],
       "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -244,307 +272,17 @@
       "registry": "https://ui.myudak.com/r/select.json"
     },
     {
-      "name": "dialog",
+      "name": "checkbox",
       "type": "registry:ui",
-      "title": "Dialog",
-      "description": "A Base UI-backed modal with focus trapping and restoration.",
+      "title": "Checkbox",
+      "description": "An independent on/off choice with an optional description.",
       "dependencies": [
         "@base-ui/react@^1.6.0",
         "lucide-react@^1.28.0"
       ],
       "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/ui/dialog.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/dialog",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/dialog.tsx",
-      "registry": "https://ui.myudak.com/r/dialog.json"
-    },
-    {
-      "name": "command",
-      "type": "registry:ui",
-      "title": "Command",
-      "description": "A keyboard-first filtered command list.",
-      "dependencies": [
-        "lucide-react@^1.28.0"
-      ],
-      "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/ui/command.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/command",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/command.tsx",
-      "registry": "https://ui.myudak.com/r/command.json"
-    },
-    {
-      "name": "surface",
-      "type": "registry:ui",
-      "title": "Surface",
-      "description": "Semantic content grouping with default, inset, and raised tones.",
-      "dependencies": [],
-      "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/editorial/surface.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/surface",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/surface.tsx",
-      "registry": "https://ui.myudak.com/r/surface.json"
-    },
-    {
-      "name": "section-heading",
-      "type": "registry:ui",
-      "title": "Section Heading",
-      "description": "Editorial hierarchy for meaningful sections.",
-      "dependencies": [],
-      "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/editorial/section-heading.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/section-heading",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/section-heading.tsx",
-      "registry": "https://ui.myudak.com/r/section-heading.json"
-    },
-    {
-      "name": "note",
-      "type": "registry:ui",
-      "title": "Note",
-      "description": "A restrained aside for contextual information.",
-      "dependencies": [
-        "lucide-react@^1.28.0"
-      ],
-      "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/editorial/note.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/note",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/note.tsx",
-      "registry": "https://ui.myudak.com/r/note.json"
-    },
-    {
-      "name": "quote",
-      "type": "registry:ui",
-      "title": "Quote",
-      "description": "A quotation with strong reading rhythm and attribution.",
-      "dependencies": [],
-      "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/editorial/quote.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/quote",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/quote.tsx",
-      "registry": "https://ui.myudak.com/r/quote.json"
-    },
-    {
-      "name": "timeline",
-      "type": "registry:ui",
-      "title": "Timeline",
-      "description": "A compact semantic history for decisions and releases.",
-      "dependencies": [],
-      "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/editorial/timeline.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/timeline",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/timeline.tsx",
-      "registry": "https://ui.myudak.com/r/timeline.json"
-    },
-    {
-      "name": "metadata",
-      "type": "registry:ui",
-      "title": "Metadata",
-      "description": "Dense supporting facts that remain calm and scannable.",
-      "dependencies": [],
-      "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/editorial/metadata.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/metadata",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/metadata.tsx",
-      "registry": "https://ui.myudak.com/r/metadata.json"
-    },
-    {
-      "name": "message",
-      "type": "registry:ui",
-      "title": "Message",
-      "description": "Conversation content with authorship and optional actions.",
-      "dependencies": [],
-      "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/ai/message.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/message",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/message.tsx",
-      "registry": "https://ui.myudak.com/r/message.json"
-    },
-    {
-      "name": "composer",
-      "type": "registry:ui",
-      "title": "Composer",
-      "description": "A flexible prompt input with keyboard submission.",
-      "dependencies": [
-        "lucide-react@^1.28.0"
-      ],
-      "registryDependencies": [
-        "@manner/utils",
         "@manner/manner-theme",
-        "@manner/button",
-        "@manner/textarea"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/ai/composer.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/composer",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/composer.tsx",
-      "registry": "https://ui.myudak.com/r/composer.json"
-    },
-    {
-      "name": "reasoning",
-      "type": "registry:ui",
-      "title": "Reasoning",
-      "description": "Progressive disclosure for intermediate work.",
-      "dependencies": [],
-      "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/ai/reasoning.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/reasoning",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/reasoning.tsx",
-      "registry": "https://ui.myudak.com/r/reasoning.json"
-    },
-    {
-      "name": "tool-call",
-      "type": "registry:ui",
-      "title": "Tool Call",
-      "description": "Operational state for tool name, status, duration, and output.",
-      "dependencies": [],
-      "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/ai/tool-call.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/tool-call",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/tool-call.tsx",
-      "registry": "https://ui.myudak.com/r/tool-call.json"
-    },
-    {
-      "name": "sources",
-      "type": "registry:ui",
-      "title": "Sources",
-      "description": "Evidence links with origin context.",
-      "dependencies": [],
-      "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/ai/sources.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/sources",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/sources.tsx",
-      "registry": "https://ui.myudak.com/r/sources.json"
-    },
-    {
-      "name": "artifact",
-      "type": "registry:ui",
-      "title": "Artifact",
-      "description": "A focused output surface connected to a conversation.",
-      "dependencies": [],
-      "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/ai/artifact.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/artifact",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/artifact.tsx",
-      "registry": "https://ui.myudak.com/r/artifact.json"
-    },
-    {
-      "name": "checkbox",
-      "type": "registry:ui",
-      "title": "Checkbox",
-      "description": "An accessible independent selection control.",
-      "dependencies": [
-        "lucide-react@^1.28.0"
-      ],
-      "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
+        "@manner/utils"
       ],
       "files": [
         {
@@ -560,11 +298,13 @@
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Radio Group",
-      "description": "A mutually exclusive choice set with native keyboard behavior.",
-      "dependencies": [],
+      "description": "A mutually exclusive choice set with roving keyboard focus.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
       "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -577,16 +317,65 @@
       "registry": "https://ui.myudak.com/r/radio-group.json"
     },
     {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A binary setting that applies immediately.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/switch",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/switch.tsx",
+      "registry": "https://ui.myudak.com/r/switch.json"
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "A set of pressable options for formatting, view modes, or filters.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/toggle",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/toggle-group",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/toggle-group.tsx",
+      "registry": "https://ui.myudak.com/r/toggle-group.json"
+    },
+    {
       "name": "date-picker",
       "type": "registry:ui",
       "title": "Date Picker",
-      "description": "An accessible date input with a clear label.",
+      "description": "A button-triggered calendar popover for picking a single date.",
       "dependencies": [
         "lucide-react@^1.28.0"
       ],
       "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
+        "@manner/button",
+        "@manner/calendar",
+        "@manner/manner-theme",
+        "@manner/popover",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -599,16 +388,40 @@
       "registry": "https://ui.myudak.com/r/date-picker.json"
     },
     {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A month grid for selecting dates and ranges, built on react-day-picker.",
+      "dependencies": [
+        "lucide-react@^1.28.0",
+        "react-day-picker@^9.14.0"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/calendar",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/calendar.tsx",
+      "registry": "https://ui.myudak.com/r/calendar.json"
+    },
+    {
       "name": "file-upload",
       "type": "registry:ui",
       "title": "File Upload",
-      "description": "A labeled upload target with selected-file feedback.",
+      "description": "A labeled drop target with selected-file feedback.",
       "dependencies": [
         "lucide-react@^1.28.0"
       ],
       "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -621,36 +434,64 @@
       "registry": "https://ui.myudak.com/r/file-upload.json"
     },
     {
-      "name": "card",
+      "name": "dialog",
       "type": "registry:ui",
-      "title": "Card",
-      "description": "A restrained bounded surface for meaningful grouping.",
-      "dependencies": [],
-      "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
-      ],
-      "files": [
-        {
-          "path": "registry/manner/ui/card.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "install": "pnpm dlx shadcn@latest add @manner/card",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/card.tsx",
-      "registry": "https://ui.myudak.com/r/card.json"
-    },
-    {
-      "name": "drawer",
-      "type": "registry:ui",
-      "title": "Drawer",
-      "description": "A spatially grounded side panel for secondary tasks.",
+      "title": "Dialog",
+      "description": "A focused modal layer with an explicit decision path.",
       "dependencies": [
         "@base-ui/react@^1.6.0",
         "lucide-react@^1.28.0"
       ],
       "registryDependencies": [
-        "@manner/manner-theme"
+        "@manner/button",
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/dialog",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/dialog.tsx",
+      "registry": "https://ui.myudak.com/r/dialog.json"
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "A side panel for secondary tasks that keeps the page in view.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/sheet",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/sheet.tsx",
+      "registry": "https://ui.myudak.com/r/sheet.json"
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A swipeable bottom panel suited to short decisions on small screens.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -663,13 +504,38 @@
       "registry": "https://ui.myudak.com/r/drawer.json"
     },
     {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Rich, interactive content anchored to a trigger.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/popover",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/popover.tsx",
+      "registry": "https://ui.myudak.com/r/popover.json"
+    },
+    {
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
-      "description": "A short accessible label for compact controls.",
-      "dependencies": [],
+      "description": "A short accessible label for compact or unfamiliar controls.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
       "registryDependencies": [
-        "@manner/manner-theme"
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -682,13 +548,65 @@
       "registry": "https://ui.myudak.com/r/tooltip.json"
     },
     {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "A menu of actions with groups, shortcuts, and destructive items.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/dropdown-menu",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/dropdown-menu.tsx",
+      "registry": "https://ui.myudak.com/r/dropdown-menu.json"
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Fast, keyboard-first search across actions and destinations.",
+      "dependencies": [
+        "cmdk@^1.1.1",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/dialog",
+        "@manner/input-group",
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/command",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/command.tsx",
+      "registry": "https://ui.myudak.com/r/command.json"
+    },
+    {
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
-      "description": "Keyboard-friendly related view switching.",
-      "dependencies": [],
+      "description": "Switch between related views without losing context.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1"
+      ],
       "registryDependencies": [
-        "@manner/manner-theme"
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -701,15 +619,40 @@
       "registry": "https://ui.myudak.com/r/tabs.json"
     },
     {
-      "name": "breadcrumb",
+      "name": "accordion",
       "type": "registry:ui",
-      "title": "Breadcrumb",
-      "description": "A semantic location trail for shallow hierarchies.",
+      "title": "Accordion",
+      "description": "Progressive disclosure for stacked sections such as FAQs.",
       "dependencies": [
+        "@base-ui/react@^1.6.0",
         "lucide-react@^1.28.0"
       ],
       "registryDependencies": [
-        "@manner/manner-theme"
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/accordion",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/accordion.tsx",
+      "registry": "https://ui.myudak.com/r/accordion.json"
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Location in a shallow, meaningful hierarchy.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -725,10 +668,14 @@
       "name": "pagination",
       "type": "registry:ui",
       "title": "Pagination",
-      "description": "Navigation through ordered result pages.",
-      "dependencies": [],
+      "description": "Move through ordered result pages with a clear current state.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
       "registryDependencies": [
-        "@manner/manner-theme"
+        "@manner/button",
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -741,13 +688,40 @@
       "registry": "https://ui.myudak.com/r/pagination.json"
     },
     {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "Top-level site navigation with rich dropdown panels.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/navigation-menu",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/navigation-menu.tsx",
+      "registry": "https://ui.myudak.com/r/navigation-menu.json"
+    },
+    {
       "name": "stepper",
       "type": "registry:ui",
       "title": "Stepper",
-      "description": "Progress through a finite multi-step flow.",
-      "dependencies": [],
+      "description": "Progress through a finite, ordered multi-step flow.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
       "registryDependencies": [
-        "@manner/manner-theme"
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -760,16 +734,59 @@
       "registry": "https://ui.myudak.com/r/stepper.json"
     },
     {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "A bounded surface for content that genuinely needs grouping.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/card",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/card.tsx",
+      "registry": "https://ui.myudak.com/r/card.json"
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Compact status, version, and category labels.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/badge",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/badge.tsx",
+      "registry": "https://ui.myudak.com/r/badge.json"
+    },
+    {
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert",
-      "description": "A semantic status message with calm hierarchy.",
+      "description": "A calm, semantic status message — success, warning, destructive, or neutral.",
       "dependencies": [
-        "lucide-react@^1.28.0"
+        "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -785,10 +802,13 @@
       "name": "progress",
       "type": "registry:ui",
       "title": "Progress",
-      "description": "A labeled semantic completion meter.",
-      "dependencies": [],
+      "description": "Completion communicated with a label, value, and meter.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
       "registryDependencies": [
-        "@manner/manner-theme"
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -804,11 +824,11 @@
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
-      "description": "A reduced-motion loading placeholder.",
+      "description": "A loading placeholder that matches the final layout's geometry.",
       "dependencies": [],
       "registryDependencies": [
-        "@manner/utils",
-        "@manner/manner-theme"
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
@@ -821,41 +841,434 @@
       "registry": "https://ui.myudak.com/r/skeleton.json"
     },
     {
-      "name": "empty-state",
+      "name": "empty",
       "type": "registry:ui",
-      "title": "Empty State",
-      "description": "An empty result explanation with a useful next action.",
+      "title": "Empty",
+      "description": "Explains an empty result and offers the next useful action.",
+      "dependencies": [
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/empty",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/empty.tsx",
+      "registry": "https://ui.myudak.com/r/empty.json"
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Keyboard keys and shortcuts rendered inline.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/kbd",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/kbd.tsx",
+      "registry": "https://ui.myudak.com/r/kbd.json"
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "A thin rule that divides content horizontally or vertically.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/separator",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/separator.tsx",
+      "registry": "https://ui.myudak.com/r/separator.json"
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "A styled scroll container that keeps native scrolling behavior.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/scroll-area",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/scroll-area.tsx",
+      "registry": "https://ui.myudak.com/r/scroll-area.json"
+    },
+    {
+      "name": "surface",
+      "type": "registry:ui",
+      "title": "Surface",
+      "description": "Semantic grouping in three tones — default, inset, raised — without card soup.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/surface.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/surface",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/surface.tsx",
+      "registry": "https://ui.myudak.com/r/surface.json"
+    },
+    {
+      "name": "section-heading",
+      "type": "registry:ui",
+      "title": "Section Heading",
+      "description": "Eyebrow, serif title, description, and action for the start of a section.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/section-heading.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/section-heading",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/section-heading.tsx",
+      "registry": "https://ui.myudak.com/r/section-heading.json"
+    },
+    {
+      "name": "note",
+      "type": "registry:ui",
+      "title": "Note",
+      "description": "A restrained aside for context that should not interrupt the flow.",
       "dependencies": [
         "lucide-react@^1.28.0"
       ],
       "registryDependencies": [
-        "@manner/manner-theme"
+        "@manner/manner-theme",
+        "@manner/utils"
       ],
       "files": [
         {
-          "path": "registry/manner/ui/empty-state.tsx",
+          "path": "registry/manner/editorial/note.tsx",
           "type": "registry:ui"
         }
       ],
-      "install": "pnpm dlx shadcn@latest add @manner/empty-state",
-      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/empty-state.tsx",
-      "registry": "https://ui.myudak.com/r/empty-state.json"
+      "install": "pnpm dlx shadcn@latest add @manner/note",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/note.tsx",
+      "registry": "https://ui.myudak.com/r/note.json"
+    },
+    {
+      "name": "quote",
+      "type": "registry:ui",
+      "title": "Quote",
+      "description": "A pull quote with strong reading rhythm and clear attribution.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/quote.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/quote",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/quote.tsx",
+      "registry": "https://ui.myudak.com/r/quote.json"
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Timeline",
+      "description": "A compact history of decisions, releases, and progress.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/timeline.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/timeline",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/timeline.tsx",
+      "registry": "https://ui.myudak.com/r/timeline.json"
+    },
+    {
+      "name": "metadata",
+      "type": "registry:ui",
+      "title": "Metadata",
+      "description": "Dense supporting facts that stay scannable.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/metadata.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/metadata",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/editorial/metadata.tsx",
+      "registry": "https://ui.myudak.com/r/metadata.json"
+    },
+    {
+      "name": "message",
+      "type": "registry:ui",
+      "title": "Message",
+      "description": "Conversation turns with clear authorship, actions, and a readable measure.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/message.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/message",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/message.tsx",
+      "registry": "https://ui.myudak.com/r/message.json"
+    },
+    {
+      "name": "composer",
+      "type": "registry:ui",
+      "title": "Composer",
+      "description": "A prompt input that grows with the thought, with ⌘↵ to send.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/composer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/composer",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/composer.tsx",
+      "registry": "https://ui.myudak.com/r/composer.json"
+    },
+    {
+      "name": "reasoning",
+      "type": "registry:ui",
+      "title": "Reasoning",
+      "description": "Collapsible disclosure for model reasoning and intermediate steps.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/reasoning.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/reasoning",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/reasoning.tsx",
+      "registry": "https://ui.myudak.com/r/reasoning.json"
+    },
+    {
+      "name": "tool-call",
+      "type": "registry:ui",
+      "title": "Tool Call",
+      "description": "Legible running, complete, and error states for tool invocations.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/tool-call.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/tool-call",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/tool-call.tsx",
+      "registry": "https://ui.myudak.com/r/tool-call.json"
+    },
+    {
+      "name": "sources",
+      "type": "registry:ui",
+      "title": "Sources",
+      "description": "Numbered citations with origin context.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/sources.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/sources",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/sources.tsx",
+      "registry": "https://ui.myudak.com/r/sources.json"
+    },
+    {
+      "name": "artifact",
+      "type": "registry:ui",
+      "title": "Artifact",
+      "description": "A focused output surface that stays connected to its conversation.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/artifact.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/artifact",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ai/artifact.tsx",
+      "registry": "https://ui.myudak.com/r/artifact.json"
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "An accessible label for form controls.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/label",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/label.tsx",
+      "registry": "https://ui.myudak.com/r/label.json"
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A two-state pressable button.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/toggle",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/toggle.tsx",
+      "registry": "https://ui.myudak.com/r/toggle.json"
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "A composable, collapsible application sidebar. See the sidebar-01 block.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/input",
+        "@manner/manner-theme",
+        "@manner/separator",
+        "@manner/sheet",
+        "@manner/skeleton",
+        "@manner/tooltip",
+        "@manner/use-mobile",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "install": "pnpm dlx shadcn@latest add @manner/sidebar",
+      "source": "https://github.com/myudak/ui/tree/main/registry/manner/ui/sidebar.tsx",
+      "registry": "https://ui.myudak.com/r/sidebar.json"
     },
     {
       "name": "login-01",
       "type": "registry:block",
-      "title": "Editorial Sign In",
-      "description": "A focused sign-in composition with product context.",
-      "dependencies": [],
+      "title": "Editorial sign in",
+      "description": "A focused sign-in flow with product context instead of a generic floating card.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
       "registryDependencies": [
         "@manner/button",
         "@manner/field",
-        "@manner/input"
+        "@manner/input",
+        "@manner/manner-theme"
       ],
       "files": [
         {
           "path": "registry/manner/blocks/login-01.tsx",
-          "type": "registry:component"
+          "type": "registry:block"
         }
       ],
       "install": "pnpm dlx shadcn@latest add @manner/login-01",
@@ -865,16 +1278,21 @@
     {
       "name": "sidebar-01",
       "type": "registry:block",
-      "title": "Collapsible Workspace",
-      "description": "A content-first shell with compact navigation.",
-      "dependencies": [],
+      "title": "Collapsible workspace",
+      "description": "An application shell with grouped navigation that collapses to icons.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
       "registryDependencies": [
-        "@manner/button"
+        "@manner/button",
+        "@manner/manner-theme",
+        "@manner/separator",
+        "@manner/sidebar"
       ],
       "files": [
         {
           "path": "registry/manner/blocks/sidebar-01.tsx",
-          "type": "registry:component"
+          "type": "registry:block"
         }
       ],
       "install": "pnpm dlx shadcn@latest add @manner/sidebar-01",
@@ -884,18 +1302,24 @@
     {
       "name": "settings-01",
       "type": "registry:block",
-      "title": "Preference Workspace",
-      "description": "Section navigation, accessible controls, and explicit save state.",
-      "dependencies": [],
+      "title": "Preference workspace",
+      "description": "Section navigation, calm fields, and explicit saved state.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
       "registryDependencies": [
         "@manner/button",
+        "@manner/field",
+        "@manner/input",
+        "@manner/manner-theme",
         "@manner/select",
-        "@manner/switch"
+        "@manner/switch",
+        "@manner/utils"
       ],
       "files": [
         {
           "path": "registry/manner/blocks/settings-01.tsx",
-          "type": "registry:component"
+          "type": "registry:block"
         }
       ],
       "install": "pnpm dlx shadcn@latest add @manner/settings-01",
@@ -905,16 +1329,18 @@
     {
       "name": "reader-01",
       "type": "registry:block",
-      "title": "Knowledge Reader",
-      "description": "Outline navigation, long-form reading, and margin notes.",
+      "title": "Knowledge reader",
+      "description": "A 68ch reading column with outline, progress, and margin notes.",
       "dependencies": [],
       "registryDependencies": [
-        "@manner/note"
+        "@manner/manner-theme",
+        "@manner/note",
+        "@manner/progress"
       ],
       "files": [
         {
           "path": "registry/manner/blocks/reader-01.tsx",
-          "type": "registry:component"
+          "type": "registry:block"
         }
       ],
       "install": "pnpm dlx shadcn@latest add @manner/reader-01",
@@ -924,18 +1350,23 @@
     {
       "name": "ai-workspace-01",
       "type": "registry:block",
-      "title": "Conversation Workspace",
-      "description": "Messages, composer, and a responsive artifact panel.",
-      "dependencies": [],
+      "title": "AI workspace",
+      "description": "Conversation, tool calls, composer, and an artifact panel.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
       "registryDependencies": [
         "@manner/artifact",
+        "@manner/button",
         "@manner/composer",
-        "@manner/message"
+        "@manner/manner-theme",
+        "@manner/message",
+        "@manner/tool-call"
       ],
       "files": [
         {
           "path": "registry/manner/blocks/ai-workspace-01.tsx",
-          "type": "registry:component"
+          "type": "registry:block"
         }
       ],
       "install": "pnpm dlx shadcn@latest add @manner/ai-workspace-01",
@@ -945,16 +1376,19 @@
     {
       "name": "leaderboard-01",
       "type": "registry:block",
-      "title": "Comparison Leaderboard",
-      "description": "Ranked data with methodology context and responsive overflow.",
-      "dependencies": [],
+      "title": "Leaderboard",
+      "description": "Summary metrics and an accessible ranked table with trends.",
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
       "registryDependencies": [
-        "@manner/metadata"
+        "@manner/badge",
+        "@manner/manner-theme"
       ],
       "files": [
         {
           "path": "registry/manner/blocks/leaderboard-01.tsx",
-          "type": "registry:component"
+          "type": "registry:block"
         }
       ],
       "install": "pnpm dlx shadcn@latest add @manner/leaderboard-01",
@@ -965,7 +1399,7 @@
       "name": "agent-rules",
       "type": "registry:file",
       "title": "Manner Agent Rules",
-      "description": "Installs Manner design constraints and agent workflow at the consumer project root.",
+      "description": "Installs DESIGN.md and MANNER_AGENT.md so coding agents follow the Manner visual grammar.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [

@@ -2,13 +2,29 @@ import * as React from "react"
 
 import { cn } from "@/lib/cn"
 
-type ArtifactProps = React.ComponentProps<"section"> & { title: React.ReactNode; type: React.ReactNode; actions?: React.ReactNode }
+type ArtifactProps = Omit<React.ComponentProps<"section">, "title"> & {
+  title: React.ReactNode
+  type: React.ReactNode
+  actions?: React.ReactNode
+}
 
 function Artifact({ title, type, actions, children, className, ...props }: ArtifactProps) {
   return (
-    <section data-slot="artifact" className={cn("overflow-hidden rounded-[var(--radius-md,10px)] border border-[var(--border)] bg-[var(--surface)] shadow-[0_16px_45px_color-mix(in_oklab,var(--ink)_8%,transparent)]", className)} {...props}>
-      <header className="flex min-h-12 items-center justify-between gap-4 border-b border-[var(--border)] px-4"><div><strong className="text-sm font-medium">{title}</strong><span className="ml-2 font-mono text-[.65rem] uppercase tracking-wider text-[var(--accent)]">{type}</span></div>{actions}</header>
-      <div className="min-h-48 bg-[var(--surface-inset)] p-5 font-mono text-sm leading-relaxed text-[var(--ink-secondary)]">{children}</div>
+    <section
+      data-slot="artifact"
+      className={cn("overflow-hidden rounded-xl border bg-card text-card-foreground", className)}
+      {...props}
+    >
+      <header className="flex min-h-11 items-center justify-between gap-4 border-b px-4">
+        <div className="flex min-w-0 items-baseline gap-2">
+          <strong className="truncate text-sm font-medium">{title}</strong>
+          <span className="font-mono text-xs tracking-wide text-brand uppercase">{type}</span>
+        </div>
+        {actions && <div className="flex items-center gap-1">{actions}</div>}
+      </header>
+      <div className="min-h-40 bg-muted/50 p-4 font-mono text-sm leading-relaxed text-muted-foreground">
+        {children}
+      </div>
     </section>
   )
 }

@@ -2,20 +2,23 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "file-upload",
   "title": "File Upload",
-  "description": "A labeled upload target with selected-file feedback.",
+  "description": "A labeled drop target with selected-file feedback.",
   "dependencies": [
     "lucide-react@^1.28.0"
   ],
   "registryDependencies": [
-    "@manner/utils",
-    "@manner/manner-theme"
+    "@manner/manner-theme",
+    "@manner/utils"
   ],
   "files": [
     {
       "path": "registry/manner/ui/file-upload.tsx",
-      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { FileUp } from \"lucide-react\";\nimport { cn } from \"@/lib/cn\";\n\nexport function FileUpload({ className, ...props }: React.InputHTMLAttributes<HTMLInputElement>) {\n  const [name, setName] = React.useState(\"\");\n  const id = React.useId();\n  return <label className={cn(\"manner-file-upload\", className)} htmlFor={props.id ?? id}><FileUp aria-hidden=\"true\"/><strong>{name || \"Choose a file\"}</strong><span>{name ? \"Ready to upload\" : \"PDF, PNG, or JPG · 10 MB max\"}</span><input id={props.id ?? id} type=\"file\" {...props} onChange={(event) => { setName(event.target.files?.[0]?.name ?? \"\"); props.onChange?.(event); }}/></label>;\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { FileUpIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype FileUploadProps = Omit<React.ComponentProps<\"input\">, \"type\"> & {\n  hint?: React.ReactNode\n}\n\nfunction FileUpload({ className, hint = \"PDF, PNG, or JPG · 10 MB max\", id, onChange, disabled, ...props }: FileUploadProps) {\n  const generatedId = React.useId()\n  const inputId = id ?? generatedId\n  const [fileName, setFileName] = React.useState(\"\")\n\n  return (\n    <label\n      data-slot=\"file-upload\"\n      htmlFor={inputId}\n      data-disabled={disabled || undefined}\n      className={cn(\n        \"group/file-upload flex w-full cursor-pointer flex-col items-center gap-1.5 rounded-xl border border-dashed border-input bg-card px-6 py-8 text-center transition-colors hover:border-brand/60 hover:bg-brand-soft/30 has-focus-visible:border-ring has-focus-visible:ring-3 has-focus-visible:ring-ring/50 data-disabled:cursor-not-allowed data-disabled:opacity-50\",\n        className\n      )}\n    >\n      <span className=\"mb-1 flex size-10 items-center justify-center rounded-lg border bg-background text-muted-foreground group-hover/file-upload:text-brand\">\n        <FileUpIcon className=\"size-4\" aria-hidden=\"true\" />\n      </span>\n      <span className=\"text-sm font-medium\">{fileName || \"Choose a file or drag it here\"}</span>\n      <span className=\"text-xs text-muted-foreground\">{fileName ? \"Ready to upload\" : hint}</span>\n      <input\n        id={inputId}\n        type=\"file\"\n        disabled={disabled}\n        className=\"sr-only\"\n        onChange={(event) => {\n          setFileName(event.target.files?.[0]?.name ?? \"\")\n          onChange?.(event)\n        }}\n        {...props}\n      />\n    </label>\n  )\n}\n\nexport { FileUpload, type FileUploadProps }\n",
       "type": "registry:ui"
     }
+  ],
+  "categories": [
+    "form"
   ],
   "type": "registry:ui"
 }

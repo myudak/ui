@@ -2,20 +2,23 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "alert",
   "title": "Alert",
-  "description": "A semantic status message with calm hierarchy.",
+  "description": "A calm, semantic status message — success, warning, destructive, or neutral.",
   "dependencies": [
-    "lucide-react@^1.28.0"
+    "class-variance-authority@^0.7.1"
   ],
   "registryDependencies": [
-    "@manner/utils",
-    "@manner/manner-theme"
+    "@manner/manner-theme",
+    "@manner/utils"
   ],
   "files": [
     {
       "path": "registry/manner/ui/alert.tsx",
-      "content": "import * as React from \"react\";\nimport { CircleAlert, CircleCheck, Info } from \"lucide-react\";\nimport { cn } from \"@/lib/cn\";\nexport function Alert({ title, tone = \"info\", children, className }: { title: string; tone?: \"info\" | \"success\" | \"warning\" | \"danger\"; children?: React.ReactNode; className?: string }) {\n  const Icon = tone === \"success\" ? CircleCheck : tone === \"warning\" || tone === \"danger\" ? CircleAlert : Info;\n  return <div className={cn(\"manner-alert\", `tone-${tone}`, className)} role={tone === \"danger\" ? \"alert\" : \"status\"}><Icon aria-hidden=\"true\"/><div><strong>{title}</strong>{children && <p>{children}</p>}</div></div>;\n}\n",
+      "content": "import * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport { cn } from \"@/lib/cn\"\n\nconst alertVariants = cva(\"grid gap-0.5 rounded-lg border px-3.5 py-3 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4 group/alert relative w-full\", {\n  variants: {\n    variant: {\n      default: \"bg-card text-card-foreground\",\n      destructive: \"text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current\",\n      success: \"border-success/35 bg-success/8 text-foreground *:[svg]:text-success\",\n      warning: \"border-warning/45 bg-warning/10 text-foreground *:[svg]:text-warning\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n  },\n})\n\nfunction Alert({\n  className,\n  variant,\n  ...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof alertVariants>) {\n  return (\n    <div\n      data-slot=\"alert\"\n      role=\"alert\"\n      className={cn(alertVariants({ variant }), className)}\n      {...props}\n    />\n  )\n}\n\nfunction AlertTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"alert-title\"\n      className={cn(\n        \"font-medium group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction AlertDescription({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"alert-description\"\n      className={cn(\n        \"text-muted-foreground text-sm text-balance md:text-pretty [&_p:not(:last-child)]:mb-4 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction AlertAction({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"alert-action\"\n      className={cn(\"absolute top-2 right-2\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Alert, AlertTitle, AlertDescription, AlertAction }\n",
       "type": "registry:ui"
     }
+  ],
+  "categories": [
+    "display"
   ],
   "type": "registry:ui"
 }

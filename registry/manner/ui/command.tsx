@@ -1,72 +1,194 @@
 "use client"
 
-import { Search } from "lucide-react"
 import * as React from "react"
-
+import { Command as CommandPrimitive } from "cmdk"
 import { cn } from "@/lib/cn"
 
-type CommandItem = { id: string; label: string; description?: string; keywords?: string[] }
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/registry/manner/ui/dialog"
+import {
+  InputGroup,
+  InputGroupAddon,
+} from "@/registry/manner/ui/input-group"
+import { CheckIcon, SearchIcon } from "lucide-react"
 
-type CommandProps = {
-  items: CommandItem[]
-  onSelect?: (item: CommandItem) => void
-  placeholder?: string
-  emptyText?: string
-  className?: string
+function Command({
+  className,
+  ...props
+}: React.ComponentProps<typeof CommandPrimitive>) {
+  return (
+    <CommandPrimitive
+      data-slot="command"
+      className={cn(
+        "bg-popover text-popover-foreground rounded-xl! p-1 flex size-full flex-col overflow-hidden",
+        className
+      )}
+      {...props}
+    />
+  )
 }
 
-function Command({ items, onSelect, placeholder = "Type a command…", emptyText = "No commands found.", className }: CommandProps) {
-  const [query, setQuery] = React.useState("")
-  const [activeIndex, setActiveIndex] = React.useState(0)
-  const filtered = React.useMemo(() => {
-    const value = query.trim().toLowerCase()
-    if (!value) return items
-    return items.filter((item) => [item.label, item.description, ...(item.keywords ?? [])].filter(Boolean).join(" ").toLowerCase().includes(value))
-  }, [items, query])
-
-  function select(item: CommandItem | undefined) {
-    if (item) onSelect?.(item)
-  }
-
+function CommandDialog({
+  title = "Command Palette",
+  description = "Search for a command to run...",
+  children,
+  className,
+  showCloseButton = false,
+  ...props
+}: Omit<React.ComponentProps<typeof Dialog>, "children"> & {
+  title?: string
+  description?: string
+  className?: string
+  showCloseButton?: boolean
+  children: React.ReactNode
+}) {
   return (
-    <div data-slot="command" className={cn("overflow-hidden rounded-[var(--radius-md,10px)] border border-[var(--border)] bg-[var(--surface)]", className)}>
-      <label className="flex h-11 items-center gap-3 border-b border-[var(--border-subtle)] px-3">
-        <Search aria-hidden="true" className="size-4 text-[var(--muted)]" />
-        <span className="sr-only">Command search</span>
-        <input
-          aria-controls="manner-command-list"
-          aria-expanded="true"
-          aria-activedescendant={filtered[activeIndex] ? `command-${filtered[activeIndex].id}` : undefined}
-          role="combobox"
-          value={query}
-          onChange={(event) => { setQuery(event.target.value); setActiveIndex(0) }}
-          onKeyDown={(event) => {
-            if (event.key === "ArrowDown") { event.preventDefault(); setActiveIndex((index) => Math.min(index + 1, filtered.length - 1)) }
-            if (event.key === "ArrowUp") { event.preventDefault(); setActiveIndex((index) => Math.max(index - 1, 0)) }
-            if (event.key === "Enter") { event.preventDefault(); select(filtered[activeIndex]) }
-          }}
-          placeholder={placeholder}
-          className="h-full min-w-0 flex-1 bg-transparent text-sm text-[var(--ink)] outline-none placeholder:text-[var(--muted)]"
+    <Dialog {...props}>
+      <DialogHeader className="sr-only">
+        <DialogTitle>{title}</DialogTitle>
+        <DialogDescription>{description}</DialogDescription>
+      </DialogHeader>
+      <DialogContent
+        className={cn(
+          "rounded-xl! top-1/3 translate-y-0 overflow-hidden p-0",
+          className
+        )}
+        showCloseButton={showCloseButton}
+      >
+        {children}
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+function CommandInput({
+  className,
+  ...props
+}: React.ComponentProps<typeof CommandPrimitive.Input>) {
+  return (
+    <div data-slot="command-input-wrapper" className="p-1 pb-0">
+      <InputGroup className="bg-input/30 border-input/30 h-8! rounded-lg! shadow-none! *:data-[slot=input-group-addon]:pl-2!">
+        <CommandPrimitive.Input
+          data-slot="command-input"
+          className={cn(
+            "w-full text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+            className
+          )}
+          {...props}
         />
-      </label>
-      <div id="manner-command-list" role="listbox" className="max-h-72 overflow-y-auto p-1">
-        {filtered.length ? filtered.map((item, index) => (
-          <button
-            id={`command-${item.id}`}
-            key={item.id}
-            role="option"
-            aria-selected={index === activeIndex}
-            className="grid w-full grid-cols-[1fr_auto] gap-4 rounded-[var(--radius-xs,4px)] px-3 py-2.5 text-left hover:bg-[var(--surface-inset)] aria-selected:bg-[var(--accent-soft)]"
-            onMouseEnter={() => setActiveIndex(index)}
-            onClick={() => select(item)}
-          >
-            <span><strong className="block text-sm font-medium">{item.label}</strong>{item.description && <small className="mt-0.5 block text-xs text-[var(--muted)]">{item.description}</small>}</span>
-            <span aria-hidden="true" className="text-[var(--accent)]">↗</span>
-          </button>
-        )) : <p className="m-0 px-3 py-8 text-center text-sm text-[var(--muted)]">{emptyText}</p>}
-      </div>
+        <InputGroupAddon>
+          <SearchIcon
+            className="size-4 shrink-0 opacity-50"
+          />
+        </InputGroupAddon>
+      </InputGroup>
     </div>
   )
 }
 
-export { Command, type CommandItem, type CommandProps }
+function CommandList({
+  className,
+  ...props
+}: React.ComponentProps<typeof CommandPrimitive.List>) {
+  return (
+    <CommandPrimitive.List
+      data-slot="command-list"
+      className={cn(
+        "no-scrollbar max-h-72 scroll-py-1 outline-none overflow-x-hidden overflow-y-auto",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CommandEmpty({
+  className,
+  ...props
+}: React.ComponentProps<typeof CommandPrimitive.Empty>) {
+  return (
+    <CommandPrimitive.Empty
+      data-slot="command-empty"
+      className={cn("py-6 text-center text-sm", className)}
+      {...props}
+    />
+  )
+}
+
+function CommandGroup({
+  className,
+  ...props
+}: React.ComponentProps<typeof CommandPrimitive.Group>) {
+  return (
+    <CommandPrimitive.Group
+      data-slot="command-group"
+      className={cn("text-foreground **:[[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-medium", className)}
+      {...props}
+    />
+  )
+}
+
+function CommandSeparator({
+  className,
+  ...props
+}: React.ComponentProps<typeof CommandPrimitive.Separator>) {
+  return (
+    <CommandPrimitive.Separator
+      data-slot="command-separator"
+      className={cn("bg-border -mx-1 h-px", className)}
+      {...props}
+    />
+  )
+}
+
+function CommandItem({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof CommandPrimitive.Item>) {
+  return (
+    <CommandPrimitive.Item
+      data-slot="command-item"
+      className={cn(
+        "data-selected:bg-muted data-selected:text-foreground data-selected:*:[svg]:text-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! [&_svg:not([class*='size-'])]:size-4 group/command-item data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      <CheckIcon
+        className="ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
+      />
+    </CommandPrimitive.Item>
+  )
+}
+
+function CommandShortcut({
+  className,
+  ...props
+}: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="command-shortcut"
+      className={cn("text-muted-foreground group-data-selected/command-item:text-foreground ml-auto text-xs tracking-widest", className)}
+      {...props}
+    />
+  )
+}
+
+export {
+  Command,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandShortcut,
+  CommandSeparator,
+}

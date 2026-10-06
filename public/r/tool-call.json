@@ -2,17 +2,23 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tool-call",
   "title": "Tool Call",
-  "description": "Operational state for tool name, status, duration, and output.",
+  "description": "Legible running, complete, and error states for tool invocations.",
+  "dependencies": [
+    "lucide-react@^1.28.0"
+  ],
   "registryDependencies": [
-    "@manner/utils",
-    "@manner/manner-theme"
+    "@manner/manner-theme",
+    "@manner/utils"
   ],
   "files": [
     {
       "path": "registry/manner/ai/tool-call.tsx",
-      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype ToolCallProps = React.ComponentProps<\"section\"> & { name: string; status: \"running\" | \"complete\" | \"error\"; duration?: string }\n\nfunction ToolCall({ name, status, duration, children, className, ...props }: ToolCallProps) {\n  return (\n    <section data-slot=\"tool-call\" data-status={status} className={cn(\"overflow-hidden rounded-[var(--radius-sm,6px)] border border-[var(--border)] bg-[var(--surface)]\", className)} {...props}>\n      <header className=\"flex items-center justify-between gap-4 p-4\"><div><code className=\"font-mono text-sm text-[var(--ink)]\">{name}</code>{duration && <small className=\"ml-2 text-[var(--muted)]\">{duration}</small>}</div><span className=\"font-mono text-[.66rem] uppercase tracking-wider text-[var(--accent)] data-[status=error]:text-[var(--danger)]\" data-status={status}>{status}</span></header>\n      <div className=\"border-t border-[var(--border-subtle)] bg-[var(--surface-inset)] p-4 text-sm leading-relaxed text-[var(--ink-secondary)]\">{children}</div>\n    </section>\n  )\n}\n\nexport { ToolCall, type ToolCallProps }\n",
+      "content": "import * as React from \"react\"\nimport { CheckIcon, LoaderIcon, XIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/cn\"\n\ntype ToolCallStatus = \"running\" | \"complete\" | \"error\"\ntype ToolCallProps = React.ComponentProps<\"section\"> & { name: string; status: ToolCallStatus; duration?: string }\n\nconst statusIcon = {\n  running: <LoaderIcon className=\"size-3.5 animate-spin\" aria-hidden=\"true\" />,\n  complete: <CheckIcon className=\"size-3.5\" aria-hidden=\"true\" />,\n  error: <XIcon className=\"size-3.5\" aria-hidden=\"true\" />,\n}\n\nfunction ToolCall({ name, status, duration, children, className, ...props }: ToolCallProps) {\n  return (\n    <section\n      data-slot=\"tool-call\"\n      data-status={status}\n      className={cn(\"group/tool overflow-hidden rounded-lg border bg-card text-card-foreground\", className)}\n      {...props}\n    >\n      <header className=\"flex items-center justify-between gap-4 px-4 py-2.5\">\n        <div className=\"flex min-w-0 items-baseline gap-2\">\n          <code className=\"truncate font-mono text-sm\">{name}</code>\n          {duration && <span className=\"text-xs text-muted-foreground\">{duration}</span>}\n        </div>\n        <span className=\"inline-flex items-center gap-1.5 font-mono text-xs tracking-wide uppercase group-data-[status=complete]/tool:text-success group-data-[status=error]/tool:text-destructive group-data-[status=running]/tool:text-brand\">\n          {statusIcon[status]}\n          {status}\n        </span>\n      </header>\n      {children && (\n        <div className=\"border-t bg-muted/50 px-4 py-3 text-sm leading-relaxed text-muted-foreground\">{children}</div>\n      )}\n    </section>\n  )\n}\n\nexport { ToolCall, type ToolCallProps, type ToolCallStatus }\n",
       "type": "registry:ui"
     }
+  ],
+  "categories": [
+    "ai"
   ],
   "type": "registry:ui"
 }

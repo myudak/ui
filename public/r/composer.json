@@ -2,22 +2,24 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "composer",
   "title": "Composer",
-  "description": "A flexible prompt input with keyboard submission.",
+  "description": "A prompt input that grows with the thought, with ⌘↵ to send.",
   "dependencies": [
     "lucide-react@^1.28.0"
   ],
   "registryDependencies": [
-    "@manner/utils",
-    "@manner/manner-theme",
     "@manner/button",
-    "@manner/textarea"
+    "@manner/manner-theme",
+    "@manner/utils"
   ],
   "files": [
     {
       "path": "registry/manner/ai/composer.tsx",
-      "content": "\"use client\"\n\nimport { ArrowUp, Plus } from \"lucide-react\"\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\nimport { Button } from \"@/registry/manner/ui/button\"\nimport { Textarea } from \"@/registry/manner/ui/textarea\"\n\ntype ComposerProps = Omit<React.ComponentProps<\"form\">, \"onSubmit\"> & {\n  value: string\n  onValueChange: (value: string) => void\n  onSubmit: (value: string) => void\n  placeholder?: string\n  disabled?: boolean\n  contextAction?: React.ReactNode\n}\n\nfunction Composer({ value, onValueChange, onSubmit, placeholder = \"Ask Manner…\", disabled, contextAction, className, ...props }: ComposerProps) {\n  return (\n    <form\n      data-slot=\"composer\"\n      className={cn(\"rounded-[var(--radius-lg,14px)] border border-[var(--border)] bg-[var(--surface)] p-3 shadow-[0_16px_45px_color-mix(in_oklab,var(--ink)_8%,transparent)]\", className)}\n      onSubmit={(event) => { event.preventDefault(); if (value.trim()) onSubmit(value.trim()) }}\n      {...props}\n    >\n      <Textarea\n        aria-label=\"Message\"\n        value={value}\n        onChange={(event) => onValueChange(event.target.value)}\n        onKeyDown={(event) => { if ((event.metaKey || event.ctrlKey) && event.key === \"Enter\") event.currentTarget.form?.requestSubmit() }}\n        placeholder={placeholder}\n        disabled={disabled}\n        className=\"min-h-24 resize-none border-0 bg-transparent px-1 shadow-none focus-visible:shadow-none\"\n      />\n      <footer className=\"mt-2 flex items-center justify-between gap-3\">\n        {contextAction ?? <button type=\"button\" className=\"inline-flex items-center gap-1.5 text-xs text-[var(--muted)] hover:text-[var(--ink)]\"><Plus aria-hidden=\"true\" className=\"size-3.5\" /> Add context</button>}\n        <div className=\"flex items-center gap-2\"><kbd className=\"hidden font-mono text-[.65rem] text-[var(--muted)] sm:inline\">⌘ ↵</kbd><Button type=\"submit\" size=\"icon\" disabled={disabled || !value.trim()} aria-label=\"Send message\"><ArrowUp aria-hidden=\"true\" className=\"size-4\" /></Button></div>\n      </footer>\n    </form>\n  )\n}\n\nexport { Composer, type ComposerProps }\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { ArrowUpIcon, PlusIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/cn\"\nimport { Button } from \"@/registry/manner/ui/button\"\n\ntype ComposerProps = Omit<React.ComponentProps<\"form\">, \"onSubmit\"> & {\n  value: string\n  onValueChange: (value: string) => void\n  onSubmit: (value: string) => void\n  placeholder?: string\n  disabled?: boolean\n  contextAction?: React.ReactNode\n}\n\nfunction Composer({\n  value,\n  onValueChange,\n  onSubmit,\n  placeholder = \"Ask Manner…\",\n  disabled,\n  contextAction,\n  className,\n  ...props\n}: ComposerProps) {\n  return (\n    <form\n      data-slot=\"composer\"\n      data-disabled={disabled || undefined}\n      className={cn(\n        \"rounded-xl border bg-card p-2 text-card-foreground transition-[border-color,box-shadow] focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/30 data-disabled:opacity-60\",\n        className\n      )}\n      onSubmit={(event) => {\n        event.preventDefault()\n        if (value.trim()) onSubmit(value.trim())\n      }}\n      {...props}\n    >\n      <textarea\n        aria-label=\"Message\"\n        value={value}\n        onChange={(event) => onValueChange(event.target.value)}\n        onKeyDown={(event) => {\n          if ((event.metaKey || event.ctrlKey) && event.key === \"Enter\") event.currentTarget.form?.requestSubmit()\n        }}\n        placeholder={placeholder}\n        disabled={disabled}\n        rows={3}\n        className=\"field-sizing-content max-h-48 min-h-16 w-full resize-none bg-transparent px-2 py-1.5 text-sm leading-relaxed outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed\"\n      />\n      <footer className=\"flex items-center justify-between gap-3 pt-1\">\n        {contextAction ?? (\n          <Button type=\"button\" variant=\"ghost\" size=\"sm\" className=\"text-muted-foreground\" disabled={disabled}>\n            <PlusIcon aria-hidden=\"true\" /> Add context\n          </Button>\n        )}\n        <div className=\"flex items-center gap-2\">\n          <kbd className=\"hidden font-mono text-xs text-muted-foreground sm:inline\">⌘ ↵</kbd>\n          <Button type=\"submit\" size=\"icon-sm\" disabled={disabled || !value.trim()} aria-label=\"Send message\">\n            <ArrowUpIcon aria-hidden=\"true\" />\n          </Button>\n        </div>\n      </footer>\n    </form>\n  )\n}\n\nexport { Composer, type ComposerProps }\n",
       "type": "registry:ui"
     }
+  ],
+  "categories": [
+    "ai"
   ],
   "type": "registry:ui"
 }

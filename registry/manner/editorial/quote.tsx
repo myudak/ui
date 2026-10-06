@@ -6,9 +6,11 @@ type QuoteProps = React.ComponentProps<"figure"> & { cite: React.ReactNode }
 
 function Quote({ children, cite, className, ...props }: QuoteProps) {
   return (
-    <figure data-slot="quote" className={cn("m-0 border-y border-[var(--border)] py-8", className)} {...props}>
-      <blockquote className="m-0 font-[family-name:var(--serif)] text-3xl leading-tight tracking-[-.025em] text-[var(--ink)]">“{children}”</blockquote>
-      <figcaption className="mt-5 font-mono text-xs text-[var(--muted)]">— {cite}</figcaption>
+    <figure data-slot="quote" className={cn("border-y py-8", className)} {...props}>
+      <blockquote className="font-heading text-2xl leading-snug tracking-tight text-balance sm:text-3xl">
+        “{children}”
+      </blockquote>
+      <figcaption className="mt-5 font-mono text-xs text-muted-foreground">— {cite}</figcaption>
     </figure>
   )
 }

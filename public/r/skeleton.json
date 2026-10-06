@@ -2,17 +2,20 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "skeleton",
   "title": "Skeleton",
-  "description": "A reduced-motion loading placeholder.",
+  "description": "A loading placeholder that matches the final layout's geometry.",
   "registryDependencies": [
-    "@manner/utils",
-    "@manner/manner-theme"
+    "@manner/manner-theme",
+    "@manner/utils"
   ],
   "files": [
     {
       "path": "registry/manner/ui/skeleton.tsx",
-      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/cn\";\nexport function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) { return <div className={cn(\"manner-skeleton\", className)} aria-hidden=\"true\" {...props}/>; }\n",
+      "content": "import { cn } from \"@/lib/cn\"\n\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      className={cn(\"bg-muted rounded-md animate-pulse\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n",
       "type": "registry:ui"
     }
+  ],
+  "categories": [
+    "display"
   ],
   "type": "registry:ui"
 }

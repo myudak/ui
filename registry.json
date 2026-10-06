@@ -7,43 +7,104 @@
       "name": "manner-theme",
       "type": "registry:theme",
       "title": "Manner Theme",
-      "description": "Warm editorial semantic tokens for Manner interfaces.",
+      "description": "Warm editorial tokens on shadcn's standard variable names, plus brand, success, and warning. Includes 0.1 aliases (canvas, ink, surface…) for one release.",
+      "dependencies": [
+        "tw-animate-css"
+      ],
       "cssVars": {
+        "theme": {
+          "font-heading": "\"Fraunces Variable\", Fraunces, \"Iowan Old Style\", Georgia, serif",
+          "color-brand": "var(--brand)",
+          "color-brand-foreground": "var(--brand-foreground)",
+          "color-brand-soft": "var(--brand-soft)",
+          "color-success": "var(--success)",
+          "color-warning": "var(--warning)"
+        },
         "light": {
-          "canvas": "oklch(0.968 0.012 75)",
-          "surface": "oklch(0.992 0.005 75)",
-          "surface-inset": "oklch(0.944 0.012 72)",
-          "ink": "oklch(0.235 0.016 48)",
-          "ink-secondary": "oklch(0.39 0.018 48)",
-          "muted": "oklch(0.55 0.018 55)",
-          "accent": "oklch(0.58 0.145 38)",
-          "accent-soft": "oklch(0.91 0.05 45)",
-          "border": "oklch(0.78 0.016 68)",
-          "border-subtle": "oklch(0.87 0.012 72)",
-          "focus": "oklch(0.58 0.16 245)",
-          "danger": "oklch(0.56 0.19 26)",
+          "radius": "0.5rem",
+          "background": "oklch(0.968 0.012 75)",
+          "foreground": "oklch(0.235 0.016 48)",
+          "card": "oklch(0.992 0.005 75)",
+          "card-foreground": "oklch(0.235 0.016 48)",
+          "popover": "oklch(0.992 0.005 75)",
+          "popover-foreground": "oklch(0.235 0.016 48)",
+          "primary": "oklch(0.235 0.016 48)",
+          "primary-foreground": "oklch(0.985 0.006 75)",
+          "secondary": "oklch(0.938 0.013 72)",
+          "secondary-foreground": "oklch(0.235 0.016 48)",
+          "muted": "oklch(0.938 0.013 72)",
+          "muted-foreground": "oklch(0.49 0.018 55)",
+          "accent": "oklch(0.925 0.022 62)",
+          "accent-foreground": "oklch(0.235 0.016 48)",
+          "destructive": "oklch(0.55 0.19 28)",
+          "border": "oklch(0.87 0.013 72)",
+          "input": "oklch(0.8 0.016 68)",
+          "ring": "oklch(0.58 0.16 245)",
+          "brand": "oklch(0.58 0.145 38)",
+          "brand-foreground": "oklch(0.985 0.006 75)",
+          "brand-soft": "oklch(0.915 0.045 45)",
           "success": "oklch(0.55 0.12 145)",
-          "warning": "oklch(0.7 0.14 78)",
-          "radius-xs": "4px",
-          "radius-sm": "6px",
-          "radius-md": "10px",
-          "radius-lg": "14px"
+          "warning": "oklch(0.68 0.14 75)",
+          "chart-1": "oklch(0.58 0.145 38)",
+          "chart-2": "oklch(0.55 0.12 145)",
+          "chart-3": "oklch(0.58 0.12 245)",
+          "chart-4": "oklch(0.68 0.14 75)",
+          "chart-5": "oklch(0.45 0.03 50)",
+          "sidebar": "oklch(0.955 0.012 72)",
+          "sidebar-foreground": "oklch(0.235 0.016 48)",
+          "sidebar-primary": "oklch(0.235 0.016 48)",
+          "sidebar-primary-foreground": "oklch(0.985 0.006 75)",
+          "sidebar-accent": "oklch(0.925 0.022 62)",
+          "sidebar-accent-foreground": "oklch(0.235 0.016 48)",
+          "sidebar-border": "oklch(0.87 0.013 72)",
+          "sidebar-ring": "oklch(0.58 0.16 245)",
+          "canvas": "var(--background)",
+          "surface": "var(--card)",
+          "surface-inset": "var(--muted)",
+          "ink": "var(--foreground)",
+          "ink-secondary": "color-mix(in oklch, var(--foreground) 80%, transparent)",
+          "accent-soft": "var(--brand-soft)",
+          "border-subtle": "var(--border)",
+          "focus": "var(--ring)",
+          "danger": "var(--destructive)"
         },
         "dark": {
-          "canvas": "oklch(0.19 0.012 48)",
-          "surface": "oklch(0.235 0.014 48)",
-          "surface-inset": "oklch(0.16 0.01 48)",
-          "ink": "oklch(0.92 0.012 75)",
-          "ink-secondary": "oklch(0.76 0.014 72)",
-          "muted": "oklch(0.64 0.015 68)",
-          "accent": "oklch(0.7 0.13 39)",
-          "accent-soft": "oklch(0.33 0.06 38)",
-          "border": "oklch(0.4 0.018 55)",
-          "border-subtle": "oklch(0.31 0.014 55)",
-          "focus": "oklch(0.72 0.14 245)",
-          "danger": "oklch(0.68 0.16 26)",
-          "success": "oklch(0.7 0.11 145)",
-          "warning": "oklch(0.78 0.12 78)"
+          "background": "oklch(0.19 0.012 48)",
+          "foreground": "oklch(0.93 0.012 75)",
+          "card": "oklch(0.222 0.013 48)",
+          "card-foreground": "oklch(0.93 0.012 75)",
+          "popover": "oklch(0.235 0.014 48)",
+          "popover-foreground": "oklch(0.93 0.012 75)",
+          "primary": "oklch(0.93 0.012 75)",
+          "primary-foreground": "oklch(0.2 0.012 48)",
+          "secondary": "oklch(0.26 0.014 50)",
+          "secondary-foreground": "oklch(0.93 0.012 75)",
+          "muted": "oklch(0.26 0.014 50)",
+          "muted-foreground": "oklch(0.7 0.015 68)",
+          "accent": "oklch(0.29 0.02 50)",
+          "accent-foreground": "oklch(0.93 0.012 75)",
+          "destructive": "oklch(0.7 0.17 28)",
+          "border": "oklch(0.31 0.014 55)",
+          "input": "oklch(0.37 0.016 55)",
+          "ring": "oklch(0.72 0.14 245)",
+          "brand": "oklch(0.7 0.13 39)",
+          "brand-foreground": "oklch(0.19 0.012 48)",
+          "brand-soft": "oklch(0.31 0.055 38)",
+          "success": "oklch(0.72 0.13 145)",
+          "warning": "oklch(0.78 0.13 75)",
+          "chart-1": "oklch(0.7 0.13 39)",
+          "chart-2": "oklch(0.72 0.13 145)",
+          "chart-3": "oklch(0.72 0.12 245)",
+          "chart-4": "oklch(0.78 0.13 75)",
+          "chart-5": "oklch(0.6 0.02 60)",
+          "sidebar": "oklch(0.205 0.012 48)",
+          "sidebar-foreground": "oklch(0.93 0.012 75)",
+          "sidebar-primary": "oklch(0.7 0.13 39)",
+          "sidebar-primary-foreground": "oklch(0.19 0.012 48)",
+          "sidebar-accent": "oklch(0.29 0.02 50)",
+          "sidebar-accent-foreground": "oklch(0.93 0.012 75)",
+          "sidebar-border": "oklch(0.31 0.014 55)",
+          "sidebar-ring": "oklch(0.72 0.14 245)"
         }
       }
     },
@@ -52,293 +113,1284 @@
       "type": "registry:lib",
       "title": "Class Name Utility",
       "description": "Merges conditional Tailwind class names safely.",
-      "dependencies": ["clsx@^2.1.1", "tailwind-merge@^3.6.0"],
-      "files": [{ "path": "lib/cn.ts", "type": "registry:lib" }]
+      "dependencies": [
+        "clsx@^2.1.1",
+        "tailwind-merge@^3.6.0"
+      ],
+      "files": [
+        {
+          "path": "lib/cn.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "use-mobile",
+      "type": "registry:hook",
+      "title": "useIsMobile",
+      "description": "Tracks whether the viewport is below the mobile breakpoint.",
+      "files": [
+        {
+          "path": "registry/manner/hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ]
     },
     {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "description": "A Base UI-backed action with restrained Manner variants.",
-      "dependencies": ["@base-ui/react@^1.6.0", "class-variance-authority@^0.7.1"],
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/ui/button.tsx", "type": "registry:ui" }]
+      "description": "A semantic action with restrained, purposeful variants — including a terracotta brand variant for the one decision that matters.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "description": "A semantic text input with visible focus and invalid states.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/ui/input.tsx", "type": "registry:ui" }]
+      "description": "A single-line text input with visible focus, invalid, and disabled states.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",
-      "description": "A readable multiline field with controlled resizing.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/ui/textarea.tsx", "type": "registry:ui" }]
+      "description": "A multiline field that grows with its content.",
+      "categories": [
+        "form"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
-      "description": "Label, description, and error primitives for form relationships.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/ui/field.tsx", "type": "registry:ui" }]
+      "description": "Labels, descriptions, and errors that stay correctly associated with their control.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@manner/label",
+        "@manner/manner-theme",
+        "@manner/separator",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
-      "name": "switch",
+      "name": "input-group",
       "type": "registry:ui",
-      "title": "Switch",
-      "description": "A Base UI-backed binary control with keyboard behavior.",
-      "dependencies": ["@base-ui/react@^1.6.0"],
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/ui/switch.tsx", "type": "registry:ui" }]
+      "title": "Input Group",
+      "description": "Inputs with leading or trailing addons — icons, text, buttons, or shortcuts.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/input",
+        "@manner/manner-theme",
+        "@manner/textarea",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
-      "description": "A Base UI-backed choice control with portal positioning and keyboard navigation.",
-      "dependencies": ["@base-ui/react@^1.6.0", "lucide-react@^1.28.0"],
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/ui/select.tsx", "type": "registry:ui" }]
+      "description": "A compact single choice with a keyboard-navigable popup.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "An independent on/off choice with an optional description.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "A mutually exclusive choice set with roving keyboard focus.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A binary setting that applies immediately.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "A set of pressable options for formatting, view modes, or filters.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/toggle",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "A button-triggered calendar popover for picking a single date.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/calendar",
+        "@manner/manner-theme",
+        "@manner/popover",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A month grid for selecting dates and ranges, built on react-day-picker.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0",
+        "react-day-picker@^9.14.0"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "file-upload",
+      "type": "registry:ui",
+      "title": "File Upload",
+      "description": "A labeled drop target with selected-file feedback.",
+      "categories": [
+        "form"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/file-upload.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
-      "description": "A Base UI-backed modal with focus trapping and restoration.",
-      "dependencies": ["@base-ui/react@^1.6.0", "lucide-react@^1.28.0"],
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/ui/dialog.tsx", "type": "registry:ui" }]
+      "description": "A focused modal layer with an explicit decision path.",
+      "categories": [
+        "overlay"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "A side panel for secondary tasks that keeps the page in view.",
+      "categories": [
+        "overlay"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A swipeable bottom panel suited to short decisions on small screens.",
+      "categories": [
+        "overlay"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Rich, interactive content anchored to a trigger.",
+      "categories": [
+        "overlay"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A short accessible label for compact or unfamiliar controls.",
+      "categories": [
+        "overlay"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "A menu of actions with groups, shortcuts, and destructive items.",
+      "categories": [
+        "overlay"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "command",
       "type": "registry:ui",
       "title": "Command",
-      "description": "A keyboard-first filtered command list.",
-      "dependencies": ["lucide-react@^1.28.0"],
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/ui/command.tsx", "type": "registry:ui" }]
+      "description": "Fast, keyboard-first search across actions and destinations.",
+      "categories": [
+        "overlay"
+      ],
+      "dependencies": [
+        "cmdk@^1.1.1",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/dialog",
+        "@manner/input-group",
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Switch between related views without losing context.",
+      "categories": [
+        "navigation"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Progressive disclosure for stacked sections such as FAQs.",
+      "categories": [
+        "navigation"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Location in a shallow, meaningful hierarchy.",
+      "categories": [
+        "navigation"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Move through ordered result pages with a clear current state.",
+      "categories": [
+        "navigation"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "Top-level site navigation with rich dropdown panels.",
+      "categories": [
+        "navigation"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stepper",
+      "type": "registry:ui",
+      "title": "Stepper",
+      "description": "Progress through a finite, ordered multi-step flow.",
+      "categories": [
+        "navigation"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/stepper.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "A bounded surface for content that genuinely needs grouping.",
+      "categories": [
+        "display"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Compact status, version, and category labels.",
+      "categories": [
+        "display"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "A calm, semantic status message — success, warning, destructive, or neutral.",
+      "categories": [
+        "display"
+      ],
+      "dependencies": [
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Completion communicated with a label, value, and meter.",
+      "categories": [
+        "display"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "A loading placeholder that matches the final layout's geometry.",
+      "categories": [
+        "display"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Explains an empty result and offers the next useful action.",
+      "categories": [
+        "display"
+      ],
+      "dependencies": [
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Keyboard keys and shortcuts rendered inline.",
+      "categories": [
+        "display"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "A thin rule that divides content horizontally or vertically.",
+      "categories": [
+        "display"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "A styled scroll container that keeps native scrolling behavior.",
+      "categories": [
+        "display"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "surface",
       "type": "registry:ui",
       "title": "Surface",
-      "description": "Semantic content grouping with default, inset, and raised tones.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/editorial/surface.tsx", "type": "registry:ui" }]
+      "description": "Semantic grouping in three tones — default, inset, raised — without card soup.",
+      "categories": [
+        "editorial"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/surface.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "section-heading",
       "type": "registry:ui",
       "title": "Section Heading",
-      "description": "Editorial hierarchy for meaningful sections.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/editorial/section-heading.tsx", "type": "registry:ui" }]
+      "description": "Eyebrow, serif title, description, and action for the start of a section.",
+      "categories": [
+        "editorial"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/section-heading.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "note",
       "type": "registry:ui",
       "title": "Note",
-      "description": "A restrained aside for contextual information.",
-      "dependencies": ["lucide-react@^1.28.0"],
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/editorial/note.tsx", "type": "registry:ui" }]
+      "description": "A restrained aside for context that should not interrupt the flow.",
+      "categories": [
+        "editorial"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/note.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "quote",
       "type": "registry:ui",
       "title": "Quote",
-      "description": "A quotation with strong reading rhythm and attribution.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/editorial/quote.tsx", "type": "registry:ui" }]
+      "description": "A pull quote with strong reading rhythm and clear attribution.",
+      "categories": [
+        "editorial"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/quote.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "timeline",
       "type": "registry:ui",
       "title": "Timeline",
-      "description": "A compact semantic history for decisions and releases.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/editorial/timeline.tsx", "type": "registry:ui" }]
+      "description": "A compact history of decisions, releases, and progress.",
+      "categories": [
+        "editorial"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/timeline.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "metadata",
       "type": "registry:ui",
       "title": "Metadata",
-      "description": "Dense supporting facts that remain calm and scannable.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/editorial/metadata.tsx", "type": "registry:ui" }]
+      "description": "Dense supporting facts that stay scannable.",
+      "categories": [
+        "editorial"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/editorial/metadata.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "message",
       "type": "registry:ui",
       "title": "Message",
-      "description": "Conversation content with authorship and optional actions.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/ai/message.tsx", "type": "registry:ui" }]
+      "description": "Conversation turns with clear authorship, actions, and a readable measure.",
+      "categories": [
+        "ai"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/message.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "composer",
       "type": "registry:ui",
       "title": "Composer",
-      "description": "A flexible prompt input with keyboard submission.",
-      "dependencies": ["lucide-react@^1.28.0"],
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme", "@manner/button", "@manner/textarea"],
-      "files": [{ "path": "registry/manner/ai/composer.tsx", "type": "registry:ui" }]
+      "description": "A prompt input that grows with the thought, with ⌘↵ to send.",
+      "categories": [
+        "ai"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/composer.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "reasoning",
       "type": "registry:ui",
       "title": "Reasoning",
-      "description": "Progressive disclosure for intermediate work.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/ai/reasoning.tsx", "type": "registry:ui" }]
+      "description": "Collapsible disclosure for model reasoning and intermediate steps.",
+      "categories": [
+        "ai"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/reasoning.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "tool-call",
       "type": "registry:ui",
       "title": "Tool Call",
-      "description": "Operational state for tool name, status, duration, and output.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/ai/tool-call.tsx", "type": "registry:ui" }]
+      "description": "Legible running, complete, and error states for tool invocations.",
+      "categories": [
+        "ai"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/tool-call.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "sources",
       "type": "registry:ui",
       "title": "Sources",
-      "description": "Evidence links with origin context.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/ai/sources.tsx", "type": "registry:ui" }]
+      "description": "Numbered citations with origin context.",
+      "categories": [
+        "ai"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/sources.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "artifact",
       "type": "registry:ui",
       "title": "Artifact",
-      "description": "A focused output surface connected to a conversation.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/ai/artifact.tsx", "type": "registry:ui" }]
+      "description": "A focused output surface that stays connected to its conversation.",
+      "categories": [
+        "ai"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ai/artifact.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
-      "name": "checkbox", "type": "registry:ui", "title": "Checkbox", "description": "An accessible independent selection control.",
-      "dependencies": ["lucide-react@^1.28.0"], "registryDependencies": ["@manner/utils", "@manner/manner-theme"],
-      "files": [{ "path": "registry/manner/ui/checkbox.tsx", "type": "registry:ui" }]
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "An accessible label for form controls.",
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
-      "name": "radio-group", "type": "registry:ui", "title": "Radio Group", "description": "A mutually exclusive choice set with native keyboard behavior.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"], "files": [{ "path": "registry/manner/ui/radio-group.tsx", "type": "registry:ui" }]
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A two-state pressable button.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
-      "name": "date-picker", "type": "registry:ui", "title": "Date Picker", "description": "An accessible date input with a clear label.",
-      "dependencies": ["lucide-react@^1.28.0"], "registryDependencies": ["@manner/utils", "@manner/manner-theme"], "files": [{ "path": "registry/manner/ui/date-picker.tsx", "type": "registry:ui" }]
-    },
-    {
-      "name": "file-upload", "type": "registry:ui", "title": "File Upload", "description": "A labeled upload target with selected-file feedback.",
-      "dependencies": ["lucide-react@^1.28.0"], "registryDependencies": ["@manner/utils", "@manner/manner-theme"], "files": [{ "path": "registry/manner/ui/file-upload.tsx", "type": "registry:ui" }]
-    },
-    {
-      "name": "card", "type": "registry:ui", "title": "Card", "description": "A restrained bounded surface for meaningful grouping.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"], "files": [{ "path": "registry/manner/ui/card.tsx", "type": "registry:ui" }]
-    },
-    {
-      "name": "drawer", "type": "registry:ui", "title": "Drawer", "description": "A spatially grounded side panel for secondary tasks.",
-      "dependencies": ["@base-ui/react@^1.6.0", "lucide-react@^1.28.0"], "registryDependencies": ["@manner/manner-theme"], "files": [{ "path": "registry/manner/ui/drawer.tsx", "type": "registry:ui" }]
-    },
-    {
-      "name": "tooltip", "type": "registry:ui", "title": "Tooltip", "description": "A short accessible label for compact controls.",
-      "registryDependencies": ["@manner/manner-theme"], "files": [{ "path": "registry/manner/ui/tooltip.tsx", "type": "registry:ui" }]
-    },
-    {
-      "name": "tabs", "type": "registry:ui", "title": "Tabs", "description": "Keyboard-friendly related view switching.",
-      "registryDependencies": ["@manner/manner-theme"], "files": [{ "path": "registry/manner/ui/tabs.tsx", "type": "registry:ui" }]
-    },
-    {
-      "name": "breadcrumb", "type": "registry:ui", "title": "Breadcrumb", "description": "A semantic location trail for shallow hierarchies.",
-      "dependencies": ["lucide-react@^1.28.0"], "registryDependencies": ["@manner/manner-theme"], "files": [{ "path": "registry/manner/ui/breadcrumb.tsx", "type": "registry:ui" }]
-    },
-    {
-      "name": "pagination", "type": "registry:ui", "title": "Pagination", "description": "Navigation through ordered result pages.",
-      "registryDependencies": ["@manner/manner-theme"], "files": [{ "path": "registry/manner/ui/pagination.tsx", "type": "registry:ui" }]
-    },
-    {
-      "name": "stepper", "type": "registry:ui", "title": "Stepper", "description": "Progress through a finite multi-step flow.",
-      "registryDependencies": ["@manner/manner-theme"], "files": [{ "path": "registry/manner/ui/stepper.tsx", "type": "registry:ui" }]
-    },
-    {
-      "name": "alert", "type": "registry:ui", "title": "Alert", "description": "A semantic status message with calm hierarchy.",
-      "dependencies": ["lucide-react@^1.28.0"], "registryDependencies": ["@manner/utils", "@manner/manner-theme"], "files": [{ "path": "registry/manner/ui/alert.tsx", "type": "registry:ui" }]
-    },
-    {
-      "name": "progress", "type": "registry:ui", "title": "Progress", "description": "A labeled semantic completion meter.",
-      "registryDependencies": ["@manner/manner-theme"], "files": [{ "path": "registry/manner/ui/progress.tsx", "type": "registry:ui" }]
-    },
-    {
-      "name": "skeleton", "type": "registry:ui", "title": "Skeleton", "description": "A reduced-motion loading placeholder.",
-      "registryDependencies": ["@manner/utils", "@manner/manner-theme"], "files": [{ "path": "registry/manner/ui/skeleton.tsx", "type": "registry:ui" }]
-    },
-    {
-      "name": "empty-state", "type": "registry:ui", "title": "Empty State", "description": "An empty result explanation with a useful next action.",
-      "dependencies": ["lucide-react@^1.28.0"], "registryDependencies": ["@manner/manner-theme"], "files": [{ "path": "registry/manner/ui/empty-state.tsx", "type": "registry:ui" }]
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "A composable, collapsible application sidebar. See the sidebar-01 block.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/input",
+        "@manner/manner-theme",
+        "@manner/separator",
+        "@manner/sheet",
+        "@manner/skeleton",
+        "@manner/tooltip",
+        "@manner/use-mobile",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "login-01",
       "type": "registry:block",
-      "title": "Editorial Sign In",
-      "description": "A focused sign-in composition with product context.",
-      "registryDependencies": ["@manner/button", "@manner/field", "@manner/input"],
-      "files": [{ "path": "registry/manner/blocks/login-01.tsx", "type": "registry:component" }]
+      "title": "Editorial sign in",
+      "description": "A focused sign-in flow with product context instead of a generic floating card.",
+      "categories": [
+        "authentication"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/field",
+        "@manner/input",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/blocks/login-01.tsx",
+          "type": "registry:block"
+        }
+      ]
     },
     {
       "name": "sidebar-01",
       "type": "registry:block",
-      "title": "Collapsible Workspace",
-      "description": "A content-first shell with compact navigation.",
-      "registryDependencies": ["@manner/button"],
-      "files": [{ "path": "registry/manner/blocks/sidebar-01.tsx", "type": "registry:component" }]
+      "title": "Collapsible workspace",
+      "description": "An application shell with grouped navigation that collapses to icons.",
+      "categories": [
+        "application shell"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/manner-theme",
+        "@manner/separator",
+        "@manner/sidebar"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/blocks/sidebar-01.tsx",
+          "type": "registry:block"
+        }
+      ]
     },
     {
       "name": "settings-01",
       "type": "registry:block",
-      "title": "Preference Workspace",
-      "description": "Section navigation, accessible controls, and explicit save state.",
-      "registryDependencies": ["@manner/button", "@manner/select", "@manner/switch"],
-      "files": [{ "path": "registry/manner/blocks/settings-01.tsx", "type": "registry:component" }]
+      "title": "Preference workspace",
+      "description": "Section navigation, calm fields, and explicit saved state.",
+      "categories": [
+        "settings"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/button",
+        "@manner/field",
+        "@manner/input",
+        "@manner/manner-theme",
+        "@manner/select",
+        "@manner/switch",
+        "@manner/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/blocks/settings-01.tsx",
+          "type": "registry:block"
+        }
+      ]
     },
     {
       "name": "reader-01",
       "type": "registry:block",
-      "title": "Knowledge Reader",
-      "description": "Outline navigation, long-form reading, and margin notes.",
-      "registryDependencies": ["@manner/note"],
-      "files": [{ "path": "registry/manner/blocks/reader-01.tsx", "type": "registry:component" }]
+      "title": "Knowledge reader",
+      "description": "A 68ch reading column with outline, progress, and margin notes.",
+      "categories": [
+        "reading"
+      ],
+      "registryDependencies": [
+        "@manner/manner-theme",
+        "@manner/note",
+        "@manner/progress"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/blocks/reader-01.tsx",
+          "type": "registry:block"
+        }
+      ]
     },
     {
       "name": "ai-workspace-01",
       "type": "registry:block",
-      "title": "Conversation Workspace",
-      "description": "Messages, composer, and a responsive artifact panel.",
-      "registryDependencies": ["@manner/artifact", "@manner/composer", "@manner/message"],
-      "files": [{ "path": "registry/manner/blocks/ai-workspace-01.tsx", "type": "registry:component" }]
+      "title": "AI workspace",
+      "description": "Conversation, tool calls, composer, and an artifact panel.",
+      "categories": [
+        "ai"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/artifact",
+        "@manner/button",
+        "@manner/composer",
+        "@manner/manner-theme",
+        "@manner/message",
+        "@manner/tool-call"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/blocks/ai-workspace-01.tsx",
+          "type": "registry:block"
+        }
+      ]
     },
     {
       "name": "leaderboard-01",
       "type": "registry:block",
-      "title": "Comparison Leaderboard",
-      "description": "Ranked data with methodology context and responsive overflow.",
-      "registryDependencies": ["@manner/metadata"],
-      "files": [{ "path": "registry/manner/blocks/leaderboard-01.tsx", "type": "registry:component" }]
+      "title": "Leaderboard",
+      "description": "Summary metrics and an accessible ranked table with trends.",
+      "categories": [
+        "data"
+      ],
+      "dependencies": [
+        "lucide-react@^1.28.0"
+      ],
+      "registryDependencies": [
+        "@manner/badge",
+        "@manner/manner-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/manner/blocks/leaderboard-01.tsx",
+          "type": "registry:block"
+        }
+      ]
     },
     {
       "name": "agent-rules",
       "type": "registry:file",
       "title": "Manner Agent Rules",
-      "description": "Installs Manner design constraints and agent workflow at the consumer project root.",
+      "description": "Installs DESIGN.md and MANNER_AGENT.md so coding agents follow the Manner visual grammar.",
       "files": [
-        { "path": "public/DESIGN.md", "type": "registry:file", "target": "~/DESIGN.md" },
-        { "path": "public/MANNER_AGENT.md", "type": "registry:file", "target": "~/MANNER_AGENT.md" }
+        {
+          "path": "public/DESIGN.md",
+          "type": "registry:file",
+          "target": "~/DESIGN.md"
+        },
+        {
+          "path": "public/MANNER_AGENT.md",
+          "type": "registry:file",
+          "target": "~/MANNER_AGENT.md"
+        }
       ]
     }
   ]

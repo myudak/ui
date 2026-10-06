@@ -2,16 +2,24 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pagination",
   "title": "Pagination",
-  "description": "Navigation through ordered result pages.",
+  "description": "Move through ordered result pages with a clear current state.",
+  "dependencies": [
+    "lucide-react@^1.28.0"
+  ],
   "registryDependencies": [
-    "@manner/manner-theme"
+    "@manner/button",
+    "@manner/manner-theme",
+    "@manner/utils"
   ],
   "files": [
     {
       "path": "registry/manner/ui/pagination.tsx",
-      "content": "\"use client\";\n\nexport function Pagination({ page, total, onPageChange }: { page: number; total: number; onPageChange: (page: number) => void }) {\n  return <nav className=\"manner-pagination\" aria-label=\"Pagination\"><button disabled={page <= 1} onClick={() => onPageChange(page - 1)}>← <span>Previous</span></button><div>{Array.from({ length: total }, (_, index) => index + 1).map((item) => <button key={item} aria-current={item === page ? \"page\" : undefined} onClick={() => onPageChange(item)}>{item}</button>)}</div><button disabled={page >= total} onClick={() => onPageChange(page + 1)}><span>Next</span> →</button></nav>;\n}\n",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/cn\"\n\nimport { Button } from \"@/registry/manner/ui/button\"\nimport { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from \"lucide-react\"\n\nfunction Pagination({ className, ...props }: React.ComponentProps<\"nav\">) {\n  return (\n    <nav\n      role=\"navigation\"\n      aria-label=\"pagination\"\n      data-slot=\"pagination\"\n      className={cn(\n        \"mx-auto flex w-full justify-center\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction PaginationContent({\n  className,\n  ...props\n}: React.ComponentProps<\"ul\">) {\n  return (\n    <ul\n      data-slot=\"pagination-content\"\n      className={cn(\"gap-0.5 flex items-center\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction PaginationItem({ ...props }: React.ComponentProps<\"li\">) {\n  return <li data-slot=\"pagination-item\" {...props} />\n}\n\ntype PaginationLinkProps = {\n  isActive?: boolean\n} & Pick<React.ComponentProps<typeof Button>, \"size\"> &\n  React.ComponentProps<\"a\">\n\nfunction PaginationLink({\n  className,\n  isActive,\n  size = \"icon\",\n  ...props\n}: PaginationLinkProps) {\n  return (\n    <Button\n      variant={isActive ? \"outline\" : \"ghost\"}\n      size={size}\n      className={cn( className)}\n      nativeButton={false}\n      render={\n        <a\n          aria-current={isActive ? \"page\" : undefined}\n          data-slot=\"pagination-link\"\n          data-active={isActive}\n          {...props}\n        />\n      }\n    />\n  )\n}\n\nfunction PaginationPrevious({\n  className,\n  text = \"Previous\",\n  ...props\n}: React.ComponentProps<typeof PaginationLink> & { text?: string }) {\n  return (\n    <PaginationLink\n      aria-label=\"Go to previous page\"\n      size=\"default\"\n      className={cn(\"pl-1.5!\", className)}\n      {...props}\n    >\n      <ChevronLeftIcon\n        data-icon=\"inline-start\"\n        className=\"rtl:rotate-180\"\n      />\n      <span className=\"hidden sm:block\">\n        {text}\n      </span>\n    </PaginationLink>\n  )\n}\n\nfunction PaginationNext({\n  className,\n  text = \"Next\",\n  ...props\n}: React.ComponentProps<typeof PaginationLink> & { text?: string }) {\n  return (\n    <PaginationLink\n      aria-label=\"Go to next page\"\n      size=\"default\"\n      className={cn(\"pr-1.5!\", className)}\n      {...props}\n    >\n      <span className=\"hidden sm:block\">{text}</span>\n      <ChevronRightIcon\n        data-icon=\"inline-end\"\n        className=\"rtl:rotate-180\"\n      />\n    </PaginationLink>\n  )\n}\n\nfunction PaginationEllipsis({\n  className,\n  ...props\n}: React.ComponentProps<\"span\">) {\n  return (\n    <span\n      aria-hidden\n      data-slot=\"pagination-ellipsis\"\n      className={cn(\n        \"size-8 items-center justify-center [&_svg:not([class*='size-'])]:size-4 flex items-center justify-center\",\n        className\n      )}\n      {...props}\n    >\n      <MoreHorizontalIcon\n      />\n      <span className=\"sr-only\">More pages</span>\n    </span>\n  )\n}\n\nexport {\n  Pagination,\n  PaginationContent,\n  PaginationEllipsis,\n  PaginationItem,\n  PaginationLink,\n  PaginationNext,\n  PaginationPrevious,\n}\n",
       "type": "registry:ui"
     }
+  ],
+  "categories": [
+    "navigation"
   ],
   "type": "registry:ui"
 }
