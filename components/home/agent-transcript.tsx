@@ -12,7 +12,7 @@ export function AgentTranscript() {
       <Message from="assistant" label="Agent">
         Added <code className="font-mono text-[0.92em]">app/settings/page.tsx</code> from settings-01. Reused Field,
         Select, and Switch; added the saved and error states. One exception: the danger zone uses a destructive
-        button, per DESIGN.md §7.
+        button, as DESIGN.md requires for irreversible actions.
       </Message>
     </div>
   )

@@ -44,6 +44,11 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    // Base UI imports this CommonJS shim; pre-bundle it so routes discovered
+    // after startup (e.g. navigation-menu) don't receive the raw CJS file.
+    optimizeDeps: {
+      include: ["use-sync-external-store/shim", "use-sync-external-store/shim/with-selector"],
+    },
     server: {
       host: "0.0.0.0",
       allowedHosts: ["terminal.local"],

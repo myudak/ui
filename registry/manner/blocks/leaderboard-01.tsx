@@ -47,7 +47,7 @@ function LeaderboardBlock() {
           </div>
         ))}
       </dl>
-      <div className="mt-8 overflow-x-auto">
+      <div className="relative mt-8 overflow-x-auto">
         <table className="w-full min-w-[560px] text-left text-sm">
           <caption className="sr-only">Model ranking by ELO</caption>
           <thead>

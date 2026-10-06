@@ -15,6 +15,7 @@ test("publishes the complete Manner registry", async () => {
     "surface", "section-heading", "note", "quote", "timeline", "metadata",
     "message", "composer", "reasoning", "tool-call", "sources", "artifact",
     "login-01", "sidebar-01", "settings-01", "reader-01", "ai-workspace-01", "leaderboard-01", "agent-rules",
+    "accordion", "badge", "calendar", "dropdown-menu", "empty", "input-group", "kbd", "popover", "sheet", "sidebar", "tabs",
   ]) assert.ok(names.has(expected), `missing registry item: ${expected}`);
 
   for (const item of registry.items) {
@@ -46,3 +47,48 @@ test("publishes agent discovery surfaces from the same catalog", async () => {
   assert.match(await readFile(resolve(root, "public/llms-full.txt"), "utf8"), /## Visual language/);
   assert.equal(await readFile(resolve(root, "AGENTS.md"), "utf8"), await readFile(resolve(root, "public/AGENTS.md"), "utf8"));
 });
+
+const catalog = JSON.parse(await readFile(resolve(root, "registry/catalog.json"), "utf8"))
+const installableFiles = registry.items
+  .filter((item) => item.type !== "registry:file")
+  .flatMap((item) => (item.files ?? []).map((file) => ({ item: item.name, path: file.path })))
+
+test("registry source is self-contained: no site-only classes or 0.1 tokens", async () => {
+  const legacyToken = /var\(--(canvas|surface|surface-inset|ink|ink-secondary|accent-soft|border-subtle|focus|danger|serif|sans|mono)\b/
+  const siteClass = /className=(["'`{])[^>]*?\bmanner-[a-z]/
+  for (const { item, path } of installableFiles) {
+    const source = await readFile(resolve(root, path), "utf8")
+    assert.doesNotMatch(source, legacyToken, `${item} (${path}) references a 0.1 token`)
+    assert.doesNotMatch(source, siteClass, `${item} (${path}) depends on a site-only manner-* class`)
+  }
+})
+
+test("every catalog component has an example, docs source, and registry item", async () => {
+  const names = new Set(registry.items.map((item) => item.name))
+  const exampleIndex = await readFile(resolve(root, "registry/manner/examples/index.ts"), "utf8")
+  for (const component of catalog.components) {
+    assert.ok(names.has(component.name), `${component.name} missing from registry.json`)
+    await readFile(resolve(root, component.example), "utf8")
+    assert.match(exampleIndex, new RegExp(`"${component.name}":`), `${component.name} missing from examples/index.ts`)
+  }
+  for (const block of catalog.blocks) assert.ok(names.has(block.name), `${block.name} missing from registry.json`)
+})
+
+test("registry dependencies resolve to published items", async () => {
+  const names = new Set(registry.items.map((item) => item.name))
+  for (const item of registry.items) {
+    for (const dependency of item.registryDependencies ?? []) {
+      assert.ok(names.has(dependency.replace("@manner/", "")), `${item.name} depends on unknown ${dependency}`)
+    }
+  }
+})
+
+test("theme publishes shadcn-standard tokens and Manner extensions in both modes", async () => {
+  const theme = JSON.parse(await readFile(resolve(root, "public/r/manner-theme.json"), "utf8"))
+  for (const mode of ["light", "dark"]) {
+    for (const token of ["background", "foreground", "primary", "muted", "muted-foreground", "accent", "border", "ring", "destructive", "brand", "success", "warning"]) {
+      assert.ok(theme.cssVars[mode][token], `${mode} theme is missing --${token}`)
+    }
+  }
+  assert.equal(theme.cssVars.light.canvas, "var(--background)", "0.1 alias --canvas should map to --background")
+})

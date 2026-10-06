@@ -55,13 +55,13 @@ export function CommandMenu({ className }: { className?: string }) {
         onClick={() => setOpen(true)}
         aria-label="Search docs"
         className={cn(
-          "size-9 justify-center gap-2 bg-card/60 px-0 font-normal text-muted-foreground shadow-none sm:w-56 sm:justify-start sm:pr-1.5 sm:pl-3",
+          "size-9 justify-center gap-2 bg-card/60 px-0 font-normal text-muted-foreground shadow-none lg:w-56 lg:justify-start lg:pr-1.5 lg:pl-3",
           className
         )}
       >
         <SearchIcon />
-        <span className="hidden flex-1 text-left sm:inline">Search docs…</span>
-        <KbdGroup className="hidden sm:inline-flex">
+        <span className="hidden flex-1 text-left lg:inline">Search docs…</span>
+        <KbdGroup className="hidden lg:inline-flex">
           <Kbd>⌘</Kbd>
           <Kbd>K</Kbd>
         </KbdGroup>

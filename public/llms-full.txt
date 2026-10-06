@@ -118,43 +118,55 @@ Interfaces should feel literate, calm, curious, competent, warm, and slightly un
 - Keep control radii small to medium. Pills are reserved for status, tags, and compact filters.
 - Motion must explain state, continuity, hierarchy, or origin.
 - Every interaction needs visible keyboard focus and an accessible name.
+- Irreversible actions use the `destructive` variant and ask for confirmation.
 - Design mobile layouts intentionally. Do not merely shrink desktop grids.
 - Respect `prefers-reduced-motion`.
 
 ## Semantic tokens
 
-Use `canvas`, `surface`, `surface-raised`, `surface-inset`, `ink`, `ink-secondary`, `ink-muted`, `accent`, `accent-soft`, `border-subtle`, `border`, `border-strong`, `focus`, `success`, `warning`, `danger`, and `info` instead of component-specific colors.
+Manner uses shadcn's standard CSS variable names, so any shadcn component inherits the theme:
+
+- Surfaces: `background`, `card`, `popover`, `muted`, `accent` (hover and selected surface), `sidebar`
+- Ink: `foreground`, `muted-foreground`, `primary` / `primary-foreground` (the ink action color), `secondary`
+- Lines: `border`, `input`, `ring` (focus)
+- Status: `destructive`, plus Manner's `success` and `warning`
+- Intent: Manner's `brand` (terracotta), `brand-foreground`, and `brand-soft`
+- Data: `chart-1` … `chart-5`
+
+Use Tailwind utilities generated from these tokens (`bg-card`, `text-muted-foreground`, `border-border`, `text-brand`, `ring-ring/50`) instead of component-specific colors. `brand` marks intent — the one decision that matters on a screen — and is never decoration.
+
+Manner 0.1 names (`canvas`, `surface`, `ink`, `accent-soft`, `focus`, `danger`, …) are aliased by `@manner/manner-theme` for one release. Note that `muted` and `accent` changed meaning: 0.1 `muted` (a text color) is now `muted-foreground`, and 0.1 `accent` (terracotta) is now `brand`.
 
 ## Typography
 
-- Display: Fraunces Variable, approximately weight 420.
-- Interface and body: Geist or Inter Variable.
-- Code and metadata: IBM Plex Mono.
+- Display: Fraunces Variable at weight 400–500, exposed as `font-heading` (also `font-serif`).
+- Interface and body: Geist or Inter Variable, exposed as `font-sans`. Never set interface text below 12px.
+- Code and metadata: IBM Plex Mono, exposed as `font-mono`.
 - Keep long-form body measure between 58 and 72 characters.
 - Use line-height 1.55–1.75 for prose.
 - Never use serif for tiny labels, dense tables, or code-adjacent UI.
 
 ## Shape and elevation
 
-- xs radius: 4px
-- sm radius: 6px
-- md radius: 10px
-- lg radius: 14px
-- xl radius: 20px, only for major canvases
+One `--radius` variable (default `0.5rem`) drives every radius:
 
-Most content grouping uses no shadow. Menus may use lift-1. Dialogs may use lift-2. Do not place giant blurred shadows behind normal cards.
+- `rounded-sm`: radius − 4px — badges inside controls, keyboard keys
+- `rounded-md`: radius − 2px — menu items, small buttons
+- `rounded-lg`: radius — controls, alerts, list rows
+- `rounded-xl`: radius + 4px — cards, code blocks, previews
+- `rounded-2xl`: radius + 8px — major canvases only
 
-## Motion vocabulary
+Most grouping uses a 1px border and tonal contrast with no shadow. Popovers and menus may use `shadow-md`; dialogs and floating previews may use `shadow-lg`/`shadow-xl` tinted with `shadow-foreground/5`. Do not place giant blurred shadows behind normal cards.
 
-- `enter-soft`
-- `exit-soft`
-- `reveal-line`
-- `shift-active`
-- `expand-panel`
-- `swap-content`
-- `press-control`
+## Motion
 
-Micro-interactions use 100–160ms. Menus and overlays use 140–220ms. Panels and layout changes use 180–300ms. Avoid bounce and decorative zoom by default.
+- Entry: opacity plus an 8–12px rise, ease-out. Explains where content came from.
+- State: color, border, and opacity transitions at 100–160ms. Never animate layout to show state.
+- Overlays: `tw-animate-css` fade and zoom (`data-open:animate-in`, `data-closed:animate-out`) at 100–220ms.
+- Hover: at most 1–2px of movement.
+- Panels and layout changes: 180–300ms. Avoid bounce and decorative zoom.
+
+Respect `prefers-reduced-motion` by removing nonessential motion entirely.
 
 ## Responsive behavior
 

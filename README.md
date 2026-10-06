@@ -1,10 +1,10 @@
 # Manner UI
 
-A source-owned editorial component system for thoughtful software and coding agents.
+A warm, editorial design system on shadcn and Base UI — installed as source, readable by coding agents.
 
-[Documentation](https://ui.myudak.com) · [Components](https://ui.myudak.com/components) · [Blocks](https://ui.myudak.com/blocks) · [Design rules](https://ui.myudak.com/design) · [Agent guide](https://ui.myudak.com/agents)
+[Documentation](https://ui.myudak.com) · [Components](https://ui.myudak.com/components) · [Blocks](https://ui.myudak.com/blocks) · [Foundations](https://ui.myudak.com/foundations) · [Agent guide](https://ui.myudak.com/agents)
 
-Manner combines a shadcn-compatible registry with Base UI primitives, warm editorial design tokens, application blocks, and agent-readable interface rules. You install the source into your project, then own and adapt every line.
+Manner is a shadcn registry. Its primitives start from shadcn's **base-nova** (Base UI) sources and are restyled with warm editorial tokens; editorial, AI, and block patterns are Manner's own. Tokens use shadcn's standard variable names, so components you already have pick up the theme. You install the source into your project, then own and adapt every line.
 
 ## Install
 
@@ -29,13 +29,13 @@ pnpm dlx shadcn@latest add @manner/agent-rules
 
 ## What is included
 
-- Foundations: Button, Field, Select, Switch, Dialog, Command
-- Editorial: Surface, Section Heading, Note, Quote, Timeline, Metadata
-- AI interfaces: Message, Composer, Reasoning, Tool Call, Sources, Artifact
-- Blocks: Login, Sidebar, Settings, Reader, AI Workspace, Leaderboard
-- `DESIGN.md` and `MANNER_AGENT.md` for coding-agent guidance
+- **47 components** — Form, Overlay, Navigation, Display, Editorial, and AI groups
+- **6 blocks** — Login, Sidebar, Settings, Reader, AI Workspace, Leaderboard
+- **`@manner/manner-theme`** — shadcn-standard tokens plus `brand`, `success`, `warning`, with 0.1 aliases
+- `DESIGN.md` and `MANNER_AGENT.md` for coding-agent guidance (`@manner/agent-rules`)
 - `AGENTS.md`, `ai.json`, `llms.txt`, and `llms-full.txt` for machine-readable discovery
-- A generated shadcn registry under `public/r`
+
+Upgrading from 0.1? See [CHANGELOG.md](CHANGELOG.md).
 
 ## Architecture
 
@@ -44,13 +44,15 @@ Interactive behavior is built on [Base UI](https://base-ui.com/). Distribution f
 The canonical source lives under:
 
 ```text
-registry/manner/ui
-registry/manner/editorial
-registry/manner/ai
-registry/manner/blocks
+registry/catalog.json      # names, groups, descriptions — the single source of truth
+registry/manner/ui         # primitives (ported from shadcn base-nova)
+registry/manner/editorial  # editorial primitives
+registry/manner/ai         # AI interface primitives
+registry/manner/blocks     # full-page compositions
+registry/manner/examples   # one live example per component, used by the docs
 ```
 
-`registry.json` declares the catalog. `npm run prepare:system` generates the agent manifests and validates the catalog before producing the public registry artifacts.
+`npm run prepare:system` generates `registry.json` from the catalog (dependencies are derived from imports, the theme from `app/globals.css`), bundles source for the docs, writes the agent manifests, and runs `shadcn build` into `public/r`.
 
 ## Development
 

@@ -75,7 +75,7 @@ export function SiteHeader() {
 
         <div className="ml-auto flex items-center gap-1">
           <CommandMenu />
-          <Separator orientation="vertical" className="mx-1 hidden h-5 sm:block" />
+          <Separator orientation="vertical" className="mx-1 hidden h-5 lg:block" />
           <Button variant="ghost" size="icon" nativeButton={false} render={<a href={siteConfig.github} target="_blank" rel="noreferrer" />} aria-label="Manner on GitHub">
             <GitHubIcon />
           </Button>

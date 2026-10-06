@@ -21,6 +21,12 @@ A stable component should include:
 - registry metadata and dependency declarations
 - usage in at least one realistic composition
 
+## Adding a component
+
+1. Add the source under `registry/manner/{ui,editorial,ai}/<name>.tsx`. Style it only with Tailwind utilities on the shared tokens — no site CSS, no `var(--…)` literals for colors.
+2. Add a live example at `registry/manner/examples/<name>-demo.tsx` and register it in `registry/manner/examples/index.ts`.
+3. Add an entry to `registry/catalog.json`. `npm run prepare:system` derives dependencies from imports.
+
 ## Validate locally
 
 ```bash

@@ -83,7 +83,7 @@ function SidebarBlock() {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton>
-                <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-soft text-[0.65rem] font-semibold text-brand">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-soft text-xs font-semibold text-brand">
                   MY
                 </span>
                 <span>Muchamad Yuda</span>
