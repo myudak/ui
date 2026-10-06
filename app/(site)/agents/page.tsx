@@ -31,8 +31,8 @@ export default function AgentsPage() {
             Taste your agent <em className="font-normal text-brand">can read.</em>
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground">
-            Manner ships its rules as plain files. Install them into a project and any coding agent — Claude Code, Codex,
-            Cursor — builds with the same grammar you would.
+            Manner ships its rules as plain files. Install them into a project and any coding agent builds with the
+            same grammar you would.
           </p>
         </div>
         <div className="grid gap-2">
